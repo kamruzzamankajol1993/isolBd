@@ -28,7 +28,7 @@ use App\Http\Controllers\Admin\JobdepartmentController;
 use App\Http\Controllers\Admin\JobtitleController;
 use App\Http\Controllers\Admin\JobcategoryController;
 use App\Http\Controllers\Front\FrontController;
-
+use App\Http\Controllers\Admin\PartnerWithUsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -52,6 +52,10 @@ Route::get('/how_it_work', [FrontController::class, 'how_it_work'])->name('how_i
 Route::get('/mission', [FrontController::class, 'mission'])->name('mission');
 Route::get('/vision', [FrontController::class, 'vision'])->name('vision');
 Route::get('/values', [FrontController::class, 'values'])->name('values');
+
+
+Route::post('/sendMessageFromPartner', [FrontController::class, 'sendMessageFromPartner'])->name('sendMessageFromPartner');
+
 
 Route::get('/our_experties', [FrontController::class, 'our_experties'])->name('our_experties');
 Route::get('/our_services', [FrontController::class, 'our_services'])->name('our_services');
@@ -98,6 +102,12 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::group(['prefix' => 'admin'], function () {
+
+    Route::resource('partnerWithUs', PartnerWithUsController::class);
+
+    Route::controller(PartnerWithUsController::class)->group(function () {
+    });
+
     Route::get('/', [DashboardController::class, 'index'])->name('admin.dashboard');
 
 

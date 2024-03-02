@@ -91,6 +91,26 @@
 @endif
     </ul>
 </li>
+@if ($usr->can('employeeSectionView'))
+<li class="menu-title">EMPLOYER</li>
+
+<li>
+    <a href="javascript: void(0);" class="has-arrow waves-effect">
+        <i class="uil-label"></i>
+        <span>Employer</span>
+    </a>
+    <ul class="sub-menu" aria-expanded="false">
+
+        @if ($usr->can('partnerWithUsAdd') || $usr->can('partnerWithUsView') || $usr->can('partnerWithUsDelete') || $usr->can('partnerWithUsUpdate'))
+        <li class="{{ Route::is('partnerWithUs.index')  ? 'active' : '' }}"><a href="{{ route('partnerWithUs.index') }}"> <span>Partner With Us</span> </a></li>
+        @endif
+
+
+
+    </ul>
+</li>
+@endif
+
 <li class="menu-title">HOW IT WORK</li>
 
 @if ($usr->can('how_it_work_view') || $usr->can('how_it_work_update') || $usr->can('how_it_work_delete'))

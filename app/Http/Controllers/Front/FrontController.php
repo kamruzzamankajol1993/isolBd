@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Jobtitle;
 use App\Models\Jobdepartment;
 use App\Models\Jobcategory;
+use App\Models\PartnerWithUs;
 class FrontController extends Controller
 {
     public function index(){
@@ -91,6 +92,26 @@ return view('front.our_services');
 
 public function post_a_job(){
     return view('front.post_a_job');
+    }
+
+
+
+    public function sendMessageFromPartner(Request $request){
+
+
+        $save = new PartnerWithUs;
+        $save->name = $request->name;
+        $save->company_name	 = $request->companyName;
+        $save->state = $request->state;
+        $save->country = $request->country;
+        $save->email = $request->email;
+        $save->phone = $request->phoneNumber;
+        $save->des = $request->des;
+        $save->save();
+
+        return $data = 1;
+
+
     }
 
 

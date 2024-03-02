@@ -33,10 +33,13 @@
 
     <!-- MY Css-->
     <link href="{{ asset('/') }}public/admin/assets/css/select2_modal_css.css" id="app-style" rel="stylesheet" type="text/css" />
-
+<!-- CSS -->
+<link rel="stylesheet" href="/https:/cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
     <link href="https://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css"/>
     @yield('css')
     <script src="{{ asset('/') }}public/admin/assets/libs/jquery/jquery.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
 </head>
 
 
