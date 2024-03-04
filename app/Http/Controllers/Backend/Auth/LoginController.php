@@ -46,10 +46,20 @@ class LoginController extends Controller
        }
 
     }
-    
+
     public function cv_login_form()
     {
         return view('front.cv_login_form');
+    }
+
+      public function cv_login_main()
+    {
+        return view('front.cv_login_main');
+    }
+
+       public function job_search_page()
+    {
+        return view('front.job_search_page');
     }
 
 

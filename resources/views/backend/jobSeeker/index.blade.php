@@ -1,7 +1,7 @@
 @extends('backend.master.master')
 
 @section('title')
-Partner With US| {{ $ins_name }}
+Job Seeker List| {{ $ins_name }}
 @endsection
 
 
@@ -15,7 +15,7 @@ Partner With US| {{ $ins_name }}
 <div class="row">
     <div class="col-12">
         <div class="page-title-box d-flex align-items-center justify-content-between">
-            <h4 class="mb-0">Partner With US</h4>
+            <h4 class="mb-0">Job Seeker List</h4>
 
             <div class="page-title-right">
                 <ol class="breadcrumb m-0">
@@ -74,16 +74,16 @@ Partner With US| {{ $ins_name }}
                                                 style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                                 <thead>
                                                     <tr>
-                                                    <th>SL</th>
+                                                        <th>SL</th>
 
-                                                    <th>Name</th>
-                                                    <th>Company Name</th>
-                                                    <th>State</th>
-                                                    <th>Country</th>
-                                                    <th>Email</th>
-                                                    <th>Phone Number</th>
-                                                    <th>Status</th>
-                                                  <th>Action</th>
+
+                                                        <th>Full Name</th>
+                                                        <th>Email</th>
+                                                        <th>Phone</th>
+                                                        <th>Nationality</th>
+                                                        <th>Matrial Status</th>
+                                                        <th>Status</th>
+                                                      <th>Action</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -94,29 +94,28 @@ Partner With US| {{ $ins_name }}
                                            <td>{{ $loop->index+1 }}</td>
 
 
-                                        <td>{{$user->name }}</td>
-                                        <td>{{$user->company_name }}</td>
-                                        <td>{{$user->state }}</td>
-                                        <td>{{$user->country }}</td>
-                                        <td>{{$user->email }}</td>
-                                        <td>{{$user->phone }}</td>
-                                        <td>{{$user->status }}</td>
+                                           <td>{{$user->first_name.' '.$user->last_name }}</td>
+                                           <td>{{$user->email_address }}</td>
+                                           <td>{{$user->phone }}</td>
+                                           <td>{{$user->nationality }}</td>
+                                           <td>{{$user->martial_status }}</td>
+                                           <td>{{$user->status }}</td>
 
 
 
 
                                             <td>
-                                                @if (Auth::guard('admin')->user()->can('partnerWithUsView'))
+                                                @if (Auth::guard('admin')->user()->can('jobSeekerView'))
 
-                                                <a   href="{{ route('partnerWithUs.show',$user->id) }}" class="btn btn-success waves-light waves-effect  btn-sm" ><i class="fas fa-eye"></i></a>
+                                                <a   href="{{ route('jobSeeker.show',$user->id) }}" class="btn btn-success waves-light waves-effect  btn-sm" ><i class="fas fa-eye"></i></a>
 
 
                                                 @endif
 
-                                          @if (Auth::guard('admin')->user()->can('partnerWithUsDelete'))
+                                          @if (Auth::guard('admin')->user()->can('jobSeekerDelete'))
 
         <button   type="button" class="btn btn-danger waves-light waves-effect  btn-sm" onclick="deleteTag({{ $user->id}})" data-toggle="tooltip" title="Delete"><i class="fas fa-trash-alt"></i></button>
-                            <form id="delete-form-{{ $user->id }}" action="{{ route('partnerWithUs.destroy',$user->id) }}" method="POST" style="display: none;">
+                            <form id="delete-form-{{ $user->id }}" action="{{ route('jobSeeker.destroy',$user->id) }}" method="POST" style="display: none;">
 
                                                             @csrf
         @method('DELETE')
@@ -139,16 +138,16 @@ Partner With US| {{ $ins_name }}
                                                 style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                                 <thead>
                                                     <tr>
-                                                    <th>SL</th>
+                                                        <th>SL</th>
 
-                                                    <th>Name</th>
-                                                    <th>Company Name</th>
-                                                    <th>State</th>
-                                                    <th>Country</th>
-                                                    <th>Email</th>
-                                                    <th>Phone Number</th>
-                                                    <th>Status</th>
-                                                  <th>Action</th>
+
+                                                        <th>Full Name</th>
+                                                        <th>Email</th>
+                                                        <th>Phone</th>
+                                                        <th>Nationality</th>
+                                                        <th>Matrial Status</th>
+                                                        <th>Status</th>
+                                                      <th>Action</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -159,29 +158,28 @@ Partner With US| {{ $ins_name }}
                                            <td>{{ $loop->index+1 }}</td>
 
 
-                                        <td>{{$user->name }}</td>
-                                        <td>{{$user->company_name }}</td>
-                                        <td>{{$user->state }}</td>
-                                        <td>{{$user->country }}</td>
-                                        <td>{{$user->email }}</td>
-                                        <td>{{$user->phone }}</td>
-                                        <td>{{$user->status }}</td>
+                                           <td>{{$user->first_name.' '.$user->last_name }}</td>
+                                           <td>{{$user->email_address }}</td>
+                                           <td>{{$user->phone }}</td>
+                                           <td>{{$user->nationality }}</td>
+                                           <td>{{$user->martial_status }}</td>
+                                           <td>{{$user->status }}</td>
 
 
 
 
                                             <td>
-                                                @if (Auth::guard('admin')->user()->can('partnerWithUsView'))
+                                                @if (Auth::guard('admin')->user()->can('jobSeekerView'))
 
-                                                <a   href="{{ route('partnerWithUs.show',$user->id) }}" class="btn btn-success waves-light waves-effect  btn-sm" ><i class="fas fa-eye"></i></a>
+                                                <a   href="{{ route('jobSeeker.show',$user->id) }}" class="btn btn-success waves-light waves-effect  btn-sm" ><i class="fas fa-eye"></i></a>
 
 
                                                 @endif
 
-                                          @if (Auth::guard('admin')->user()->can('partnerWithUsDelete'))
+                                          @if (Auth::guard('admin')->user()->can('jobSeekerDelete'))
 
         <button   type="button" class="btn btn-danger waves-light waves-effect  btn-sm" onclick="deleteTag({{ $user->id}})" data-toggle="tooltip" title="Delete"><i class="fas fa-trash-alt"></i></button>
-                            <form id="delete-form-{{ $user->id }}" action="{{ route('partnerWithUs.destroy',$user->id) }}" method="POST" style="display: none;">
+                            <form id="delete-form-{{ $user->id }}" action="{{ route('jobSeeker.destroy',$user->id) }}" method="POST" style="display: none;">
 
                                                             @csrf
         @method('DELETE')
@@ -204,16 +202,16 @@ Partner With US| {{ $ins_name }}
                                                 style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                                 <thead>
                                                     <tr>
-                                                    <th>SL</th>
+                                                        <th>SL</th>
 
-                                                    <th>Name</th>
-                                                    <th>Company Name</th>
-                                                    <th>State</th>
-                                                    <th>Country</th>
-                                                    <th>Email</th>
-                                                    <th>Phone Number</th>
-                                                    <th>Status</th>
-                                                  <th>Action</th>
+
+                                                        <th>Full Name</th>
+                                                        <th>Email</th>
+                                                        <th>Phone</th>
+                                                        <th>Nationality</th>
+                                                        <th>Matrial Status</th>
+                                                        <th>Status</th>
+                                                      <th>Action</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -224,29 +222,28 @@ Partner With US| {{ $ins_name }}
                                            <td>{{ $loop->index+1 }}</td>
 
 
-                                        <td>{{$user->name }}</td>
-                                        <td>{{$user->company_name }}</td>
-                                        <td>{{$user->state }}</td>
-                                        <td>{{$user->country }}</td>
-                                        <td>{{$user->email }}</td>
-                                        <td>{{$user->phone }}</td>
-                                        <td>{{$user->status }}</td>
+                                           <td>{{$user->first_name.' '.$user->last_name }}</td>
+                                           <td>{{$user->email_address }}</td>
+                                           <td>{{$user->phone }}</td>
+                                           <td>{{$user->nationality }}</td>
+                                           <td>{{$user->martial_status }}</td>
+                                           <td>{{$user->status }}</td>
 
 
 
 
                                             <td>
 
-                                                @if (Auth::guard('admin')->user()->can('partnerWithUsView'))
+                                                @if (Auth::guard('admin')->user()->can('jobSeekerView'))
 
-                                                <a   href="{{ route('partnerWithUs.show',$user->id) }}" class="btn btn-success waves-light waves-effect  btn-sm" ><i class="fas fa-eye"></i></a>
+                                                <a   href="{{ route('jobSeeker.show',$user->id) }}" class="btn btn-success waves-light waves-effect  btn-sm" ><i class="fas fa-eye"></i></a>
 
 
                                                 @endif
-                                          @if (Auth::guard('admin')->user()->can('partnerWithUsDelete'))
+                                          @if (Auth::guard('admin')->user()->can('jobSeekerDelete'))
 
         <button   type="button" class="btn btn-danger waves-light waves-effect  btn-sm" onclick="deleteTag({{ $user->id}})" data-toggle="tooltip" title="Delete"><i class="fas fa-trash-alt"></i></button>
-                            <form id="delete-form-{{ $user->id }}" action="{{ route('partnerWithUs.destroy',$user->id) }}" method="POST" style="display: none;">
+                            <form id="delete-form-{{ $user->id }}" action="{{ route('jobSeeker.destroy',$user->id) }}" method="POST" style="display: none;">
 
                                                             @csrf
         @method('DELETE')
@@ -271,12 +268,12 @@ Partner With US| {{ $ins_name }}
                                                     <tr>
                                                     <th>SL</th>
 
-                                                    <th>Name</th>
-                                                    <th>Company Name</th>
-                                                    <th>State</th>
-                                                    <th>Country</th>
+
+                                                    <th>Full Name</th>
                                                     <th>Email</th>
-                                                    <th>Phone Number</th>
+                                                    <th>Phone</th>
+                                                    <th>Nationality</th>
+                                                    <th>Matrial Status</th>
                                                     <th>Status</th>
                                                   <th>Action</th>
                                                     </tr>
@@ -289,12 +286,12 @@ Partner With US| {{ $ins_name }}
                                            <td>{{ $loop->index+1 }}</td>
 
 
-                                        <td>{{$user->name }}</td>
-                                        <td>{{$user->company_name }}</td>
-                                        <td>{{$user->state }}</td>
-                                        <td>{{$user->country }}</td>
-                                        <td>{{$user->email }}</td>
+
+                                        <td>{{$user->first_name.' '.$user->last_name }}</td>
+                                        <td>{{$user->email_address }}</td>
                                         <td>{{$user->phone }}</td>
+                                        <td>{{$user->nationality }}</td>
+                                        <td>{{$user->martial_status }}</td>
                                         <td>{{$user->status }}</td>
 
 
@@ -302,16 +299,16 @@ Partner With US| {{ $ins_name }}
 
                                             <td>
 
-                                                @if (Auth::guard('admin')->user()->can('partnerWithUsView'))
+                                                @if (Auth::guard('admin')->user()->can('jobSeekerView'))
 
-                                                <a   href="{{ route('partnerWithUs.show',$user->id) }}" class="btn btn-success waves-light waves-effect  btn-sm" ><i class="fas fa-eye"></i></a>
+                                                <a   href="{{ route('jobSeeker.show',$user->id) }}" class="btn btn-success waves-light waves-effect  btn-sm" ><i class="fas fa-eye"></i></a>
 
 
                                                 @endif
-                                          @if (Auth::guard('admin')->user()->can('partnerWithUsDelete'))
+                                          @if (Auth::guard('admin')->user()->can('jobSeekerDelete'))
 
         <button   type="button" class="btn btn-danger waves-light waves-effect  btn-sm" onclick="deleteTag({{ $user->id}})" data-toggle="tooltip" title="Delete"><i class="fas fa-trash-alt"></i></button>
-                            <form id="delete-form-{{ $user->id }}" action="{{ route('partnerWithUs.destroy',$user->id) }}" method="POST" style="display: none;">
+                            <form id="delete-form-{{ $user->id }}" action="{{ route('jobSeeker.destroy',$user->id) }}" method="POST" style="display: none;">
 
                                                             @csrf
         @method('DELETE')

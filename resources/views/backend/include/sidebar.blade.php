@@ -111,6 +111,24 @@
 </li>
 @endif
 
+<li class="menu-title">Cv Section</li>
+
+<li>
+    <a href="javascript: void(0);" class="has-arrow waves-effect">
+        <i class="uil-label"></i>
+        <span>Job Seeker</span>
+    </a>
+    <ul class="sub-menu" aria-expanded="false">
+
+        @if ($usr->can('jobSeekerAdd') || $usr->can('jobSeekerView') || $usr->can('jobSeekerDelete') || $usr->can('jobSeekerUpdate'))
+        <li class="{{ Route::is('jobSeeker.index')  ? 'active' : '' }}"><a href="{{ route('jobSeeker.index') }}"> <span>Job Seeker</span> </a></li>
+        @endif
+
+
+
+    </ul>
+</li>
+
 <li class="menu-title">HOW IT WORK</li>
 
 @if ($usr->can('how_it_work_view') || $usr->can('how_it_work_update') || $usr->can('how_it_work_delete'))

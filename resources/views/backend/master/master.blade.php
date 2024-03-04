@@ -183,6 +183,10 @@
         console.error( error );
     } );
     </script>
+    <script>
+        $('#bt1').dataTable();
+        $('#bt2').dataTable();
+    </script>
 @yield('script')
 
 </body>

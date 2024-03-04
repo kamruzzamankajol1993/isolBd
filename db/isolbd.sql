@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 02, 2024 at 12:12 PM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.2.0
+-- Generation Time: Mar 04, 2024 at 08:38 PM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.1.17
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -130,8 +130,10 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`id`, `ward_id`, `staff_id`, `staff_main_id`, `name`, `email`, `phone`, `username`, `email_verified_at`, `password`, `image`, `status`, `cstatus`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, NULL, '4004', NULL, 'superadmin', 'superadmin@gmail.com', NULL, 'superadmin', NULL, '$2y$10$P7XKbcdy.V46KeuF1PljgOoXXfAQvqjuZkPg71AyMlNUkdcWbBXjS', 'user-photo/1645269974.jpg', 1, 5, '7lzGBs04IsdF7KsZsatu7Sn46NSZHOiZee0gLjzrmUMGGqkNg704zBBGj5ZG', '2021-03-24 05:29:53', '2022-02-19 05:26:14'),
-(2, NULL, NULL, NULL, 'admin', 'admin@gmail.com', NULL, NULL, NULL, '$2y$10$oKyZWZD/FsdnA47iBH36hO6pWRTwXVf.kQiOUyaPlu.xY7ZE4beW6', NULL, 1, 5, NULL, '2021-03-24 06:14:00', '2021-03-24 06:14:00');
+(1, NULL, '4004', NULL, 'superadmin', 'superadmin@gmail.com', NULL, 'superadmin', NULL, '$2y$10$P7XKbcdy.V46KeuF1PljgOoXXfAQvqjuZkPg71AyMlNUkdcWbBXjS', 'user-photo/1645269974.jpg', 1, 5, 'XmKAZzGMxyEqhEkWT5dWStqrfdF9n4fkpa6HXXlsJb2okZcExrduOQzQl3Q8', '2021-03-24 05:29:53', '2022-02-19 05:26:14'),
+(2, NULL, NULL, NULL, 'admin', 'admin@gmail.com', NULL, NULL, NULL, '$2y$10$oKyZWZD/FsdnA47iBH36hO6pWRTwXVf.kQiOUyaPlu.xY7ZE4beW6', NULL, 1, 5, NULL, '2021-03-24 06:14:00', '2021-03-24 06:14:00'),
+(40, NULL, NULL, NULL, 'নতুন এনজিও', 'kkajol428@gmail.com', NULL, 'ntun-enjioo', NULL, '$2y$10$6CWE1QOeMd7NQBnSXluNA.ZBQHF9QITWKKQSePX3evQ7ylgFCKOTe', NULL, 1, 0, NULL, '2024-03-04 00:43:55', '2024-03-04 00:43:55'),
+(41, NULL, NULL, '2', 'Mizan Islam', 'soqkd@nlik.com', NULL, 'mizan-islam', NULL, '$2y$10$PMCIBFNCF34GrHRpaWI2muqWnkMBj.8k4/D2DG8u0B0eyQ/EW/9mq', NULL, 1, 0, NULL, '2024-03-04 13:37:20', '2024-03-04 13:37:20');
 
 -- --------------------------------------------------------
 
@@ -1196,6 +1198,83 @@ INSERT INTO `jobtitles` (`id`, `name`, `cat_id`, `dp_id`, `created_at`, `updated
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `job_seekers`
+--
+
+CREATE TABLE `job_seekers` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `your_self` longtext DEFAULT NULL,
+  `seaman_book_or_bd_cdc` varchar(100) DEFAULT NULL,
+  `seaman_book_or_bd_cdc_detail` longtext DEFAULT NULL,
+  `password_valid_till_one_year` varchar(255) DEFAULT NULL,
+  `full_vaccinated_for_covid` varchar(255) DEFAULT NULL,
+  `placement_onboard_considered` varchar(255) DEFAULT NULL,
+  `ielts_score` varchar(255) DEFAULT NULL,
+  `ielts_score_des` longtext DEFAULT NULL,
+  `work_experience` varchar(100) DEFAULT NULL,
+  `work_experience_des` longtext DEFAULT NULL,
+  `settled_country` varchar(255) DEFAULT NULL,
+  `interested_to_work_on_ship` varchar(255) DEFAULT NULL,
+  `relative_work_on_ship` varchar(100) DEFAULT NULL,
+  `relative_work_on_ship_des` longtext DEFAULT NULL,
+  `pay_isol_or_other` varchar(100) DEFAULT NULL,
+  `pay_third_party` varchar(100) DEFAULT NULL,
+  `fill_up_by_assists` varchar(100) DEFAULT NULL,
+  `family_members_country` varchar(255) DEFAULT NULL,
+  `assists_and_family_des` longtext DEFAULT NULL,
+  `expected_salary` longtext DEFAULT NULL,
+  `hear_about_us` varchar(255) DEFAULT NULL,
+  `married_or_not` varchar(100) DEFAULT NULL,
+  `qualification` varchar(255) DEFAULT NULL,
+  `hospitali_course` varchar(255) DEFAULT NULL,
+  `sea_motion_work` varchar(255) DEFAULT NULL,
+  `get_us_visa` varchar(100) DEFAULT NULL,
+  `visa_cancelled_or_not` varchar(100) DEFAULT NULL,
+  `refused_us_visa` varchar(100) DEFAULT NULL,
+  `travel_country` varchar(100) DEFAULT NULL,
+  `terrorist_organization_member` varchar(100) DEFAULT NULL,
+  `police_clearance_certificate` varchar(100) DEFAULT NULL,
+  `illegal_activity` varchar(100) DEFAULT NULL,
+  `arrested` varchar(100) DEFAULT NULL,
+  `mental_or_physical_disorder` varchar(100) DEFAULT NULL,
+  `disease` varchar(100) DEFAULT NULL,
+  `insurgent_organization` varchar(100) DEFAULT NULL,
+  `served_military` varchar(100) DEFAULT NULL,
+  `charitable_organization` varchar(100) DEFAULT NULL,
+  `first_name` varchar(255) DEFAULT NULL,
+  `last_name` varchar(255) DEFAULT NULL,
+  `email_address` varchar(255) DEFAULT NULL,
+  `phone` varchar(255) DEFAULT NULL,
+  `cv` varchar(255) DEFAULT NULL,
+  `personal_summary` longtext DEFAULT NULL,
+  `team` varchar(255) DEFAULT NULL,
+  `ritz_carlton_brand_work` varchar(255) DEFAULT NULL,
+  `valid_schengen_visa` varchar(255) DEFAULT NULL,
+  `gender` varchar(255) DEFAULT NULL,
+  `gender_identity` varchar(255) DEFAULT NULL,
+  `nationality` varchar(255) DEFAULT NULL,
+  `martial_status` varchar(255) DEFAULT NULL,
+  `age_bracket` varchar(255) DEFAULT NULL,
+  `disability` varchar(255) DEFAULT NULL,
+  `veteran_status` varchar(255) DEFAULT NULL,
+  `preferred_pronouns` varchar(255) DEFAULT NULL,
+  `status` varchar(100) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `job_seekers`
+--
+
+INSERT INTO `job_seekers` (`id`, `your_self`, `seaman_book_or_bd_cdc`, `seaman_book_or_bd_cdc_detail`, `password_valid_till_one_year`, `full_vaccinated_for_covid`, `placement_onboard_considered`, `ielts_score`, `ielts_score_des`, `work_experience`, `work_experience_des`, `settled_country`, `interested_to_work_on_ship`, `relative_work_on_ship`, `relative_work_on_ship_des`, `pay_isol_or_other`, `pay_third_party`, `fill_up_by_assists`, `family_members_country`, `assists_and_family_des`, `expected_salary`, `hear_about_us`, `married_or_not`, `qualification`, `hospitali_course`, `sea_motion_work`, `get_us_visa`, `visa_cancelled_or_not`, `refused_us_visa`, `travel_country`, `terrorist_organization_member`, `police_clearance_certificate`, `illegal_activity`, `arrested`, `mental_or_physical_disorder`, `disease`, `insurgent_organization`, `served_military`, `charitable_organization`, `first_name`, `last_name`, `email_address`, `phone`, `cv`, `personal_summary`, `team`, `ritz_carlton_brand_work`, `valid_schengen_visa`, `gender`, `gender_identity`, `nationality`, `martial_status`, `age_bracket`, `disability`, `veteran_status`, `preferred_pronouns`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'OBpS8ojZn6', 'no', 'KfInH6HCnw', 'No, I do not have a passport.', 'Yes, I am fully vaccinated for COVID.', 'My schedule is negotiable. Either a placement that is more\r\n                                            immediate or one that is made in two years interests me.', 'no', 'NdwA7HnARc', 'no', 'soJGQLGjO5', 'USA', 'Working on a cruise ship is a great way to gain experience\r\n                                            and skills that I can use in any career.', 'no', 'KYDJFesOAT', 'no', 'no', 'no', 'Canada,UK,Europe', 'CUCvXHMWxK', 'VOoq5EhyF2', 'Social media.', 'no', 'O level', 'Hotel Management', 'I work well under pressure because I use the pressure to\r\n                                            help me work more efficiently', 'no', 'no', 'no', 'no', 'no', 'no', 'no', 'no', 'no', 'no', 'no', 'no', 'no', 'Mizan', 'Islam', 'kajol1122018@gmail.com', '9552327255', 'uploads/1709568609.pdf', 'MWqZ4T9pfM', 'Beverage', 'Yes, I currently work for The Ritz-Carlton.', 'no', 'Female', 'Female', 'Central American', 'Domestic partnership', '46-50 years', 'I have a disability', 'Protected veteran but choose not to self-identify classification', 'They/Them/Theirs', 'Pending', '2024-03-04 09:32:44', '2024-03-04 10:10:09'),
+(2, '8t92yF46Iv', 'no', 'RUGD3zXbKr', 'No, I do not have a passport.', 'I am not currently fully vaccinated for COVID; however, I am willing to complete the series', 'Currently I am interested only in more immediate placement onboard.', 'no', 'q3GDCXvWmM', 'no', 'Mjs7bxrsk2', 'Canada', 'Working on a cruise ship is a great way to gain experience and skills that I can use in any career.', 'no', 'WItdbJw3vh', 'no', 'no', 'no', 'USA,Canada', '26aVJdSNP6', 'dGhMBEUJjv', 'Internet ads.', 'no', 'O level', 'Hotel Management', 'I work well under pressure because I use the pressure to help me work more efficiently', 'no', 'yes', 'no', 'no', 'no', 'no', 'no', 'no', 'no', 'no', 'no', 'no', 'no', 'Mizan', 'Islam', 'kajol1122018@gmail.com', '5842414987', 'uploads/1709572585.pdf', '1J0lLvJVJL', 'Beverage', 'Yes, I currently work for The Ritz-Carlton.', 'no', 'Female', 'Female', 'Central American', 'Domestic partnership', '46-50 years', 'I have a disability', 'Protected veteran but choose not to self-identify classification', 'They/Them/Theirs', 'Accepted', '2024-03-04 10:13:22', '2024-03-04 13:37:19'),
+(3, 'CRDqzXqzgi', 'no', 'Zeia2aBUU7', 'No, I do not have a passport.', 'I am not currently fully vaccinated for COVID; however, I am willing to complete the series', 'Currently I am interested only in more immediate placement onboard.', 'no', 'b8L5SPUOj4', 'no', 'zeKEHF2gCK', 'Canada', 'Working on a cruise ship is a great way to gain experience and skills that I can use in any career.', 'no', 'irZCzYY7Cc', 'no', 'no', 'no', 'Canada', 'NhvvcwawnT', 'FQxsumlcMi', 'Internet ads.', 'no', 'O level', 'Hotel Management', 'I work well under pressure because I use the pressure to help me work more efficiently', 'no', 'yes', 'no', 'no', 'no', 'no', 'no', 'no', 'no', 'no', 'no', 'no', 'no', 'Mizan', 'Islam', 'kajol1122018@gmail.com', '3399720759', 'uploads/1709580873.pdf', 'F0Tl4vETmu', 'Beverage', 'Yes, I currently work for The Ritz-Carlton.', 'no', 'Female', 'Female', 'Central American', 'Domestic partnership', '46-50 years', 'I have a disability', 'Protected veteran but choose not to self-identify classification', 'They/Them/Theirs', 'Pending', '2024-03-04 13:07:04', '2024-03-04 13:34:33');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `migrations`
 --
 
@@ -1242,7 +1321,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (30, '2022_10_16_220454_create_jobcategories_table', 15),
 (31, '2022_10_16_220526_create_jobdepartments_table', 15),
 (32, '2022_10_16_220713_create_jobtitles_table', 15),
-(33, '2024_03_02_095226_create_partner_with_us_table', 16);
+(33, '2024_03_02_095226_create_partner_with_us_table', 16),
+(34, '2024_03_04_081239_create_job_seekers_table', 17);
 
 -- --------------------------------------------------------
 
@@ -1299,7 +1379,13 @@ INSERT INTO `model_has_roles` (`role_id`, `model_type`, `model_id`) VALUES
 (13, 'App\\Models\\Admin', 27),
 (13, 'App\\Models\\Admin', 28),
 (13, 'App\\Models\\Admin', 29),
-(13, 'App\\Models\\Admin', 30);
+(13, 'App\\Models\\Admin', 30),
+(13, 'App\\Models\\Admin', 41),
+(14, 'App\\Models\\Admin', 36),
+(14, 'App\\Models\\Admin', 37),
+(14, 'App\\Models\\Admin', 38),
+(14, 'App\\Models\\Admin', 39),
+(14, 'App\\Models\\Admin', 40);
 
 -- --------------------------------------------------------
 
@@ -1316,6 +1402,7 @@ CREATE TABLE `partner_with_us` (
   `email` varchar(255) DEFAULT NULL,
   `phone` varchar(255) DEFAULT NULL,
   `des` text DEFAULT NULL,
+  `status` varchar(100) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -1324,10 +1411,10 @@ CREATE TABLE `partner_with_us` (
 -- Dumping data for table `partner_with_us`
 --
 
-INSERT INTO `partner_with_us` (`id`, `name`, `company_name`, `state`, `country`, `email`, `phone`, `des`, `created_at`, `updated_at`) VALUES
-(3, 'নতুন এনজিও', 'gjhfgj', 'sdfgsdfgdfs', 'Bangladesh', 'dg@gmail.com', '11111111111111111111', 'sdfsdfsdf', '2024-03-02 05:11:43', '2024-03-02 05:11:43'),
-(4, 'Hedy Gould', 'Gentry Cross Inc', 'Incididunt earum eos', 'Syrian Arab Republic', 'zoni@mailinator.com', '+1 (578) 962-1828', 'Officia totam quaera', '2024-03-02 05:12:05', '2024-03-02 05:12:05'),
-(5, 'Jameson Carter', 'Durham Powers Co', 'Tempora ut sint culp', 'Norfolk Island', 'zedocoq@mailinator.com', '+1 (781) 435-7845', 'Ea commodo enim quos', '2024-03-02 05:12:15', '2024-03-02 05:12:15');
+INSERT INTO `partner_with_us` (`id`, `name`, `company_name`, `state`, `country`, `email`, `phone`, `des`, `status`, `created_at`, `updated_at`) VALUES
+(3, 'নতুন এনজিও', 'gjhfgj', 'sdfgsdfgdfs', 'Bangladesh', 'kkajol428@gmail.com', '11111111111111111111', 'sdfsdfsdf', 'Accepted', '2024-03-02 05:11:43', '2024-03-04 00:37:11'),
+(4, 'Hedy Gould', 'Gentry Cross Inc', 'Incididunt earum eos', 'Syrian Arab Republic', 'zoni@mailinator.com', '+1 (578) 962-1828', 'Officia totam quaera', 'Pending', '2024-03-02 05:12:05', '2024-03-02 05:12:05'),
+(5, 'Jameson Carter', 'Durham Powers Co', 'Tempora ut sint culp', 'Norfolk Island', 'zedocoq@mailinator.com', '+1 (781) 435-7845', 'Ea commodo enim quos', 'Rejected', '2024-03-02 05:12:15', '2024-03-04 00:45:06');
 
 -- --------------------------------------------------------
 
@@ -1458,7 +1545,11 @@ INSERT INTO `permissions` (`id`, `name`, `guard_name`, `group_name`, `app_url`, 
 (457, 'partnerWithUsAdd', 'admin', 'partnerWithUs', 'admin/partnerWithUsAdd', NULL, NULL),
 (458, 'partnerWithUsView', 'admin', 'partnerWithUs', 'admin/partnerWithUsView', NULL, NULL),
 (459, 'partnerWithUsDelete', 'admin', 'partnerWithUs', 'admin/partnerWithUsDelete', NULL, NULL),
-(460, 'partnerWithUsUpdate', 'admin', 'partnerWithUs', 'admin/partnerWithUsUpdate', NULL, NULL);
+(460, 'partnerWithUsUpdate', 'admin', 'partnerWithUs', 'admin/partnerWithUsUpdate', NULL, NULL),
+(461, 'jobSeekerAdd', 'admin', 'jobSeeker', 'admin/jobSeekerAdd', NULL, NULL),
+(462, 'jobSeekerView', 'admin', 'jobSeeker', 'admin/jobSeekerView', NULL, NULL),
+(463, 'jobSeekerDelete', 'admin', 'jobSeeker', 'admin/jobSeekerDelete', NULL, NULL),
+(464, 'jobSeekerUpdate', 'admin', 'jobSeeker', 'admin/jobSeekerUpdate', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1500,7 +1591,8 @@ INSERT INTO `roles` (`id`, `name`, `guard_name`, `created_at`, `updated_at`) VAL
 (1, 'superadmin', 'admin', '2021-03-24 02:04:14', '2021-03-24 02:04:14'),
 (2, 'admin', 'admin', '2021-03-24 02:04:14', '2021-03-24 02:04:14'),
 (10, 'Teacher', 'admin', '2022-01-30 22:59:56', '2022-01-30 22:59:56'),
-(13, 'employee', 'admin', '2022-02-07 23:46:42', '2022-02-07 23:46:42');
+(13, 'employee', 'admin', '2022-02-07 23:46:42', '2022-02-07 23:46:42'),
+(14, 'partner', 'admin', '2024-03-04 00:26:13', '2024-03-04 00:26:13');
 
 -- --------------------------------------------------------
 
@@ -1522,10 +1614,12 @@ INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
 (1, 2),
 (1, 10),
 (1, 13),
+(1, 14),
 (2, 1),
 (2, 2),
 (2, 10),
 (2, 13),
+(2, 14),
 (8, 1),
 (9, 1),
 (10, 1),
@@ -1538,8 +1632,12 @@ INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
 (17, 1),
 (18, 1),
 (18, 2),
+(18, 13),
+(18, 14),
 (19, 1),
 (19, 2),
+(19, 13),
+(19, 14),
 (20, 1),
 (21, 1),
 (22, 1),
@@ -1556,9 +1654,6 @@ INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
 (317, 1),
 (317, 2),
 (318, 1),
-(356, 13),
-(357, 13),
-(358, 13),
 (390, 1),
 (390, 2),
 (391, 1),
@@ -1693,7 +1788,11 @@ INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
 (457, 1),
 (458, 1),
 (459, 1),
-(460, 1);
+(460, 1),
+(461, 1),
+(462, 1),
+(463, 1),
+(464, 1);
 
 -- --------------------------------------------------------
 
@@ -2060,6 +2159,12 @@ ALTER TABLE `jobtitles`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `job_seekers`
+--
+ALTER TABLE `job_seekers`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `migrations`
 --
 ALTER TABLE `migrations`
@@ -2237,7 +2342,7 @@ ALTER TABLE `aboutusservices`
 -- AUTO_INCREMENT for table `admins`
 --
 ALTER TABLE `admins`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT for table `big_fives`
@@ -2300,10 +2405,16 @@ ALTER TABLE `jobtitles`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=627;
 
 --
+-- AUTO_INCREMENT for table `job_seekers`
+--
+ALTER TABLE `job_seekers`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `missions`
@@ -2321,7 +2432,7 @@ ALTER TABLE `partner_with_us`
 -- AUTO_INCREMENT for table `permissions`
 --
 ALTER TABLE `permissions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=461;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=465;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -2333,7 +2444,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `second_logos`

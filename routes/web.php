@@ -29,6 +29,7 @@ use App\Http\Controllers\Admin\JobtitleController;
 use App\Http\Controllers\Admin\JobcategoryController;
 use App\Http\Controllers\Front\FrontController;
 use App\Http\Controllers\Admin\PartnerWithUsController;
+use App\Http\Controllers\Admin\JobSeekerController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -42,7 +43,10 @@ use App\Http\Controllers\Admin\PartnerWithUsController;
 
 Route::get('/', [FrontController::class, 'index'])->name('index');
 //CV Login
+//Route::get('/cv_login_form',[LoginController::class,'cv_login_form'])->name('cv_login_form');
 Route::get('/cv_login_form',[LoginController::class,'cv_login_form'])->name('cv_login_form');
+Route::get('/cv_login_main',[LoginController::class,'cv_login_main'])->name('cv_login_main');
+Route::get('/job_search_page',[LoginController::class,'job_search_page'])->name('job_search_page');
 
 Route::get('/get_dp_name_from_cat', [FrontController::class, 'get_dp_name_from_cat'])->name('get_dp_name_from_cat');
 Route::get('/get_title_name_from_dp', [FrontController::class, 'get_title_name_from_dp'])->name('get_title_name_from_dp');
@@ -52,6 +56,14 @@ Route::get('/how_it_work', [FrontController::class, 'how_it_work'])->name('how_i
 Route::get('/mission', [FrontController::class, 'mission'])->name('mission');
 Route::get('/vision', [FrontController::class, 'vision'])->name('vision');
 Route::get('/values', [FrontController::class, 'values'])->name('values');
+
+Route::post('/jobSeekerPartOnePostEdit', [FrontController::class, 'jobSeekerPartOnePostEdit'])->name('jobSeekerPartOnePostEdit');
+Route::post('/jobSeekerPartOnePost', [FrontController::class, 'jobSeekerPartOnePost'])->name('jobSeekerPartOnePost');
+Route::post('/jobSeekerPartTwoPost', [FrontController::class, 'jobSeekerPartTwoPost'])->name('jobSeekerPartTwoPost');
+
+
+Route::get('/jobSeekerPartOne/{id}', [FrontController::class, 'jobSeekerPartOne'])->name('jobSeekerPartOne');
+Route::get('/jobSeekerPartTwo/{id}', [FrontController::class, 'jobSeekerPartTwo'])->name('jobSeekerPartTwo');
 
 
 Route::post('/sendMessageFromPartner', [FrontController::class, 'sendMessageFromPartner'])->name('sendMessageFromPartner');
@@ -102,6 +114,18 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::group(['prefix' => 'admin'], function () {
+
+
+
+
+    Route::resource('jobSeeker', JobSeekerController::class);
+
+    Route::controller(JobSeekerController::class)->group(function () {
+
+        Route::get('downloadcv/{id}','downloadcv')->name('downloadcv');
+    });
+
+
 
     Route::resource('partnerWithUs', PartnerWithUsController::class);
 
