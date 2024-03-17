@@ -40,7 +40,7 @@ use App\Http\Controllers\Admin\JobSeekerController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::get('/job_details', [FrontController::class, 'job_details'])->name('job_details');
 Route::get('/', [FrontController::class, 'index'])->name('index');
 //CV Login
 //Route::get('/cv_login_form',[LoginController::class,'cv_login_form'])->name('cv_login_form');

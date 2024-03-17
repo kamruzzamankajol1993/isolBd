@@ -2553,8 +2553,7 @@ blockquote.blockstyle:after {
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgb(255, 140, 0);
 }
 
-.custom_form_div input[type="text"],
-.custom_form_div textarea,
+.custom_form_div .form-control,
 .custom_form_div .form-select
 {
     font-family: "GTWalsheimPro","Helvetica Neue","Helvetica",sans-serif;
@@ -2606,4 +2605,105 @@ blockquote.blockstyle:after {
 {
     background-color: #FF8C00;
     border-color: #FF8C00;
+}
+
+.iti {
+    display: block !important;
+}
+
+.vacancies .table .container .posted-date {
+    color: #7f949c;
+    float: right;
+}
+
+.vacancies .table .container .left {
+    display: inline-block;
+    float: left;
+    width: 70%;
+}
+
+.vacancies .table .container .left span {
+    display: block;
+    color: #7f949c;
+    font-size: 15px;
+    margin-bottom: 15px;
+}
+.vacancies .table .container .left span {
+    color: #3c9fb4;
+    margin-top: 8px;
+}
+
+.vacancies .table .container .left img {
+    display: inline-block;
+}
+
+.vacancies .table .container .left p {
+    display: inline-block;
+    color: #7f949c;
+    margin-left: 5px;
+    margin-right: 32px;
+}
+
+.vacancies .table .container .right {
+    display: inline-block;
+    float: right;
+    top: 32px;
+    right: 0;
+    position: relative;
+    font-size: 14px;
+    width: 30%;
+}
+
+.vacancies .table .container .right a:nth-child(1) {
+    box-sizing: border-box;
+    border: 2px solid #7f949c;
+    color: #7f949c;
+    background-color: white;
+}
+.vacancies .table .button1 {
+    font-family: "ProximaNova-Bold", sans-serif;
+    text-decoration: none;
+    color: initial;
+    padding: 13px 46px;
+}
+.apply-button {
+    background: #70aa14 !important;
+    color: #fff !important;
+    border: none !important;
+    cursor: pointer;
+    padding: 15px 90px !important;
+}
+
+.clear-both {
+    clear: both;
+}
+.details_page_header h3
+{
+    font-family: ProximaNova-Bold, sans-serif;
+    font-size: 20px;
+    color: #7f949c;
+    display: inline-block;
+    letter-spacing: 0.1em;
+    vertical-align: top;
+}
+
+.details_page_header h2 {
+    font-size: 24px;
+    font-weight: 500;
+    color: #3c9fb4;
+    margin-left: 30px;
+    margin-bottom: 5px;
+}
+
+.details_page_header p {
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 400;
+    color: #000000;
+}
+
+.r-line {
+    background: linear-gradient(to right, #3c9fb4 0%, #3c9fb4 50%, #f29e29 50%, #f29e29 100%);
+    height: 15px;
+    margin-top: 10px;
 }

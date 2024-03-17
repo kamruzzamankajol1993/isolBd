@@ -11,6 +11,12 @@ use App\Models\PartnerWithUs;
 use App\Models\JobSeeker;
 class FrontController extends Controller
 {
+
+    public function job_details(){
+
+        return view('front.job_details');
+
+    }
     public function index(){
 
         $headline_list = Jobtitle::get();
