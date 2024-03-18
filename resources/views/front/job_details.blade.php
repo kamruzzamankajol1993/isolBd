@@ -59,8 +59,8 @@
                                     <h3>INFO ABOUT THE JOB</h3>
                                 </div>
                                 <div class="col-12 mt-3">
-                                    <h2>Chief Mate</h2>
-                                    <p>OJ Crew</p>
+                                    <h2>{{ $jobListAll->job_title_id }}</h2>
+                                    <p>{{ $jobListAll->agency_name }}</p>
                                 </div>
                             </div>
 
@@ -71,7 +71,7 @@
                                             <p>
                                                 <img src="https://ojcrew.com/wp-content/themes/oj/img/d4_cards.png"
                                                      alt="">
-                                                € 180-220 </p>
+                                                € {{ $jobListAll->salary }} </p>
                                         </div>
                                     </td>
                                     <td>
@@ -79,7 +79,7 @@
                                             <p>
                                                 <img src="https://ojcrew.com/wp-content/themes/oj/img/d4_flag.png"
                                                      alt="">
-                                                Worldwide </p>
+                                                     {{ $jobListAll->job_area }} </p>
                                         </div>
                                     </td>
                                     <td>
@@ -87,7 +87,7 @@
                                             <p>
                                                 <img src="https://ojcrew.com/wp-content/themes/oj/img/d4_clocl.png"
                                                      alt="">
-                                                2 weeks </p>
+                                                     {{ $jobListAll->duration }}</p>
                                         </div>
                                     </td>
                                 </tr>
@@ -95,19 +95,19 @@
                             <table class="table table-borderless">
                                 <tr>
                                     <td>
-                                        <p>ID: 40090</p>
+                                        <p>ID: {{ $jobListAll->job_main_id }}</p>
 
-                                        <p>Posted date: March 14, 2024</p>
+                                        <p>Posted date: {{ date('F m, Y', strtotime($jobListAll->post_date)) }}</p>
 
-                                        <p>Expiry date: March 16, 2024</p>
+                                        <p>Expiry date: {{ date('F m, Y', strtotime($jobListAll->expire_date)) }}</p>
 
                                     </td>
                                     <td>
-                                        <p>Minimum experience: Relevant experience is required.</p>
+                                        <p>Minimum experience:  {{ $jobListAll->job_experience }}</p>
 
-                                        <p>Contract type: Full Time</p>
+                                        <p>Contract type: {{ $jobListAll->job_type }}</p>
 
-                                        <p>Type of vessel: Survey vessel</p>
+                                        <p>Type of vessel: {{ $jobListAll->job_category_id }}</p>
                                     </td>
                                 </tr>
 
@@ -116,23 +116,8 @@
 
                             <h5>Job Description</h5>
 
-                            <p>On behalf of our Client, we are looking for a Chief Officer to join a DP1 Survey
-                                Vessel.</p>
-                            <p><strong>Requirements:</strong><br>
-                                Good English;<br>
-                                Valid STCW certificates;<br>
-                                Medical certificate;<br>
-                                Previous experience in offshore;<br>
-                                Eu candidates.</p>
-                            <p><strong>Conditions:</strong><br>
-                                Salary: 180 EUR/day - vessel at port, 220 EUR/Day - vessel at project (NET)<br>
-                                Joining: ASAP (15.03.2024), Klaipeda<br>
-                                Duration: 2 weeks +/-1</p>
-                            <p><strong>Vessel info:</strong><br>
-                                GT: 498 DWT: 220<br>
-                                ME: Mitsubishi 1250 kw<br>
-                                Flag: Lithuania<br>
-                                Working area: Baltic Sea</p>
+                            {!! $jobListAll->description !!}
+
                             <p>Please apply online to or send your CV to: <a href="#">oil@ojcrew.com</a></p>
                         </div>
                         <div class="col-lg-6">

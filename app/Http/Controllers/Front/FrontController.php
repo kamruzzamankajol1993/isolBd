@@ -9,12 +9,15 @@ use App\Models\Jobdepartment;
 use App\Models\Jobcategory;
 use App\Models\PartnerWithUs;
 use App\Models\JobSeeker;
+use DB;
 class FrontController extends Controller
 {
 
-    public function job_details(){
-
-        return view('front.job_details');
+    public function job_details($slug){
+        $jobListAll = DB::table('jobs')
+        ->where('job_title_slug',$slug)
+        ->where('status',1)->latest()->first();
+        return view('front.job_details',compact('jobListAll'));
 
     }
     public function index(){

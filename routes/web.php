@@ -28,8 +28,10 @@ use App\Http\Controllers\Admin\JobdepartmentController;
 use App\Http\Controllers\Admin\JobtitleController;
 use App\Http\Controllers\Admin\JobcategoryController;
 use App\Http\Controllers\Front\FrontController;
+use App\Http\Controllers\Front\SearchController;
 use App\Http\Controllers\Admin\PartnerWithUsController;
 use App\Http\Controllers\Admin\JobSeekerController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -40,7 +42,16 @@ use App\Http\Controllers\Admin\JobSeekerController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/job_details', [FrontController::class, 'job_details'])->name('job_details');
+
+
+
+Route::get('/mainSearch', [SearchController::class, 'mainSearch'])->name('mainSearch');
+Route::get('/jobPageSearch', [SearchController::class, 'jobPageSearch'])->name('jobPageSearch');
+
+
+
+
+Route::get('/job_details/{slug}', [FrontController::class, 'job_details'])->name('job_details');
 Route::get('/', [FrontController::class, 'index'])->name('index');
 //CV Login
 //Route::get('/cv_login_form',[LoginController::class,'cv_login_form'])->name('cv_login_form');

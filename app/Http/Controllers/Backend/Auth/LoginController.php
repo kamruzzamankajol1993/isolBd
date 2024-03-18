@@ -8,6 +8,8 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Brian2694\Toastr\Facades\Toastr;
+use DB;
+use App\Models\Jobtitle;
 class LoginController extends Controller
 {
     /*
@@ -59,7 +61,11 @@ class LoginController extends Controller
 
        public function job_search_page()
     {
-        return view('front.job_search_page');
+        $headline_list = Jobtitle::select('name')
+        ->groupBy('name')
+        ->get();
+        $jobListAll = DB::table('jobs')->where('status',1)->latest()->get();
+        return view('front.job_search_page',compact('jobListAll','headline_list'));
     }
 
 

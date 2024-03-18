@@ -32,7 +32,7 @@
           rel="stylesheet"> <!-- Google fonts -->
 </head>
 <body>
-    
+
 <div class="modal" id="myModalnews" style="z-index: 999999">
     <div class="modal-dialog modal-dialog-centered modal-xl" >
         <div class="modal-content" style="background-color:white !important;">
@@ -107,11 +107,11 @@
                     </div>
 
 
-                    <form class="form-inline" role="form" id="filter_form">
+                    <form class="form-inline" method="get" action="{{ route('mainSearch') }}" role="form" id="filter_form">
                         <div class="row ">
                             <div class="col-md-3 form-group mb-2">
 
-                                <select class="js-example-basic-single form-control custom-form" id="job_cat">
+                                <select class="js-example-basic-single form-control custom-form" name="job_category_id" id="job_cat">
                                     <option value="">Select a Category</option>
                                     @foreach($headline_list1 as $all_headline_list1)
                                     <option value="{{ $all_headline_list1->name }}">{{ $all_headline_list1->name }}</option>
@@ -131,7 +131,7 @@
 
                             <div class="col-md-3 form-group mb-2">
 
-                                <select class="js-example-basic-single1 form-control custom-form" name="state" id="dp_name">
+                                <select class="js-example-basic-single1 form-control custom-form" name="job_department_id"  id="dp_name">
                                     <option value="">Select a Department</option>
 
                                 </select>
@@ -142,7 +142,7 @@
 
                             <div class="col-md-3 form-group mb-2">
 
-                                <select class="js-example-basic-single2 form-control custom-form" name="state" id="job_title_name">
+                                <select class="js-example-basic-single2 form-control custom-form" name="job_title_id" id="job_title_name">
                                     <option value=""> Select Job Title</option>
 
 
@@ -157,11 +157,11 @@
 
                             <div class="col-md-3">
 
-                                <div class="custom_btn">
+                                <button class="custom_btn">
                                     <span class="text">Job Search <br> <span
                                                 style="bx bx-searchfont-size: 10px; font-weight:normal"> Your Gateway to the world </span> </span>
                                     <i class="bx bx-search"></i>
-                                </div>
+                                    </button>
 
 
                             </div>
@@ -940,8 +940,8 @@ priority, service and satisfaction. This is what we do.
                                             Job Offers</h1>
                                     </div>
                                     <p>
-                                        Just browse the most recent positions that are currently available in our database.  
-Have you found any interesting offer? well, then look for our fascinating article enrolled with us on our blog given below. 
+                                        Just browse the most recent positions that are currently available in our database.
+Have you found any interesting offer? well, then look for our fascinating article enrolled with us on our blog given below.
 
                                     </p>
                                 </div>
@@ -954,7 +954,7 @@ Have you found any interesting offer? well, then look for our fascinating articl
                                             Application</h1>
                                     </div>
                                     <p>
-                                        Upload your CV with your supporting documents.  We do not charge any fee for processing the application(s).  Our recruiting team will visit the mailboxes and online applications.  They will examine all the seafarers’ experience in detail and also check for references authenticity, thus ensuring a proper service.   
+                                        Upload your CV with your supporting documents.  We do not charge any fee for processing the application(s).  Our recruiting team will visit the mailboxes and online applications.  They will examine all the seafarers’ experience in detail and also check for references authenticity, thus ensuring a proper service.
                                     </p>
                                 </div>
                             </div>
@@ -978,7 +978,7 @@ Have you found any interesting offer? well, then look for our fascinating articl
                                             Resume / CV Storage</h1>
                                     </div>
                                     <p>
-                                        You may upload your Resume / CV for future potential openings that may arise in accordance with your interest, qualifications and experience. Hopefully you might get more attractive offers to choose from no sooner job opportunities are available on our website.  It is highly recommended that you keep your updated Resume / CV in our database by sending any changes or details in your credentials or you when return from your contract. 
+                                        You may upload your Resume / CV for future potential openings that may arise in accordance with your interest, qualifications and experience. Hopefully you might get more attractive offers to choose from no sooner job opportunities are available on our website.  It is highly recommended that you keep your updated Resume / CV in our database by sending any changes or details in your credentials or you when return from your contract.
                                     </p>
                                 </div>
                             </div>
@@ -990,7 +990,7 @@ Have you found any interesting offer? well, then look for our fascinating articl
                                             Your Career Goals</h1>
                                     </div>
                                     <p>
-                                        Well, if you need any guidance, assistance or advice to pursue your career goals, you may get in touch with us we will be pleased to assist you in sourcing the ideal position in your career. 
+                                        Well, if you need any guidance, assistance or advice to pursue your career goals, you may get in touch with us we will be pleased to assist you in sourcing the ideal position in your career.
                                     </p>
                                 </div>
                             </div>
@@ -1033,7 +1033,7 @@ Have you found any interesting offer? well, then look for our fascinating articl
                                             Selection & Screening</h1>
                                     </div>
                                     <p>
-                                        We will manage the applicant(s) screening process by verifying the documents and references to ensure a high-quality selection. Furthermore, we will assess the applicant(s) qualifications and experience by conducting preliminary interviews.  By this we will be able identify the potential of the employees whom we will be able to provide you and we forward to you a list of applications that would make successful employees. 
+                                        We will manage the applicant(s) screening process by verifying the documents and references to ensure a high-quality selection. Furthermore, we will assess the applicant(s) qualifications and experience by conducting preliminary interviews.  By this we will be able identify the potential of the employees whom we will be able to provide you and we forward to you a list of applications that would make successful employees.
                                     </p>
                                 </div>
                             </div>
@@ -1045,7 +1045,7 @@ Have you found any interesting offer? well, then look for our fascinating articl
                                             Presenting</h1>
                                     </div>
                                     <p>
-                                        Only the most suitable applicant(s) profiles will be presented to you.  Once completing all equally important tasks like checklists, by double-checking the validity of documents, and receiving positive appraisals etc. We can provide you with a number of selected candidates for your final assessment and selection. 
+                                        Only the most suitable applicant(s) profiles will be presented to you.  Once completing all equally important tasks like checklists, by double-checking the validity of documents, and receiving positive appraisals etc. We can provide you with a number of selected candidates for your final assessment and selection.
                                     </p>
                                 </div>
                             </div>
@@ -1391,7 +1391,7 @@ Have you found any interesting offer? well, then look for our fascinating articl
                         </div>
 
                         <div class="col-lg-7 mt-5 mt-lg-0">
-                            
+
                             <h4>Enquiry</h4>
                             <p>Email us with any questions or inquiries</p>
 

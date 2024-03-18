@@ -44,7 +44,10 @@
     <!-- ======= About Section ======= -->
 
     <section class="">
+<?php
 
+//dd($searchData);
+    ?>
         <div class="container pt-4">
             <div class="card">
                 <div class="card-body custom_form_color">
@@ -53,7 +56,13 @@
                             <div class="row ">
                                 <div class="col">
                                     <select class="form-select" id="job_title_id" aria-label="Default select example" name="job_title_id">
+
+                                        @if(empty($searchData[0]))
                                         <option value="" selected="">Position</option>
+                                        @else
+                                        <option value="{{ $searchData[0] }}" selected="">{{ $searchData[0] }}</option>
+                                        @endif
+
                                         @foreach($headline_list as $headline_lists)
                                         <option value="{{ $headline_lists->name }}">{{ $headline_lists->name }}</option>
                                         @endforeach
@@ -62,7 +71,16 @@
                                 </div>
                                 <div class="col">
                                     <select class="form-select" id="job_type" aria-label="Default select example" name="job_type">
+
+                                        @if(empty($searchData[1]))
                                         <option value="" selected="">Type of contract</option>
+                                        @else
+                                        <option value="{{ $searchData[1] }}" selected="">{{ $searchData[1] }}</option>
+                                        @endif
+
+                                        {{-- <option value="" selected="">Type of contract</option> --}}
+
+
                                         <option value="Full Time">Full Time</option>
                                         <option value="Part time">Part time</option>
                                         <option value="Permanent">Permanent</option>
@@ -72,7 +90,17 @@
                                 </div>
                                 <div class="col">
                                     <select class="form-select" id="job_area" aria-label="Default select example" name="job_area">
+
+
+
+                                        @if(empty($searchData[2]))
                                         <option value="" selected="">Location</option>
+                                        @else
+                                        <option value="{{ $searchData[2] }}" selected="">{{ $searchData[2] }}</option>
+                                        @endif
+
+
+
                                         <option value="world Wide">world Wide</option>
                                         <option value="Africa (Mauritius)">Africa (Mauritius)</option>
                                         <option value="Angola">Angola</option>
@@ -171,7 +199,16 @@
                                 </div>
                                 <div class="col">
                                     <select class="form-select" id="job_duration" aria-label="Default select example" name="job_duration">
+
+
+
+                                        @if(empty($searchData[3]))
                                         <option value="" selected="">Contract duration</option>
+                                        @else
+                                        <option value="{{ $searchData[3] }}" selected="">{{ $searchData[3] }}</option>
+                                        @endif
+
+
                                         <option value="1 week">1 week</option>
                                         <option value="2 weeks">2 weeks</option>
                                         <option value="2 weeks on/off">2 weeks on/off</option>
@@ -286,7 +323,7 @@
                         <div class="vacancies">
                             <section class="table">
 
-                                @foreach($jobListAll as $jobListAlls)
+                                @foreach($jobListAllSearch as $jobListAlls)
                                 <div class="container">
                                     <div>
                                         <h3 style="display: inline">{{ $jobListAlls->job_title_id }} </h3>
