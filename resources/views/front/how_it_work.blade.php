@@ -43,6 +43,52 @@
     <!-- ======= About Section ======= -->
 
     <div class="row g-0">
+        <div class="col-12">
+                    <!-- ======= Category Section ======= -->
+        <div class="container-fluid category_section" style="margin-top: 15px;">
+            <div class="d-flex flex-wrap  justify-content-center">
+                <div class="category_box text-center mr-2 mb-2" onclick="window.location.href = '{{ route('cruiseship') }}';">
+                    <img class="img-fluid " src="{{ asset('/') }}public/front/assets/img/category/1.png" alt="">
+                    <h3>CRUISESHIP</h3>
+                </div>
+                <div class="category_box text-center mr-2 mb-2" onclick="window.location.href = '{{ route('megayacht') }}';">
+                    <img class="img-fluid " src="{{ asset('/') }}public/front/assets/img/category/2.png" alt="">
+                    <h3>MEGAYACHT</h3>
+                </div>
+                <div class="category_box text-center mr-2 mb-2"
+                     onclick="window.location.href = '{{ route('river_cruise') }}';">
+                    <img class="img-fluid " src="{{ asset('/') }}public/front/assets/img/category/river_cr.png" alt="">
+                    <h3>RIVER CRUISE</h3>
+                </div>
+                <div class="category_box text-center mr-2 mb-2"
+                     onclick="window.location.href = '{{ route('merchant_navy') }}';">
+                    <img class="img-fluid " src="{{ asset('/') }}public/front/assets/img/category/5.png" alt="">
+                    <h3>MERCHANT NAVY</h3>
+                </div>
+
+                <div class="category_box text-center mr-2 mb-2 "
+                     onclick="window.location.href = '{{ route('hotel_ressort') }}';">
+                    <img class="img-fluid " src="{{ asset('/') }}public/front/assets/img/category/3.png" alt="">
+                    <h3>HOTEL RESORT</h3>
+                </div>
+                <div class="category_box text-center mr-2 mb-2"
+                     onclick="window.location.href = '{{ route('private_jets') }}';">
+                    <img class="img-fluid " src="{{ asset('/') }}public/front/assets/img/category/6.png" alt="">
+                    <h3>CHARTERED CREW</h3>
+                </div>
+                <div class="category_box text-center mr-2 mb-2" onclick="window.location.href = '{{ route('offshore') }}';">
+                    <img class="img-fluid " src="{{ asset('/') }}public/front/assets/img/category/7.png" alt="">
+                    <h3>OFFSHORE</h3>
+                </div>
+                <div class="category_box text-center mr-2 mb-2"
+                     onclick="window.location.href = '{{ route('world_butler') }}';">
+                    <img class="img-fluid " src="{{ asset('/') }}public/front/assets/img/category/8.png" alt="">
+                    <h3>THE BUTLER</h3>
+                </div>
+            </div>
+        </div>
+        <!-- End Category Section -->
+        </div>
         <div class="col-lg-6 col-md-6 col-sm-12">
             <div class="custom_width">
                 <div class="down-arrow">
@@ -156,7 +202,7 @@ assure you of a prompt response.
         <div class="col-lg-6 col-md-6 col-sm-12">
             <div class="custom_width">
                 <div class="custom_drop_color">
-                    Our Hiring Process - For Applicants
+                     Hiring Process - For Applicants
                 </div>
             </div>
             <div>

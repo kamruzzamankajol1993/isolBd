@@ -1263,6 +1263,7 @@ section {
     line-height: 27px;
     margin-bottom: 20px;
     position: relative;
+    height: 80px;
 }
 
 .testimonial .testimonial-profile {

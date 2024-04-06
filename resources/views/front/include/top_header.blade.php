@@ -7,14 +7,15 @@
                 <span>O</span>verseas
                 <span>L</span>imited
             </h1>
+            <p style="color: white; font-weight: bold; font-size: 16px;margin:0">(An international certified agency for professional recruitment)</p>
         </div>
 
         <!-- Navik header -->
         <div class="navik-header-container">
 
             <!--Logo-->
-            <div class="logo" data-mobile-logo="{{ asset('/') }}public/front/assets/img/logo.png" data-sticky-logo="assets/img/logo.png">
-                <a href="index.php"><img src="{{ asset('/') }}public/front/assets/img/logo.png" alt="logo"/></a>
+            <div class="logo" data-mobile-logo="{{ asset('/') }}public/front/assets/img/logo.png" data-sticky-logo="{{ asset('/') }}public/front/assets/img/logo.png">
+                <a href="{{ route('index') }}"><img src="{{ asset('/') }}public/front/assets/img/logo.png" alt="logo"/></a>
             </div>
 
             <!-- Burger menu -->
