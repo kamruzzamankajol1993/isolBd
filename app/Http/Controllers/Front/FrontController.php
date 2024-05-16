@@ -9,8 +9,67 @@ use App\Models\Jobdepartment;
 use App\Models\Jobcategory;
 use App\Models\PartnerWithUs;
 use App\Models\JobSeeker;
+use DB;
 class FrontController extends Controller
 {
+
+    public function job_category_wise($id){
+
+
+        $jobListAll = DB::table('jobs')
+        ->where('job_category_id',$id)
+         ->latest()->get();
+
+
+         $locationList = DB::table('locations')->get();
+         $contractList = DB::table('contact_types')->get();
+
+         $headline_list = Jobtitle::get();
+         $headline_list2 = Jobdepartment::get();
+         $headline_list1 = Jobcategory::get();
+
+             $sJobCat = $id;
+             $sJobDep = '';
+             $sJobTit = '';
+
+         return view('front.job_search_page',compact(
+
+            'jobListAll',
+            'headline_list',
+            'headline_list1',
+            'headline_list2',
+            'locationList',
+            'contractList',
+            'sJobCat',
+            'sJobDep',
+            'sJobTit'
+        ));
+
+
+    }
+
+    public function fraud_warning(){
+         return view('front.fraud_warning');
+           }
+
+   public function privacy_policy(){
+         return view('front.privacy_policy');
+           }
+
+public function recruitment(){
+         return view('front.recruitment_procedures');
+           }
+    public function terms_condition(){
+         return view('front.terms_condition');
+           }
+
+    public function job_details($slug){
+        $jobListAll = DB::table('jobs')
+        ->where('job_title_slug',$slug)
+        ->where('status',1)->latest()->first();
+        return view('front.job_details',compact('jobListAll'));
+
+    }
     public function index(){
 
         $headline_list = Jobtitle::get();

@@ -34,7 +34,6 @@
     <section class="page_top_section">
         <div class="container">
             <div class="page-header my-auto">
-                <h3>Interworld Shipping Overseas Limited</h3>
                 <h2>Career Navigation</h2>
             </div>
         </div>
@@ -42,25 +41,74 @@
 
     <!-- ======= About Section ======= -->
 
-    <section class="">
+    <section>
         <div class="container">
-
-
-            <!-- ======= About Section ======= -->
-            <div class="pt-4">
-                <div class="row contents mt-4">
-                    <div class="col-lg-12 pt-4 pt-lg-0">
-                        <p>
-                            ISOL is your neighborhood next door professional hospitality recruitment agency. We provide you the well trained and skilled workforce. Our network of global headhunting agents finds only the best fit candidates. ISOL’s first priority for hiring is clients need. Within the hospitality management industry, ISOL has diverse range of offering for client:
-                        </p>
+            <div class="row">
+                <div class="col-lg-12 ">
+                    <div class="card-body">
+                        <img src="{{ asset('/') }}public/front/assets/img/career_navigation.png" style="width:100%;" alt="">
                     </div>
                 </div>
+                <div class="col-lg-12 col-md-12 mt-5">
+                    <p>Career Navigator is a valuable tool designed to assist seafarers in advancing their careers by
+providing personalized action plans and growth opportunities. This innovative system takes into
+account the individual interests and goals of each mariner, ensuring that they receive tailored
+recommendations for their professional development.</p>
+                </div> 
+                <div class="col-lg-12 col-md-12 col-sm-12 mb-4">
 
+                    <div class="expert_box">
+
+                        <div class="section-title">
+                            <h2>To make the most out of Career Navigator, seafarers should follow these steps:</h2>
+                        </div>
+                        <ol class="oll">
+                            <li><span>
+                                Understand Career Navigator: Familiarize yourself with the platform and its purpose, which
+is to help you identify and achieve your career objectives.
+                            </span></li>
+                            <li><span>
+                                Get Your Action Plan: Access the platform and follow the prompts to create a personalized
+action plan based on your interests and goals.
+                            </span></li>
+                            <li><span>
+                                Customizable Action Items: Review the recommended action steps and adjust them
+according to your preferences and priorities. This flexibility allows you to focus on the most
+relevant and meaningful growth opportunities.
+                            </span></li>
+                            <li><span>
+                                Learn, Do, Engage: Career Navigator offers a diverse range of action steps, including
+watching videos, attending local events, and applying new frameworks to your work.
+Engaging in these activities will contribute to your professional growth and development.
+                            </span></li>
+                            <li><span>
+                                Grow Every Day: Consistently work on your action items, making decisions based on the
+time required and the importance of each task to you. Gradually, you will see progress in
+your career.
+                            </span></li>
+                            <li><span>
+                                Progress Tracking: Regularly monitor your career development progress through Career
+Navigator&#39;s tracking system. This feature helps you stay on course and celebrate your
+achievements.
+                            </span></li>
+                            <li><span>
+                                Recommendation Engine Update: As you complete action items and make progress, Career
+Navigator will adapt its recommendation engine to provide even more relevant and
+effective growth opportunities for your future.
+                            </span></li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12">
+                    <p>
+                        By employing Career Navigator and adhering to these steps, mariners can effectively advance
+their careers, maintain their objectives, and continually enhance their professional
+competencies. ISOL, as a career navigation consultant, remains readily accessible for
+consultations once you register online.
+                    </p>
+                </div> 
             </div>
-            <!-- End About Section -->
-
         </div>
-
     </section>
 
     <!-- End Mission Vision Section -->

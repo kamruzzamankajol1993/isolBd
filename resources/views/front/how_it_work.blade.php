@@ -34,7 +34,6 @@
     <section class="page_top_section">
         <div class="container">
             <div class="page-header my-auto">
-                <h3>Interworld Shipping Overseas Limited</h3>
                 <h2>How It Works</h2>
             </div>
         </div>
@@ -43,6 +42,40 @@
     <!-- ======= About Section ======= -->
 
     <div class="row g-0">
+        <div class="col-12">
+                    <!-- ======= Category Section ======= -->
+        <div class="container-fluid category_section" style="margin-top: 15px;">
+            <div class="d-flex flex-wrap  justify-content-between">
+                @foreach($jobCategoryList as $jobCategoryLists)
+                <div class="category_box text-center mr-2 mb-2" onclick="window.location.href = '{{ route('job_category_wise',$jobCategoryLists->name) }}';">
+@if($jobCategoryLists->name == 'CRUISESHIP')
+<img class="img-fluid " src="{{ asset('/') }}public/front/assets/img/category/1.png" alt="">
+@elseif($jobCategoryLists->name == 'MEGAYACHT')
+<img class="img-fluid " src="{{ asset('/') }}public/front/assets/img/category/2.png" alt="">
+@elseif($jobCategoryLists->name == 'RIVER CRUISE')
+<img class="img-fluid " src="{{ asset('/') }}public/front/assets/img/category/river_cr.png" alt="">
+@elseif($jobCategoryLists->name == 'MARCHANT NAVY')
+<img class="img-fluid " src="{{ asset('/') }}public/front/assets/img/category/5.png" alt="">
+@elseif($jobCategoryLists->name == 'HOTEL & RESORT')
+<img class="img-fluid " src="{{ asset('/') }}public/front/assets/img/category/3.png" alt="">
+@elseif($jobCategoryLists->name == 'CHARTERED CREW')
+<img class="img-fluid " src="{{ asset('/') }}public/front/assets/img/category/6.png" alt="">
+@elseif($jobCategoryLists->name == 'OFFSHORE')
+<img class="img-fluid " src="{{ asset('/') }}public/front/assets/img/category/7.png" alt="">
+@elseif($jobCategoryLists->name == 'THE BUTLER')
+<img class="img-fluid " src="{{ asset('/') }}public/front/assets/img/category/8.png" alt="">
+@else
+
+@endif
+
+
+                    <h3>{{ $jobCategoryLists->name }}</h3>
+                </div>
+                @endforeach
+            </div>
+        </div>
+        <!-- End Category Section -->
+        </div>
         <div class="col-lg-6 col-md-6 col-sm-12">
             <div class="custom_width">
                 <div class="down-arrow">
@@ -81,7 +114,7 @@ our clients’ business practices, expectations and requirements.
 
                             <h3>Candidate Search</h3>
 
-                            <p>Now it’s time to focus on the top-notch candidates. right? Our extensive database,
+                            <p>Now its time to focus on the top-notch candidates. right? Our extensive database,
 global, networking, and advertising, enables us to select the most suitable candidates
 over a short period of time. Prior to a candidate(s) selection, we pay close attention to
 detail when reviewing the applicant(s), so that we can match your request(s) with their
@@ -147,7 +180,7 @@ assure you of a prompt response.
                                 and we will bring the ideal candidates to your doorstep. </p>
                         </div>
                         <div class="col-lg-4">
-                            <button class="btn btn-primary btn-work">Find Crew</button>
+                            <a href="https://isol.com.bd/crew_cv_searching" class="btn btn-primary btn-work">Find Crew</a>
                         </div>
                     </div>
                 </div>
@@ -156,7 +189,7 @@ assure you of a prompt response.
         <div class="col-lg-6 col-md-6 col-sm-12">
             <div class="custom_width">
                 <div class="custom_drop_color">
-                    Our Hiring Process - For Applicants
+                     Hiring Process - For Applicants
                 </div>
             </div>
             <div>
@@ -248,7 +281,7 @@ your career.</p>
                             <p>Have a career like no other! Make the right career move with the help of OJ Crew.  </p>
                         </div>
                         <div class="col-lg-4">
-                            <button class="btn btn-primary btn-work">Upload CV</button>
+                            <a href="https://isol.com.bd/crew_login" class="btn btn-primary btn-work">Upload CV</a>
                         </div>
                     </div>
                 </div>

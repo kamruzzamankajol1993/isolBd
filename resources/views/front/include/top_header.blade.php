@@ -7,14 +7,15 @@
                 <span>O</span>verseas
                 <span>L</span>imited
             </h1>
+            <p style="color: white; font-weight: bold; font-size: 16px;margin:0">(An international certified agency for professional recruitment)</p>
         </div>
 
         <!-- Navik header -->
         <div class="navik-header-container">
 
             <!--Logo-->
-            <div class="logo" data-mobile-logo="{{ asset('/') }}public/front/assets/img/logo.png" data-sticky-logo="assets/img/logo.png">
-                <a href="index.php"><img src="{{ asset('/') }}public/front/assets/img/logo.png" alt="logo"/></a>
+            <div class="logo" data-mobile-logo="{{ asset('/') }}public/front/assets/img/logo.png" data-sticky-logo="{{ asset('/') }}public/front/assets/img/logo.png">
+                <a href="{{ route('index') }}"><img src="{{ asset('/') }}public/front/assets/img/logo.png" alt="logo"/></a>
             </div>
 
             <!-- Burger menu -->
@@ -65,14 +66,10 @@
                             <li><a href="{{ route('career_navigation') }}">Career Navigation</a></li>
                             <li><a href="#">Find Job</a>
                                 <ul>
-                                    <li><a href="{{ route('cruiseship') }}">Cruiseship</a></li>
-                                    <li><a href="{{ route('megayacht') }}">Megayacht</a></li>
-                                    <li><a href="{{ route('river_cruise') }}">River Cruise</a></li>
-                                    <li><a href="{{ route('private_jets') }}">Private Jets</a></li>
-                                    <li><a href="{{ route('hotel_ressort') }}">Hotel & Resort</a></li>
-                                    <li><a href="{{ route('merchant_navy') }}">Merchant Navy</a></li>
-                                    <li><a href="{{ route('offshore') }}">Offshore</a></li>
-                                    <li><a href="{{ route('world_butler') }}">World Butler</a></li>
+                                    @foreach($jobCategoryList as $jobCategoryLists)
+                                    <li><a href="{{ route('job_category_wise',$jobCategoryLists->name) }}">{{ $jobCategoryLists->name }}</a></li>
+                                    @endforeach
+
                                 </ul>
                             </li>
                         </ul>
@@ -94,7 +91,7 @@
                         </ul>
                     </li>
                     <li><a href="{{ route('crew_login') }}" class="other_button">Hire Employee</a></li>
-                    <li><a href="{{ route('crew_login') }}" class="other_button">CV Register</a></li>
+                    <li><a href="https://isol.com.bd/cv_login_form" class="other_button">CV Register</a></li>
                 </ul>
             </nav>
 

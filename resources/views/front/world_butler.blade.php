@@ -34,8 +34,7 @@
     <section class="page_top_section">
         <div class="container">
             <div class="page-header my-auto">
-                <h3>Interworld Shipping Overseas Limited</h3>
-                <h2>World Butler Recruitment</h2>
+                <h2>The Butler Recruitment</h2>
             </div>
         </div>
     </section>
@@ -46,13 +45,16 @@
 
         <div class="container pt-4">
             <div class="section-title">
-                <h2>Recruitment</h2>
-                <p>ClassNK does periodically require the services highly qualified and experienced surveyors in worldwide offices. Currently we are recruiting following positions. For further details, please contact designated office to enquire directly.</p>
+                <h2>The Butler</h2>
+                <p class="text-white">A household butler is a professional who provides personalized and efficient
+services to support the smooth running of a household. Historically, butlers
+have been associated with wealthy families and large estates, but their role
+can be adapted to suit modern households of all sizes.</p>
             </div>
 
             <div class="row mt-4">
                 <div class="col-lg-12 ">
-                    <table class="table table-bordered">
+                    <table class="table table-bordered text-white">
                         <thead>
                         <tr>
                             <th scope="col">Location</th>

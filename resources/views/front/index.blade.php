@@ -32,7 +32,7 @@
           rel="stylesheet"> <!-- Google fonts -->
 </head>
 <body>
-    
+
 <div class="modal" id="myModalnews" style="z-index: 999999">
     <div class="modal-dialog modal-dialog-centered modal-xl" >
         <div class="modal-content" style="background-color:white !important;">
@@ -107,11 +107,11 @@
                     </div>
 
 
-                    <form class="form-inline" role="form" id="filter_form">
+                    <form class="form-inline" method="get" action="{{ route('mainSearch') }}" role="form" id="filter_form">
                         <div class="row ">
                             <div class="col-md-3 form-group mb-2">
 
-                                <select class="js-example-basic-single form-control custom-form" id="job_cat">
+                                <select class="js-example-basic-single form-control custom-form" name="job_category_id" id="job_cat">
                                     <option value="">Select a Category</option>
                                     @foreach($headline_list1 as $all_headline_list1)
                                     <option value="{{ $all_headline_list1->name }}">{{ $all_headline_list1->name }}</option>
@@ -131,7 +131,7 @@
 
                             <div class="col-md-3 form-group mb-2">
 
-                                <select class="js-example-basic-single1 form-control custom-form" name="state" id="dp_name">
+                                <select class="js-example-basic-single1 form-control custom-form" name="job_department_id"  id="dp_name">
                                     <option value="">Select a Department</option>
 
                                 </select>
@@ -142,7 +142,7 @@
 
                             <div class="col-md-3 form-group mb-2">
 
-                                <select class="js-example-basic-single2 form-control custom-form" name="state" id="job_title_name">
+                                <select class="js-example-basic-single2 form-control custom-form" name="job_title_id" id="job_title_name">
                                     <option value=""> Select Job Title</option>
 
 
@@ -157,11 +157,11 @@
 
                             <div class="col-md-3">
 
-                                <div class="custom_btn">
+                                <button class="custom_btn">
                                     <span class="text">Job Search <br> <span
                                                 style="bx bx-searchfont-size: 10px; font-weight:normal"> Your Gateway to the world </span> </span>
                                     <i class="bx bx-search"></i>
-                                </div>
+                                    </button>
 
 
                             </div>
@@ -255,44 +255,67 @@
         <!-- ======= Category Section ======= -->
         <div class="container-fluid category_section">
             <div class="d-flex flex-wrap  justify-content-center">
-                <div class="category_box text-center mr-2 mb-2" onclick="window.location.href = '{{ route('cruiseship') }}';">
-                    <img class="img-fluid " src="{{ asset('/') }}public/front/assets/img/category/1.png" alt="">
-                    <h3>CRUISESHIP</h3>
+
+                @foreach($jobCategoryList as $jobCategoryLists)
+                <div class="category_box text-center mr-2 mb-2" onclick="window.location.href = '{{ route('job_category_wise',$jobCategoryLists->name) }}';">
+@if($jobCategoryLists->name == 'CRUISESHIP')
+<img class="img-fluid " src="{{ asset('/') }}public/front/assets/img/category/1.png" alt="">
+@elseif($jobCategoryLists->name == 'MEGAYACHT')
+<img class="img-fluid " src="{{ asset('/') }}public/front/assets/img/category/2.png" alt="">
+@elseif($jobCategoryLists->name == 'RIVER CRUISE')
+<img class="img-fluid " src="{{ asset('/') }}public/front/assets/img/category/river_cr.png" alt="">
+@elseif($jobCategoryLists->name == 'MARCHANT NAVY')
+<img class="img-fluid " src="{{ asset('/') }}public/front/assets/img/category/5.png" alt="">
+@elseif($jobCategoryLists->name == 'HOTEL & RESORT')
+<img class="img-fluid " src="{{ asset('/') }}public/front/assets/img/category/3.png" alt="">
+@elseif($jobCategoryLists->name == 'CHARTERED CREW')
+<img class="img-fluid " src="{{ asset('/') }}public/front/assets/img/category/6.png" alt="">
+@elseif($jobCategoryLists->name == 'OFFSHORE')
+<img class="img-fluid " src="{{ asset('/') }}public/front/assets/img/category/7.png" alt="">
+@elseif($jobCategoryLists->name == 'THE BUTLER')
+<img class="img-fluid " src="{{ asset('/') }}public/front/assets/img/category/8.png" alt="">
+@else
+
+@endif
+
+
+                    <h3>{{ $jobCategoryLists->name }}</h3>
                 </div>
-                <div class="category_box text-center mr-2 mb-2" onclick="window.location.href = '{{ route('megayacht') }}';">
-                    <img class="img-fluid " src="{{ asset('/') }}public/front/assets/img/category/2.png" alt="">
+                @endforeach
+                {{-- <div class="category_box text-center mr-2 mb-2" onclick="window.location.href = '{{ route('megayacht') }}';">
+
                     <h3>MEGAYACHT</h3>
                 </div>
                 <div class="category_box text-center mr-2 mb-2"
                      onclick="window.location.href = '{{ route('river_cruise') }}';">
-                    <img class="img-fluid " src="{{ asset('/') }}public/front/assets/img/category/river_cr.png" alt="">
+
                     <h3>RIVER CRUISE</h3>
                 </div>
                 <div class="category_box text-center mr-2 mb-2"
                      onclick="window.location.href = '{{ route('merchant_navy') }}';">
-                    <img class="img-fluid " src="{{ asset('/') }}public/front/assets/img/category/5.png" alt="">
+
                     <h3>MERCHANT NAVY</h3>
                 </div>
 
                 <div class="category_box text-center mr-2 mb-2 "
                      onclick="window.location.href = '{{ route('hotel_ressort') }}';">
-                    <img class="img-fluid " src="{{ asset('/') }}public/front/assets/img/category/3.png" alt="">
+
                     <h3>HOTEL RESORT</h3>
                 </div>
                 <div class="category_box text-center mr-2 mb-2"
                      onclick="window.location.href = '{{ route('private_jets') }}';">
-                    <img class="img-fluid " src="{{ asset('/') }}public/front/assets/img/category/6.png" alt="">
+
                     <h3>CHARTERED CREW</h3>
                 </div>
                 <div class="category_box text-center mr-2 mb-2" onclick="window.location.href = '{{ route('offshore') }}';">
-                    <img class="img-fluid " src="{{ asset('/') }}public/front/assets/img/category/7.png" alt="">
+
                     <h3>OFFSHORE</h3>
                 </div>
                 <div class="category_box text-center mr-2 mb-2"
                      onclick="window.location.href = '{{ route('world_butler') }}';">
-                    <img class="img-fluid " src="{{ asset('/') }}public/front/assets/img/category/8.png" alt="">
+
                     <h3>THE BUTLER</h3>
-                </div>
+                </div> --}}
             </div>
         </div>
         <!-- End Category Section -->
@@ -340,7 +363,7 @@
                                 <img src="{{ asset('/') }}public/front/assets/img/third/4.jpg" class=" third_img" alt="">
                                 <div class="third_content">
                                     <h5>Global CV database reach</h5>
-                                    <p>ISOL, offers talented professionals for our clientele according to their needs
+                                    <p style="text-align: justify;">ISOL, offers talented professionals for our clientele according to their needs
                                         and demands. We have a talented global resource pull in the industry and a
                                         CV database of job specialized people. We desire to become the international
                                         recruitment agent in the global shipping management industry in the near
@@ -353,7 +376,7 @@
                                 <img src="{{ asset('/') }}public/front/assets/img/third/5.jpg" class=" third_img" alt="">
                                 <div class="third_content">
                                     <h5>Trusted by worldwide recognized companies.</h5>
-                                    <p>We have an excellent track record of inspiring every stakeholder in the
+                                    <p style="text-align: justify;">We have an excellent track record of inspiring every stakeholder in the
                                         shipping management industry, with our comprehensive company culture and
                                         employee focused management practice.</p>
                                 </div>
@@ -364,7 +387,7 @@
                                 <img src="{{ asset('/') }}public/front/assets/img/third/2.jpg" class=" third_img" alt="">
                                 <div class="third_content">
                                     <h5>Innovating the highest industry standards.</h5>
-                                    <p>Interworld Shipping Hospitality Overseas Limited (ISHOL) is a modern choice
+                                    <p style="text-align: justify;">Interworld Shipping Hospitality Overseas Limited (ISHOL) is a modern choice
                                         for the Crew Recruitment Agent. In ISOL, we cater to every micro and macro
                                         need of our valued clientele, whilst keeping an eye and attention to detail of
                                         their desired service.</p>
@@ -376,7 +399,7 @@
                                 <img src="{{ asset('/') }}public/front/assets/img/third/1.jpg" class=" third_img" alt="">
                                 <div class="third_content">
                                     <h5>Best of the best specialists.</h5>
-                                    <p>We believe in a sustainable and mutually beneficial relationship philosophy.
+                                    <p style="text-align: justify;">We believe in a sustainable and mutually beneficial relationship philosophy.
                                         Professionalism, accountability, transparency and work excellence are our
                                         prime interests that we maintain at all times to conduct our business.</p>
                                 </div>
@@ -388,7 +411,7 @@
                                 <img src="{{ asset('/') }}public/front/assets/img/third/6.jpg" class="third_img" alt="">
                                 <div class="third_content">
                                     <h5>Relationships built on loyalty, knowledge and reliability.</h5>
-                                    <p>We are passionate to deliver our services to our valued clientele, through our
+                                    <p style="text-align: justify;">We are passionate to deliver our services to our valued clientele, through our
                                         loyalty, transparency and reliability of our crew recruitment service.</p>
                                 </div>
                             </div>
@@ -398,7 +421,7 @@
                                 <img src="{{ asset('/') }}public/front/assets/img/third/24_7.jpg" class="third_img" alt="">
                                 <div class="third_content">
                                     <h5>24/7 and URGENT response is guaranteed.</h5>
-                                    <p>Inter-World Overseas Shipping Hospitality Limited (ISHOL) offers 24/7, direct
+                                    <p style="text-align: justify;">Inter-World Overseas Shipping Hospitality Limited (ISHOL) offers 24/7, direct
                                         support service through our rapid communication channel. Our specialized
                                         Human Resources Department will provide you with a contract, headhunting
                                         or any other customized service at any time.</p>
@@ -433,10 +456,10 @@
                                 <div class="flip-box-back">
                                     <p style="font-size:16px; color:white;">We Shall :</p>
                                     <ul style="list-style-type: none;">
-                                        <li> <i class="fas fa-hand-o-right" style="margin-right: 10px; font-size: 20px;"></i> To be the finest provider of Seafarers to the Global Maritime Industry and
+                                        <li style="text-align: justify;"> <i class="fa fa-arrow-right" style="margin-right: 10px; font-size: 20px;"></i> To be the finest provider of Seafarers to the Global Maritime Industry and
 ensure the highest quality, healthcare, safety and work environment.
                                         </li>
-                                        <li> <i class="fas fa-hand-o-right" style="margin-right: 10px; font-size: 20px;"></i>To supply a highly trained crew work force with professionalism and integrity.</li>
+                                        <li style="text-align: justify;"> <i class="fa fa-arrow-right" style="margin-right: 10px; font-size: 20px;"></i>To supply a highly trained crew work force with professionalism and integrity.</li>
                                     </ul>
                                 </div>
                             </div>
@@ -453,10 +476,10 @@ ensure the highest quality, healthcare, safety and work environment.
                                 <div class="flip-box-back">
                                     <p style="font-size:16px; color:white;">We Shall :</p>
                                     <ul style="list-style-type: none;">
-                                        <li></li> <i class="fas fa-hand-o-right" style="margin-right: 10px; font-size: 20px;"></i>To continue as the most innovative, dynamic and passionate organization
+                                        <li style="text-align: justify;"></li> <i class="fa fa-arrow-right" style="margin-right: 10px; font-size: 20px;"></i>To continue as the most innovative, dynamic and passionate organization
 within the Global Marine Industry.
                                         </li>
-                                        <li></li> <i class="fas fa-hand-o-right" style="margin-right: 10px; font-size: 20px;"></i>To ensure an unparalleled quality service to the cruise Industry.</li>
+                                        <li style="text-align: justify;"> <i class="fa fa-arrow-right" style="margin-right: 10px; font-size: 20px;"></i>To ensure an unparalleled quality service to the cruise Industry.</li>
                                     </ul>
                                 </div>
                             </div>
@@ -471,7 +494,7 @@ within the Global Marine Industry.
                                     <img src="{{ asset('/') }}public/front/assets/img/T-4.png" alt="Paris" style="width: 100%; height: 320px;">
                                 </div>
                                 <div class="flip-box-back" style="height: 320px !important">
-                                    <p>
+                                    <p style="text-align: justify;">
                                         Our valued clients are key to our success, thus we have to make sure that each client(s)
 who seek our services is/are treated with respect, courtesy and sensitivity. We are
 committed to meeting the needs of our client(s), and we constantly focus on giving top
@@ -507,8 +530,8 @@ priority, service and satisfaction. This is what we do.
                                 <div class="flip-box-back" style="margin-top: 30px">
                                     <p style="font-size:16px; color:white;">We Shall :</p>
                                     <ul style="list-style-type: none;">
-                                        <li></li> <i class="fas fa-hand-o-right" style="margin-right: 10px; font-size: 20px;"></i>It's been said that Bangladesh Seafarers are some of the best in the world.</li>
-                                        <li></li> <i class="fas fa-hand-o-right" style="margin-right: 10px; font-size: 20px;"></i>We will help you find your requirements.</li>
+                                        <li style="text-align: justify;"> <i class="fa fa-arrow-right" style="margin-right: 10px; font-size: 20px;"></i>It's been said that Bangladesh Seafarers are some of the best in the world.</li>
+                                        <li style="text-align: justify;"> <i class="fa fa-arrow-right" style="margin-right: 10px; font-size: 20px;"></i>We will help you find your requirements.</li>
                                     </ul>
                                 </div>
                             </div>
@@ -533,30 +556,30 @@ priority, service and satisfaction. This is what we do.
                             <h3>Welcome On Board</h3>
                             <h5>We are representatives of the most important lines in the shipping industry.
                                 Bangladesh's leading cruise ship crew recruitment agency</h5>
-                            <div class="row mt-4">
+                            <div class="row mt-4 align-items-center">
                                 <div class="col-lg-3 col-md-4 col-sm-6">
-                                    <div class="d-flex justify-content-start fifth_back_box">
+                                    <div class="d-flex justify-content-start align-items-center fifth_back_box">
                                         <img src="{{ asset('/') }}public/front/assets/img/icon/1.png" alt="">
                                         <p>Get an excellent economic income. No payment of rent, water, electricity or
                                             transportation. A cruise allows you to save thanks to its benefits</p>
                                     </div>
                                 </div>
                                 <div class="col-lg-3 col-md-4 col-sm-6">
-                                    <div class="d-flex justify-content-start fifth_back_box">
+                                    <div class="d-flex justify-content-start align-items-center fifth_back_box">
                                         <img src="{{ asset('/') }}public/front/assets/img/icon/2.png" alt="">
                                         <p>The cruise industry is the fastest growing tourism segment worldwide. Develop
                                             your profession in an international company!</p>
                                     </div>
                                 </div>
                                 <div class="col-lg-3 col-md-4 col-sm-6">
-                                    <div class="d-flex justify-content-start fifth_back_box">
+                                    <div class="d-flex justify-content-start align-items-center fifth_back_box">
                                         <img src="{{ asset('/') }}public/front/assets/img/icon/3.png" alt="">
                                         <p>We have job offers in various areas and job growth opportunities are
                                             extensive. the sea is the limit</p>
                                     </div>
                                 </div>
                                 <div class="col-lg-3 col-md-4 col-sm-6">
-                                    <div class="d-flex justify-content-start fifth_back_box">
+                                    <div class="d-flex justify-content-start align-items-center fifth_back_box">
                                         <img src="{{ asset('/') }}public/front/assets/img/icon/4.png" alt="">
                                         <p>travel and discover exotic countries around the world. Make friendships that
                                             last a lifetime.</p>
@@ -729,7 +752,7 @@ priority, service and satisfaction. This is what we do.
                                             <div class="flip-card-back1">
                                                 <p>At Interworld Shipping Overseas Limited, we think differently. There
                                                     are many
-                                                    benefits. Our HRM’s are highly motivated, ambitious and talented.
+                                                    benefits. Our HRMs are highly motivated, ambitious and talented.
                                                     Our a pool of
                                                     qualified specialists through networking, headhunting and their own
                                                     extensive,
@@ -904,16 +927,16 @@ priority, service and satisfaction. This is what we do.
                 </div>
                 <div class="row mt-2 ">
                     <div class="col-6">
-                        <button type="button" class="align-self-end btn custom-btn1 mb-2"
+                        <a href="https://isol.com.bd/crew_login" type="button" class="align-self-end btn custom-btn1 mb-2"
                                 style="margin-top: auto; width:100%;">Find a Crew
-                        </button>
+                        </a>
                         <p class="six_last_p">Let's work together and we will bring the ideal candidates to your
                             doorstep</p>
                     </div>
                     <div class="col-6">
-                        <button type="button" class="align-self-end btn custom-btn2 mb-2"
+                        <a href="https://isol.com.bd/cv_login_form" type="button" class="align-self-end btn custom-btn2 mb-2"
                                 style="margin-top: auto; width:100%;">Upload a CV
-                        </button>
+                        </a>
                         <p class="six_last_p">Have a career like no other the right career move wiht the help of
                             ISOL</p>
                     </div>
@@ -940,8 +963,8 @@ priority, service and satisfaction. This is what we do.
                                             Job Offers</h1>
                                     </div>
                                     <p>
-                                        Just browse the most recent positions that are currently available in our database.  
-Have you found any interesting offer? well, then look for our fascinating article enrolled with us on our blog given below. 
+                                        Just browse the most recent positions that are currently available in our database.
+Have you found any interesting offer? well, then look for our fascinating article enrolled with us on our blog given below.
 
                                     </p>
                                 </div>
@@ -954,7 +977,7 @@ Have you found any interesting offer? well, then look for our fascinating articl
                                             Application</h1>
                                     </div>
                                     <p>
-                                        Upload your CV with your supporting documents.  We do not charge any fee for processing the application(s).  Our recruiting team will visit the mailboxes and online applications.  They will examine all the seafarers’ experience in detail and also check for references authenticity, thus ensuring a proper service.   
+                                        Upload your CV with your supporting documents.  We do not charge any fee for processing the application(s).  Our recruiting team will visit the mailboxes and online applications.  They will examine all the seafarers’ experience in detail and also check for references authenticity, thus ensuring a proper service.
                                     </p>
                                 </div>
                             </div>
@@ -966,7 +989,7 @@ Have you found any interesting offer? well, then look for our fascinating articl
                                             Employment</h1>
                                     </div>
                                     <p>
-                                        Our recruiting professionals will get in touch with you to set up an interview if you have fulfilled our client’s requirements in terms of experience and validity of documentation.   Our recruitment professionals will contact you to conduct and interview.  If everything’s well, you will receive a congratulatory email on your being shortlisted for employment.
+                                        Our recruiting professionals will get in touch with you to set up an interview if you have fulfilled our clients requirements in terms of experience and validity of documentation.   Our recruitment professionals will contact you to conduct and interview.  If everything’s well, you will receive a congratulatory email on your being shortlisted for employment.
                                     </p>
                                 </div>
                             </div>
@@ -978,7 +1001,7 @@ Have you found any interesting offer? well, then look for our fascinating articl
                                             Resume / CV Storage</h1>
                                     </div>
                                     <p>
-                                        You may upload your Resume / CV for future potential openings that may arise in accordance with your interest, qualifications and experience. Hopefully you might get more attractive offers to choose from no sooner job opportunities are available on our website.  It is highly recommended that you keep your updated Resume / CV in our database by sending any changes or details in your credentials or you when return from your contract. 
+                                        You may upload your Resume / CV for future potential openings that may arise in accordance with your interest, qualifications and experience. Hopefully you might get more attractive offers to choose from no sooner job opportunities are available on our website.  It is highly recommended that you keep your updated Resume / CV in our database by sending any changes or details in your credentials or you when return from your contract.
                                     </p>
                                 </div>
                             </div>
@@ -990,7 +1013,7 @@ Have you found any interesting offer? well, then look for our fascinating articl
                                             Your Career Goals</h1>
                                     </div>
                                     <p>
-                                        Well, if you need any guidance, assistance or advice to pursue your career goals, you may get in touch with us we will be pleased to assist you in sourcing the ideal position in your career. 
+                                        Well, if you need any guidance, assistance or advice to pursue your career goals, you may get in touch with us we will be pleased to assist you in sourcing the ideal position in your career.
                                     </p>
                                 </div>
                             </div>
@@ -1033,7 +1056,7 @@ Have you found any interesting offer? well, then look for our fascinating articl
                                             Selection & Screening</h1>
                                     </div>
                                     <p>
-                                        We will manage the applicant(s) screening process by verifying the documents and references to ensure a high-quality selection. Furthermore, we will assess the applicant(s) qualifications and experience by conducting preliminary interviews.  By this we will be able identify the potential of the employees whom we will be able to provide you and we forward to you a list of applications that would make successful employees. 
+                                        We will manage the applicant(s) screening process by verifying the documents and references to ensure a high-quality selection. Furthermore, we will assess the applicant(s) qualifications and experience by conducting preliminary interviews.  By this we will be able identify the potential of the employees whom we will be able to provide you and we forward to you a list of applications that would make successful employees.
                                     </p>
                                 </div>
                             </div>
@@ -1045,7 +1068,7 @@ Have you found any interesting offer? well, then look for our fascinating articl
                                             Presenting</h1>
                                     </div>
                                     <p>
-                                        Only the most suitable applicant(s) profiles will be presented to you.  Once completing all equally important tasks like checklists, by double-checking the validity of documents, and receiving positive appraisals etc. We can provide you with a number of selected candidates for your final assessment and selection. 
+                                        Only the most suitable applicant(s) profiles will be presented to you.  Once completing all equally important tasks like checklists, by double-checking the validity of documents, and receiving positive appraisals etc. We can provide you with a number of selected candidates for your final assessment and selection.
                                     </p>
                                 </div>
                             </div>
@@ -1082,72 +1105,142 @@ Have you found any interesting offer? well, then look for our fascinating articl
 
                     <div class="slider_box">
                         <div class="card">
-                            <img class="card-img-top" height="500" src="{{ asset('/') }}public/front/assets/img/urgent_vacancy/1.jpg" alt="Card image cap">
+                            <div class="card_container">
+                                <img class="card-img-top card_image_section" height="500" src="{{ asset('/') }}public/front/assets/img/urgent_vacancy/1.jpg" alt="Card image cap">
+                                <div class="card_image_button">
+                                    <a href="#"> Apply Now </a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="slider_box">
                         <div class="card">
-                            <img class="card-img-top" src="{{ asset('/') }}public/front/assets/img/urgent_vacancy/3.jpg" alt="Card image cap">
+                            <div class="card_container">
+                                <img class="card-img-top card_image_section" height="500" src="{{ asset('/') }}public/front/assets/img/urgent_vacancy/3.jpg" alt="Card image cap">
+                                <div class="card_image_button">
+                                    <a href="#"> Apply Now </a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="slider_box">
                         <div class="card">
-                            <img class="card-img-top" src="{{ asset('/') }}public/front/assets/img/urgent_vacancy/4.png" alt="Card image cap">
+                            <div class="card_container">
+                                <img class="card-img-top card_image_section" height="500" src="{{ asset('/') }}public/front/assets/img/urgent_vacancy/4.png" alt="Card image cap">
+                                <div class="card_image_button">
+                                    <a href="#"> Apply Now </a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="slider_box">
                         <div class="card">
-                            <img class="card-img-top" src="{{ asset('/') }}public/front/assets/img/urgent_vacancy/5.jpg" alt="Card image cap">
+                            <div class="card_container">
+                                <img class="card-img-top card_image_section" height="500" src="{{ asset('/') }}public/front/assets/img/urgent_vacancy/5.jpg" alt="Card image cap">
+                                <div class="card_image_button">
+                                    <a href="#"> Apply Now </a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="slider_box">
                         <div class="card">
-                            <img class="card-img-top" src="{{ asset('/') }}public/front/assets/img/urgent_vacancy/6.png" alt="Card image cap">
+                            <div class="card_container">
+                                <img class="card-img-top card_image_section" height="500" src="{{ asset('/') }}public/front/assets/img/urgent_vacancy/6.png" alt="Card image cap">
+                                <div class="card_image_button">
+                                    <a href="#"> Apply Now </a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="slider_box">
                         <div class="card">
-                            <img class="card-img-top" src="{{ asset('/') }}public/front/assets/img/urgent_vacancy/7.jpg" alt="Card image cap">
+                            <div class="card_container">
+                                <img class="card-img-top card_image_section" height="500" src="{{ asset('/') }}public/front/assets/img/urgent_vacancy/7.jpg" alt="Card image cap">
+                                <div class="card_image_button">
+                                    <a href="#"> Apply Now </a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="slider_box">
                         <div class="card">
-                            <img class="card-img-top" src="{{ asset('/') }}public/front/assets/img/urgent_vacancy/8.png" alt="Card image cap">
+                            <div class="card_container">
+                                <img class="card-img-top card_image_section" height="500" src="{{ asset('/') }}public/front/assets/img/urgent_vacancy/8.png" alt="Card image cap">
+                                <div class="card_image_button">
+                                    <a href="#"> Apply Now </a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="slider_box">
                         <div class="card">
-                            <img class="card-img-top" src="{{ asset('/') }}public/front/assets/img/urgent_vacancy/9.jpg" alt="Card image cap">
+                            <div class="card_container">
+                                <img class="card-img-top card_image_section" height="500" src="{{ asset('/') }}public/front/assets/img/urgent_vacancy/9.jpg" alt="Card image cap">
+                                <div class="card_image_button">
+                                    <a href="#"> Apply Now </a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="slider_box">
                         <div class="card">
-                            <img class="card-img-top" src="{{ asset('/') }}public/front/assets/img/urgent_vacancy/10.png" alt="Card image cap">
+                            <div class="card_container">
+                                <img class="card-img-top card_image_section" height="500" src="{{ asset('/') }}public/front/assets/img/urgent_vacancy/10.png" alt="Card image cap">
+                                <div class="card_image_button">
+                                    <a href="#"> Apply Now </a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="slider_box">
                         <div class="card">
-                            <img class="card-img-top" src="{{ asset('/') }}public/front/assets/img/urgent_vacancy/11.jpg" alt="Card image cap">
+                            <div class="card_container">
+                                <img class="card-img-top card_image_section" height="500" src="{{ asset('/') }}public/front/assets/img/urgent_vacancy/11.jpg" alt="Card image cap">
+                                <div class="card_image_button">
+                                    <a href="#"> Apply Now </a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="slider_box">
                         <div class="card">
-                            <img class="card-img-top" src="{{ asset('/') }}public/front/assets/img/urgent_vacancy/12.png" alt="Card image cap">
+                            <div class="card_container">
+                                <img class="card-img-top card_image_section" height="500" src="{{ asset('/') }}public/front/assets/img/urgent_vacancy/12.png" alt="Card image cap">
+                                <div class="card_image_button">
+                                    <a href="#"> Apply Now </a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="slider_box">
                         <div class="card">
-                            <img class="card-img-top" src="{{ asset('/') }}public/front/assets/img/urgent_vacancy/13.jpg" alt="Card image cap">
+                            <div class="card_container">
+                                <img class="card-img-top card_image_section" height="500" src="{{ asset('/') }}public/front/assets/img/urgent_vacancy/13.jpg" alt="Card image cap">
+                                <div class="card_image_button">
+                                    <a href="#"> Apply Now </a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="slider_box">
                         <div class="card">
-                            <img class="card-img-top" src="{{ asset('/') }}public/front/assets/img/urgent_vacancy/14.png" alt="Card image cap">
+                            <div class="card_container">
+                                <img class="card-img-top card_image_section" height="500" src="{{ asset('/') }}public/front/assets/img/urgent_vacancy/14.png" alt="Card image cap">
+                                <div class="card_image_button">
+                                    <a href="#"> Apply Now </a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="slider_box">
                         <div class="card">
-                            <img class="card-img-top" src="{{ asset('/') }}public/front/assets/img/urgent_vacancy/24.png" alt="Card image cap">
+                            <div class="card_container">
+                                <img class="card-img-top card_image_section" height="500" src="{{ asset('/') }}public/front/assets/img/urgent_vacancy/24.png" alt="Card image cap">
+                                <div class="card_image_button">
+                                    <a href="#"> Apply Now </a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1156,7 +1249,8 @@ Have you found any interesting offer? well, then look for our fascinating articl
     </div>
 
     <!--    ninth section-->
-    <div class="section">
+      <!--    ninth section-->
+      <div class="section">
         <div class="section-content">
             <div class="container">
                 <div class="section-title">
@@ -1170,71 +1264,310 @@ Have you found any interesting offer? well, then look for our fascinating articl
                                 <div id="testimonial-slider" class="owl-carousel">
                                     <div class="testimonial">
                                         <p class="description">
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto commodi
-                                            dolorum
-                                            earum fugiat, fugit hic id, ipsum laborum minus nostrum numquam perspiciatis
-                                            saepe
-                                            velit.
+                                            Professionally excellent, impeccable taste, numerous loyal clients, and quick evaluation skills. Thank you for my success, and I highly recommend ISOL with 5 stars.
                                         </p>
-                                        <div class="pic">
-                                            <img src="http://themes.audemedia.com/html/goodgrowth/images/testimonial3.jpg">
-                                        </div>
                                         <div class="testimonial-profile">
-                                            <h3 class="title">Crew Name</h3>
-                                            <span class="post">Job Title</span>
                                             <div>
                                                 <span class="bx bxs-star testimonial-checked"></span>
                                                 <span class="bx bxs-star testimonial-checked"></span>
                                                 <span class="bx bxs-star testimonial-checked"></span>
-                                                <span class="bx bxs-star"></span>
-                                                <span class="bx bxs-star"></span>
+                                                <span class="bx bxs-star testimonial-checked"></span>
+                                                <span class="bx bxs-star testimonial-checked"></span>
                                             </div>
                                         </div>
                                     </div>
 
                                     <div class="testimonial">
-                                        <div class="pic">
-                                            <img src="http://themes.audemedia.com/html/goodgrowth/images/testimonial3.jpg">
-                                        </div>
                                         <p class="description">
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto commodi
-                                            dolorum
-                                            earum fugiat, fugit hic id, ipsum laborum minus nostrum numquam perspiciatis
-                                            saepe
-                                            velit.
+                                            Highly professional, impeccable taste, long-term clients, and swift capability assessment. My achievements are due to ISOL, and I wholeheartedly endorse them with 5 stars.
                                         </p>
                                         <div class="testimonial-profile">
-                                            <h3 class="title">Kristina-</h3>
-                                            <span class="post">Web Designer</span>
                                             <div>
                                                 <span class="bx bxs-star testimonial-checked"></span>
                                                 <span class="bx bxs-star testimonial-checked"></span>
                                                 <span class="bx bxs-star testimonial-checked"></span>
-                                                <span class="bx bxs-star"></span>
-                                                <span class="bx bxs-star"></span>
+                                                <span class="bx bxs-star testimonial-checked"></span>
+                                                <span class="bx bxs-star testimonial-checked"></span>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="testimonial">
-                                        <div class="pic">
-                                            <img src="http://themes.audemedia.com/html/goodgrowth/images/testimonial3.jpg">
-                                        </div>
                                         <p class="description">
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto commodi
-                                            dolorum
-                                            earum fugiat, fugit hic id, ipsum laborum minus nostrum numquam perspiciatis
-                                            saepe
-                                            velit.
+                                            We are satisfied with ISOL's service and efficiency. They delivered, exceeding expectations. Our gratitude extends.
                                         </p>
                                         <div class="testimonial-profile">
-                                            <h3 class="title">Kristina-</h3>
-                                            <span class="post">Web Designer</span>
                                             <div>
                                                 <span class="bx bxs-star testimonial-checked"></span>
                                                 <span class="bx bxs-star testimonial-checked"></span>
                                                 <span class="bx bxs-star testimonial-checked"></span>
-                                                <span class="bx bxs-star"></span>
-                                                <span class="bx bxs-star"></span>
+                                                <span class="bx bxs-star testimonial-checked"></span>
+                                                <span class="bx bxs-star testimonial-checked"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="testimonial">
+                                        <p class="description">
+                                            Thank you for your assistance and the dedication of the ISOL Staff team. Our new butler fits seamlessly, and we recommend ISOL to our acquaintances.
+                                        </p>
+                                        <div class="testimonial-profile">
+                                            <div>
+                                                <span class="bx bxs-star testimonial-checked"></span>
+                                                <span class="bx bxs-star testimonial-checked"></span>
+                                                <span class="bx bxs-star testimonial-checked"></span>
+                                                <span class="bx bxs-star testimonial-checked"></span>
+                                                <span class="bx bxs-star testimonial-checked"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="testimonial">
+                                        <p class="description">
+                                            ISOL is exceptional, professional, and offers immense benefits through extensive knowledge and experience.
+                                        </p>
+                                        <div class="testimonial-profile">
+                                            <div>
+                                                <span class="bx bxs-star testimonial-checked"></span>
+                                                <span class="bx bxs-star testimonial-checked"></span>
+                                                <span class="bx bxs-star testimonial-checked"></span>
+                                                <span class="bx bxs-star testimonial-checked"></span>
+                                                <span class="bx bxs-star testimonial-checked"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="testimonial">
+                                        <p class="description">
+                                            Outstanding agency, unquestionably the best! ISOL made me feel valued and unique.
+                                        </p>
+                                        <div class="testimonial-profile">
+                                            <div>
+                                                <span class="bx bxs-star testimonial-checked"></span>
+                                                <span class="bx bxs-star testimonial-checked"></span>
+                                                <span class="bx bxs-star testimonial-checked"></span>
+                                                <span class="bx bxs-star testimonial-checked"></span>
+                                                <span class="bx bxs-star testimonial-checked"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="testimonial">
+                                        <p class="description">
+                                            My experience with ISOL and the team members is positive. ISOL stands out in the realm for both job seekers and discerning clients.
+                                        </p>
+                                        <div class="testimonial-profile">
+                                            <div>
+                                                <span class="bx bxs-star testimonial-checked"></span>
+                                                <span class="bx bxs-star testimonial-checked"></span>
+                                                <span class="bx bxs-star testimonial-checked"></span>
+                                                <span class="bx bxs-star testimonial-checked"></span>
+                                                <span class="bx bxs-star testimonial-checked"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="testimonial">
+                                        <p class="description">
+                                            Thank you for your consultancy's service and promptness. You exceeded our expectations and earned our gratitude.
+                                        </p>
+                                        <div class="testimonial-profile">
+                                            <div>
+                                                <span class="bx bxs-star testimonial-checked"></span>
+                                                <span class="bx bxs-star testimonial-checked"></span>
+                                                <span class="bx bxs-star testimonial-checked"></span>
+                                                <span class="bx bxs-star testimonial-checked"></span>
+                                                <span class="bx bxs-star testimonial-checked"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="testimonial">
+                                        <p class="description">
+                                            My ISOL encounter was pleasant, a stark contrast to other Dhaka agencies. I found my desired position within three months.
+                                        </p>
+                                        <div class="testimonial-profile">
+                                            <div>
+                                                <span class="bx bxs-star testimonial-checked"></span>
+                                                <span class="bx bxs-star testimonial-checked"></span>
+                                                <span class="bx bxs-star testimonial-checked"></span>
+                                                <span class="bx bxs-star testimonial-checked"></span>
+                                                <span class="bx bxs-star testimonial-checked"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="testimonial">
+                                        <p class="description">
+                                            Thank you for your support during our butler search. ISOL integrated well, and we appreciate your expertise. We recommend ISOL.
+                                        </p>
+                                        <div class="testimonial-profile">
+                                            <div>
+                                                <span class="bx bxs-star testimonial-checked"></span>
+                                                <span class="bx bxs-star testimonial-checked"></span>
+                                                <span class="bx bxs-star testimonial-checked"></span>
+                                                <span class="bx bxs-star testimonial-checked"></span>
+                                                <span class="bx bxs-star testimonial-checked"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="testimonial">
+                                        <p class="description">
+                                            We are grateful for your appreciation and assistance in finding our exceptional housekeeper. We enhanced our household's efficiency.
+                                        </p>
+                                        <div class="testimonial-profile">
+                                            <div>
+                                                <span class="bx bxs-star testimonial-checked"></span>
+                                                <span class="bx bxs-star testimonial-checked"></span>
+                                                <span class="bx bxs-star testimonial-checked"></span>
+                                                <span class="bx bxs-star testimonial-checked"></span>
+                                                <span class="bx bxs-star testimonial-checked"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="testimonial">
+                                        <p class="description">
+                                            We are delighted by your endorsement as an excellent recruitment agency. Your satisfaction highlights our commitment to personalized service and excellence. Thank you.
+                                        </p>
+                                        <div class="testimonial-profile">
+                                            <div>
+                                                <span class="bx bxs-star testimonial-checked"></span>
+                                                <span class="bx bxs-star testimonial-checked"></span>
+                                                <span class="bx bxs-star testimonial-checked"></span>
+                                                <span class="bx bxs-star testimonial-checked"></span>
+                                                <span class="bx bxs-star testimonial-checked"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="testimonial">
+                                        <p class="description">
+                                            We appreciate your positive experience with ISOL and the team at ISOL. Your trust in our dedication to requirements is valued.
+                                        </p>
+                                        <div class="testimonial-profile">
+                                            <div>
+                                                <span class="bx bxs-star testimonial-checked"></span>
+                                                <span class="bx bxs-star testimonial-checked"></span>
+                                                <span class="bx bxs-star testimonial-checked"></span>
+                                                <span class="bx bxs-star testimonial-checked"></span>
+                                                <span class="bx bxs-star testimonial-checked"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="testimonial">
+                                        <p class="description">
+                                            Thank you for your glowing recommendation of our professionalism and long-term client relationships. Your success is a result of our extensive experience.
+                                        </p>
+                                        <div class="testimonial-profile">
+                                            <div>
+                                                <span class="bx bxs-star testimonial-checked"></span>
+                                                <span class="bx bxs-star testimonial-checked"></span>
+                                                <span class="bx bxs-star testimonial-checked"></span>
+                                                <span class="bx bxs-star testimonial-checked"></span>
+                                                <span class="bx bxs-star testimonial-checked"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="testimonial">
+                                        <p class="description">
+                                            We are honored by your recognition of ISOL's professionalism and clear opportunities. We appreciate your trust and success.
+                                        </p>
+                                        <div class="testimonial-profile">
+                                            <div>
+                                                <span class="bx bxs-star testimonial-checked"></span>
+                                                <span class="bx bxs-star testimonial-checked"></span>
+                                                <span class="bx bxs-star testimonial-checked"></span>
+                                                <span class="bx bxs-star testimonial-checked"></span>
+                                                <span class="bx bxs-star testimonial-checked"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="testimonial">
+                                        <p class="description">
+                                            Thank you for sharing your delightful experience with ISOL. Our clear approach stands out compared to other Dhaka agencies.
+                                        </p>
+                                        <div class="testimonial-profile">
+                                            <div>
+                                                <span class="bx bxs-star testimonial-checked"></span>
+                                                <span class="bx bxs-star testimonial-checked"></span>
+                                                <span class="bx bxs-star testimonial-checked"></span>
+                                                <span class="bx bxs-star testimonial-checked"></span>
+                                                <span class="bx bxs-star testimonial-checked"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="testimonial">
+                                        <p class="description">
+                                            We are grateful for your satisfaction with our service and efficiency. Your new staff member exceeds expectations, and we appreciate your trust in ISOL.
+                                        </p>
+                                        <div class="testimonial-profile">
+                                            <div>
+                                                <span class="bx bxs-star testimonial-checked"></span>
+                                                <span class="bx bxs-star testimonial-checked"></span>
+                                                <span class="bx bxs-star testimonial-checked"></span>
+                                                <span class="bx bxs-star testimonial-checked"></span>
+                                                <span class="bx bxs-star testimonial-checked"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="testimonial">
+                                        <p class="description">
+                                            We are delighted by your positive experience with ISOL. Our clear opportunities make a difference compared to other Dhaka agencies.
+                                        </p>
+                                        <div class="testimonial-profile">
+                                            <div>
+                                                <span class="bx bxs-star testimonial-checked"></span>
+                                                <span class="bx bxs-star testimonial-checked"></span>
+                                                <span class="bx bxs-star testimonial-checked"></span>
+                                                <span class="bx bxs-star testimonial-checked"></span>
+                                                <span class="bx bxs-star testimonial-checked"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="testimonial">
+                                        <p class="description">
+                                            We are grateful for your appreciation of our team's assistance in finding your new crew. He has settled well, and we appreciate your recommendation.
+                                        </p>
+                                        <div class="testimonial-profile">
+                                            <div>
+                                                <span class="bx bxs-star testimonial-checked"></span>
+                                                <span class="bx bxs-star testimonial-checked"></span>
+                                                <span class="bx bxs-star testimonial-checked"></span>
+                                                <span class="bx bxs-star testimonial-checked"></span>
+                                                <span class="bx bxs-star testimonial-checked"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="testimonial">
+                                        <p class="description">
+                                            Thank you for your kind words about our team's assistance in finding your new housekeeper. We are glad to contribute to your satisfaction.
+                                        </p>
+                                        <div class="testimonial-profile">
+                                            <div>
+                                                <span class="bx bxs-star testimonial-checked"></span>
+                                                <span class="bx bxs-star testimonial-checked"></span>
+                                                <span class="bx bxs-star testimonial-checked"></span>
+                                                <span class="bx bxs-star testimonial-checked"></span>
+                                                <span class="bx bxs-star testimonial-checked"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="testimonial">
+                                        <p class="description">
+                                            We are thrilled to receive such high praise for our services. Our priority is to make every individual feel valued and unique, like you. Thank you.
+                                        </p>
+                                        <div class="testimonial-profile">
+                                            <div>
+                                                <span class="bx bxs-star testimonial-checked"></span>
+                                                <span class="bx bxs-star testimonial-checked"></span>
+                                                <span class="bx bxs-star testimonial-checked"></span>
+                                                <span class="bx bxs-star testimonial-checked"></span>
+                                                <span class="bx bxs-star testimonial-checked"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="testimonial">
+                                        <p class="description">
+                                            We appreciate your positive feedback on the team member at ISOL. Our commitment to excellence is evident in your experience. Thank you for your trust and support.
+                                        </p>
+                                        <div class="testimonial-profile">
+                                            <div>
+                                                <span class="bx bxs-star testimonial-checked"></span>
+                                                <span class="bx bxs-star testimonial-checked"></span>
+                                                <span class="bx bxs-star testimonial-checked"></span>
+                                                <span class="bx bxs-star testimonial-checked"></span>
+                                                <span class="bx bxs-star testimonial-checked"></span>
                                             </div>
                                         </div>
                                     </div>
@@ -1245,7 +1578,8 @@ Have you found any interesting offer? well, then look for our fascinating articl
                     </div>
                     <div class="col-12 mb-3">
                         <div class="row text-center">
-                            <div class="col-sm-3 counter-Txt"> Reviews:- <span class="counter-value">0</span></div>
+<div class="col-sm-3 counter-Txt"> Reviews:- <span class="counter-value">0</span>
+                            </div>
                             <div class="col-sm-3 counter-Txt"> Seafarers:- <span class="counter-value">0</span>
                             </div>
                             <div class="col-sm-3 counter-Txt"> Applied:- <span class="counter-value">0</span></div>
@@ -1391,7 +1725,7 @@ Have you found any interesting offer? well, then look for our fascinating articl
                         </div>
 
                         <div class="col-lg-7 mt-5 mt-lg-0">
-                            
+
                             <h4>Enquiry</h4>
                             <p>Email us with any questions or inquiries</p>
 
@@ -1516,19 +1850,20 @@ Have you found any interesting offer? well, then look for our fascinating articl
                             <div class="col-lg-6 col-sm-12">
                                 <div class="footer_link_list">
                                     <p><a href="">Contact</a></p>
-                                    <p><a href="">Privacy Policies</a></p>
-                                    <p><a href="">Terms & Condition</a></p>
-                                    <p><a href="">Recruitment Procedures</a></p>
-                                    <p><a href="">Fraud Warning Disclaimers</a></p>
+                                    <p><a href="{{route('privacy_policy')}}">Privacy Policies</a></p>
+                                    <p><a href="{{route('terms_condition')}}">Terms & Condition</a></p>
+                                    <p><a href="{{route('recruitment')}}">Recruitment Procedures</a></p>
+                                    <p><a href="{{route('fraud_warning')}}">Fraud Warning Disclaimers</a></p>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-sm-12 pt-4">
-                                <button type="button" class="align-self-end btn custom-btn1 mb-3"
+                                <a href="https://isol.com.bd/crew_login" type="button" class="align-self-end btn custom-btn1 mb-3"
                                         style="margin-top: auto; width:100%;">Find a Crew
-                                </button>
-                                <button type="button" class="align-self-end btn custom-btn2"
+                                </a>
+
+                                <a href="https://isol.com.bd/cv_login_form" type="button" class="align-self-end btn custom-btn2"
                                         style="margin-top: auto; width:100%;">Upload a CV
-                                </button>
+                                </a>
                             </div>
                         </div>
                         <div class="second_box_gap">
@@ -1650,8 +1985,8 @@ Have you found any interesting offer? well, then look for our fascinating articl
             </div>
             <div class="modal-body">
                 <p>Do not apply for positions if you have no or little previous experience; and
-                    do not apply for jobs which require qualifications you don&#39;t hold – you will
-                    be only wasting your time and the recruiter’s time.</p>
+                    do not apply for jobs which require qualifications you don&#39;t hold  you will
+                    be only wasting your time and the recruiters time.</p>
             </div>
         </div>
     </div>
@@ -1701,7 +2036,7 @@ Have you found any interesting offer? well, then look for our fascinating articl
         slidesToShow: 1,
         slidesToScroll: 1,
         arrows: false,
-        dots: false,
+        dots: true,
         autoplay: true,
         autoplaySpeed: 4000,
         pauseOnHover: true,

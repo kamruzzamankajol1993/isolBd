@@ -23,6 +23,144 @@
           rel="stylesheet"> <!-- Google fonts -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"
           rel="stylesheet"> <!-- Google fonts -->
+
+    <!-- CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+
+    <style>
+
+        .swal2-confirm{
+
+            margin-left:10px;
+        }
+
+
+
+
+        .select2.select2-container .select2-selection--multiple .select2-selection__choice .select2-selection__choice__remove {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  height: 22px !important;
+  width: 22px !important;
+  margin: 0 !important;
+  text-align: center !important;
+  color: #e74c3c !important;
+  font-weight: bold !important;
+  font-size: 16px !important;
+}
+
+
+
+
+        </style>
+
+
+        {{-- <script src="{{ asset('/') }}public/admin/assets/js/jquery-3.5.1.min.js"></script> --}}
+        <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+        <link rel="stylesheet" href="https://parsleyjs.org/src/parsley.css">
+        <link href='https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/ui-lightness/jquery-ui.css'rel='stylesheet'>
+<script src="{{ asset('/')}}public/parsely1.js"></script>
+
+<style>
+
+    .parsley-required{
+
+        margin-top:10px;
+    }
+
+    .box
+
+    {
+
+     width:100%;
+
+     max-width:600px;
+
+     background-color:#f9f9f9;
+
+     border:1px solid #ccc;
+
+     border-radius:5px;
+
+     padding:16px;
+
+     margin:0 auto;
+
+    }
+
+    input.parsley-success,
+
+    select.parsley-success,
+
+    textarea.parsley-success {
+
+      color: #468847;
+
+      background-color: #DFF0D8;
+
+      border: 1px solid #D6E9C6;
+
+    }
+
+    input.parsley-error,
+
+    select.parsley-error,
+
+    textarea.parsley-error {
+
+      color: #B94A48;
+
+      background-color: #F2DEDE !important;
+
+      border: 1px solid #bd142d !important;
+
+    }
+
+
+    .parsley-errors-list {
+
+      margin: 2px 0 3px;
+
+      padding: 0;
+
+      list-style-type: none;
+
+      font-size: 0.9em;
+
+      line-height: 0.9em;
+
+      opacity: 0;
+
+
+      transition: all .3s ease-in;
+
+      -o-transition: all .3s ease-in;
+
+      -moz-transition: all .3s ease-in;
+
+      -webkit-transition: all .3s ease-in;
+
+    }
+
+
+    .parsley-errors-list.filled {
+
+      opacity: 1;
+
+    }
+
+
+
+    .error,.parsley-type, .parsley-required, .parsley-equalto, .parsley-pattern, .parsley-length{
+
+     color:#ff0000;
+
+    }
+
+
+
+    </style>
 </head>
 <body>
 
@@ -34,7 +172,6 @@
     <section class="page_top_section">
         <div class="container">
             <div class="page-header my-auto">
-                <h3>Interworld Shipping Overseas Limited</h3>
                 <h2>CV Login Form</h2>
             </div>
         </div>
@@ -50,7 +187,7 @@
                     <div class="card">
                         <div class="card-body custom_form_color">
                             <div class="custom_form_div">
-                                <form action="{{ route('jobSeekerPartOnePost') }}" method="post">
+                                <form action="{{ route('jobSeekerPartOnePost') }}" method="post" enctype="multipart/form-data" id="form" data-parsley-validate="">
                                     @csrf
                                     <div class="form_header">
                                         <h3>All Details </h3>
@@ -61,7 +198,7 @@
                                     <div class="mb-3">
                                         <label for="" class="form-label">1. Tell us a little more about
                                             yourself.</label>
-                                        <textarea class="form-control" name="your_self" id="" rows="4"
+                                        <textarea class="form-control" required name="your_self" id="" rows="4"
                                                   placeholder="About yourself"></textarea>
                                     </div>
                                     <div class="mb-3">
@@ -70,11 +207,11 @@
                                         <div class="custom_radio_button_form">
                                             <div class="row">
                                                 <div class="col-6">
-                                                    <input type="radio" value="yes" name="seaman_book_or_bd_cdc" id="yes" checked="checked"/>
+                                                    <input type="radio" data-parsley-required="true" value="yes" name="seaman_book_or_bd_cdc" id="yes" checked="checked"/>
                                                     <label for="yes">Yes</label>
                                                 </div>
                                                 <div class="col-6">
-                                                    <input type="radio" value="no" name="seaman_book_or_bd_cdc" id="no"/>
+                                                    <input type="radio" data-parsley-required="true" value="no" name="seaman_book_or_bd_cdc" id="no"/>
                                                     <label for="no">No</label>
                                                 </div>
                                             </div>
@@ -85,7 +222,7 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="" class="form-label">Describe Details</label>
-                                        <textarea class="form-control" name="seaman_book_or_bd_cdc_detail" id="" rows="4"
+                                        <textarea class="form-control" required name="seaman_book_or_bd_cdc_detail" id="" rows="4"
                                                   placeholder="About yourself"></textarea>
                                     </div>
                                     <div class="mb-3">
@@ -93,8 +230,8 @@
                                             valid for at least one year from the date of
                                             application?
                                         </label>
-                                        <select class="form-select" name="password_valid_till_one_year" aria-label="Default select example">
-                                            <option selected>Select here ...</option>
+                                        <select class="form-select" required name="password_valid_till_one_year" aria-label="Default select example">
+                                            <option value="">Select here ...</option>
                                             <option value="Yes, I have a passport that is valid for more than one year.">Yes, I have a passport that is valid for more than one
                                                 year.
                                             </option>
@@ -108,7 +245,7 @@
                                         <label for="" class="form-label">4. Are you currently fully vaccinated for
                                             COVID? (Full vaccination is typically a series of two shots plus a booster,
                                             depending on brand.)</label>
-                                        <select class="form-select" name="full_vaccinated_for_covid" aria-label="Default select example">
+                                        <select class="form-select" required name="full_vaccinated_for_covid" aria-label="Default select example">
                                             <option value="">Select here ...</option>
                                             <option value="Yes, I am fully vaccinated for COVID.">Yes, I am fully vaccinated for COVID.</option>
                                             <option value="No, I am not fully vaccinated for COVID.">No, I am not fully vaccinated for COVID.</option>
@@ -120,7 +257,7 @@
                                     <div class="mb-3">
                                         <label for="" class="form-label">5. When would you be interested in having your
                                             application for placement onboard considered?</label>
-                                        <select class="form-select" name="placement_onboard_considered" aria-label="Default select example">
+                                        <select class="form-select" required name="placement_onboard_considered" aria-label="Default select example">
                                             <option value="">Select here ...</option>
                                             <option value="My schedule is negotiable. Either a placement that is more immediate or one that is made in two years interests me.">My schedule is negotiable. Either a placement that is more
                                                 immediate or one that is made in two years interests me.
@@ -141,11 +278,11 @@
                                         <div class="custom_radio_button_form">
                                             <div class="row">
                                                 <div class="col-6">
-                                                    <input type="radio" value="yes" name="ielts_score" id="yesielts" checked="checked"/>
+                                                    <input type="radio" data-parsley-required="true" value="yes" name="ielts_score" id="yesielts" checked="checked"/>
                                                     <label for="yesielts">Yes</label>
                                                 </div>
                                                 <div class="col-6">
-                                                    <input type="radio" value="no" name="ielts_score" id="noielts"/>
+                                                    <input type="radio" data-parsley-required="true" value="no" name="ielts_score" id="noielts"/>
                                                     <label for="noielts">No</label>
                                                 </div>
                                             </div>
@@ -156,7 +293,7 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="" class="form-label">Describe Details</label>
-                                        <textarea name="ielts_score_des" class="form-control" id="" rows="4"
+                                        <textarea required name="ielts_score_des" class="form-control" id="" rows="4"
                                                   placeholder="About yourself"></textarea>
                                     </div>
                                     <div class="mb-3">
@@ -170,12 +307,12 @@
                                         <div class="custom_radio_button_form">
                                             <div class="row">
                                                 <div class="col-6">
-                                                    <input type="radio" value="yes" name="work_experience" id="yesexperience"
+                                                    <input type="radio" data-parsley-required="true" value="yes" name="work_experience" id="yesexperience"
                                                            checked="checked"/>
                                                     <label for="yesexperience">Yes</label>
                                                 </div>
                                                 <div class="col-6">
-                                                    <input type="radio" value="no" name="work_experience" id="noexperience"/>
+                                                    <input type="radio" data-parsley-required="true" value="no" name="work_experience" id="noexperience"/>
                                                     <label for="noexperience">No</label>
                                                 </div>
                                             </div>
@@ -186,13 +323,13 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="" class="form-label">Describe Details</label>
-                                        <textarea name="work_experience_des" class="form-control" id="" rows="4"
+                                        <textarea required name="work_experience_des" class="form-control" id="" rows="4"
                                                   placeholder="About yourself"></textarea>
                                     </div>
                                     <div class="mb-3">
                                         <label for="" class="form-label">8. Which country you dreamed to be settled in
                                             near future?</label>
-                                        <select class="form-select" name="settled_country" aria-label="Default select example">
+                                        <select class="form-select" required name="settled_country" aria-label="Default select example">
                                             <option selected>Select here ...</option>
                                             <option value="USA">USA</option>
                                             <option value="Canada">Canada</option>
@@ -208,7 +345,7 @@
                                     <div class="mb-3">
                                         <label for="" class="form-label">9. Why are you interested to work on
                                             ship?</label>
-                                        <select class="form-select" name="interested_to_work_on_ship" aria-label="Default select example">
+                                        <select required class="form-select" name="interested_to_work_on_ship" aria-label="Default select example">
                                             <option selected>Select here ...</option>
                                             <option value="Working on a cruise ship is a great way to gain experience and skills that I can use in any career.">Working on a cruise ship is a great way to gain experience
                                                 and skills that I can use in any career.
@@ -229,12 +366,12 @@
                                         <div class="custom_radio_button_form">
                                             <div class="row">
                                                 <div class="col-6">
-                                                    <input type="radio" value="yes" name="relative_work_on_ship" id="yesrelative"
+                                                    <input type="radio" data-parsley-required="true" value="yes" name="relative_work_on_ship" id="yesrelative"
                                                            checked="checked"/>
                                                     <label for="yesrelative">Yes</label>
                                                 </div>
                                                 <div class="col-6">
-                                                    <input type="radio" value="no" name="relative_work_on_ship" id="norelative"/>
+                                                    <input type="radio" data-parsley-required="true" value="no" name="relative_work_on_ship" id="norelative"/>
                                                     <label for="norelative">No</label>
                                                 </div>
                                             </div>
@@ -245,7 +382,7 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="" class="form-label">Describe Details</label>
-                                        <textarea name="relative_work_on_ship_des" class="form-control" id="" rows="4"
+                                        <textarea required name="relative_work_on_ship_des" class="form-control" id="" rows="4"
                                                   placeholder="About yourself"></textarea>
                                     </div>
                                     <div class="mb-3">
@@ -255,12 +392,12 @@
                                         <div class="custom_radio_button_form">
                                             <div class="row">
                                                 <div class="col-6">
-                                                    <input type="radio" value="yes" name="pay_isol_or_other" id="yesisol"
+                                                    <input type="radio" data-parsley-required="true" value="yes" name="pay_isol_or_other" id="yesisol"
                                                            checked="checked"/>
                                                     <label for="yesisol">Yes</label>
                                                 </div>
                                                 <div class="col-6">
-                                                    <input type="radio" value="no" name="pay_isol_or_other" id="noisol"/>
+                                                    <input type="radio" data-parsley-required="true" value="no" name="pay_isol_or_other" id="noisol"/>
                                                     <label for="noisol">No</label>
                                                 </div>
                                             </div>
@@ -272,12 +409,12 @@
                                         <div class="custom_radio_button_form">
                                             <div class="row">
                                                 <div class="col-6">
-                                                    <input type="radio" value="yes" name="pay_third_party" id="payyes"
+                                                    <input type="radio" data-parsley-required="true" value="yes" name="pay_third_party" id="payyes"
                                                            checked="checked"/>
                                                     <label for="payyes">Yes</label>
                                                 </div>
                                                 <div class="col-6">
-                                                    <input type="radio" value="no" name="pay_third_party" id="payno"/>
+                                                    <input type="radio" data-parsley-required="true" value="no" name="pay_third_party" id="payno"/>
                                                     <label for="payno">No</label>
                                                 </div>
                                             </div>
@@ -289,12 +426,12 @@
                                         <div class="custom_radio_button_form">
                                             <div class="row">
                                                 <div class="col-6">
-                                                    <input type="radio" value="yes" name="fill_up_by_assists" id="assist_yes"
+                                                    <input type="radio" data-parsley-required="true" value="yes" name="fill_up_by_assists" id="assist_yes"
                                                            checked="checked"/>
                                                     <label for="assist_yes">Yes</label>
                                                 </div>
                                                 <div class="col-6">
-                                                    <input type="radio" value="no" name="fill_up_by_assists" id="assist_no"/>
+                                                    <input type="radio" data-parsley-required="true" value="no" name="fill_up_by_assists" id="assist_no"/>
                                                     <label for="assist_no">No</label>
                                                 </div>
                                             </div>
@@ -305,49 +442,49 @@
                                             working in USA, Canada, UK, Europe, Australia, New Zealand, or
                                             Japan </label>
                                         <div class="form-check">
-                                            <input class="form-check-input" name="family_members_country[]" type="checkbox" value="USA" id="">
+                                            <input class="form-check-input" data-parsley-required="true" name="family_members_country[]" type="checkbox" value="USA" id="">
                                             <label class="form-check-label" for="">
                                                 USA
                                             </label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" name="family_members_country[]" type="checkbox" value="Canada" id="" checked>
+                                            <input class="form-check-input" data-parsley-required="true" name="family_members_country[]" type="checkbox" value="Canada" id="" checked>
                                             <label class="form-check-label" for="">
                                                 Canada
                                             </label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" name="family_members_country[]" type="checkbox" value="UK" id="">
+                                            <input class="form-check-input" data-parsley-required="true" name="family_members_country[]" type="checkbox" value="UK" id="">
                                             <label class="form-check-label" for="">
                                                 UK
                                             </label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" name="family_members_country[]" type="checkbox" value="Europe" id="">
+                                            <input class="form-check-input" data-parsley-required="true" name="family_members_country[]" type="checkbox" value="Europe" id="">
                                             <label class="form-check-label" for="">
                                                 Europe
                                             </label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" name="family_members_country[]" type="checkbox" value="Australia" id="">
+                                            <input class="form-check-input" data-parsley-required="true" name="family_members_country[]" type="checkbox" value="Australia" id="">
                                             <label class="form-check-label" for="">
                                                 Australia
                                             </label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" name="family_members_country[]" type="checkbox" value="New Zealand" id="">
+                                            <input class="form-check-input" data-parsley-required="true" name="family_members_country[]" type="checkbox" value="New Zealand" id="">
                                             <label class="form-check-label" for="">
                                                 New Zealand
                                             </label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" name="family_members_country[]" type="checkbox" value="Japan" id="">
+                                            <input class="form-check-input" data-parsley-required="true" name="family_members_country[]" type="checkbox" value="Japan" id="">
                                             <label class="form-check-label" for="">
                                                 Japan
                                             </label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" name="family_members_country[]" type="checkbox" value="NON" id="">
+                                            <input class="form-check-input" data-parsley-required="true" name="family_members_country[]" type="checkbox" value="NON" id="">
                                             <label class="form-check-label" for="">
                                                 NON
                                             </label>
@@ -356,17 +493,17 @@
                                     <div class="mb-3">
                                         <label for="" class="form-label">If the response is yes, please provide more
                                             information. 13 and 14.</label>
-                                        <textarea class="form-control" name="assists_and_family_des" id="" rows="4"
+                                        <textarea class="form-control" required name="assists_and_family_des" id="" rows="4"
                                                   placeholder="About yourself"></textarea>
                                     </div>
                                     <div class="mb-3">
                                         <label for="" class="form-label">15. What is your salary expectation?</label>
-                                        <textarea class="form-control" name="expected_salary" id="" rows="4"
+                                        <textarea required class="form-control" name="expected_salary" id="" rows="4"
                                                   placeholder="About yourself"></textarea>
                                     </div>
                                     <div class="mb-3">
                                         <label for="" class="form-label">16. How did you hear about us?</label>
-                                        <select name="hear_about_us" class="form-select" aria-label="Default select example">
+                                        <select required name="hear_about_us" class="form-select" aria-label="Default select example">
                                             <option value="">Select here ...</option>
                                             <option value="Search engines (other websites, blogs, videos, pictures)">Search engines (other websites, blogs, videos, pictures)
                                             </option>
@@ -384,12 +521,12 @@
                                         <div class="custom_radio_button_form">
                                             <div class="row">
                                                 <div class="col-6">
-                                                    <input type="radio" value="yes" name="married_or_not" id="marriedyes"
+                                                    <input type="radio" data-parsley-required="true" value="yes" name="married_or_not" id="marriedyes"
                                                            checked="checked"/>
                                                     <label for="marriedyes">Yes</label>
                                                 </div>
                                                 <div class="col-6">
-                                                    <input type="radio" value="no" name="married_or_not" id="marriedno"/>
+                                                    <input type="radio" data-parsley-required="true" value="no" name="married_or_not" id="marriedno"/>
                                                     <label for="marriedno">No</label>
                                                 </div>
                                             </div>
@@ -397,7 +534,7 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="" class="form-label">18. What is your qualification?</label>
-                                        <select class="form-select" name="qualification" aria-label="Default select example">
+                                        <select required class="form-select" name="qualification" aria-label="Default select example">
                                             <option value="">Select here ...</option>
                                             <option value="O level">O level</option>
                                             <option value="A level">A level</option>
@@ -413,7 +550,7 @@
                                     <div class="mb-3">
                                         <label for="" class="form-label">19. Do you have any Hospitality Courses
                                             completed from any hotel school?</label>
-                                        <select name="hospitali_course" class="form-select" aria-label="Default select example">
+                                        <select required name="hospitali_course" class="form-select" aria-label="Default select example">
                                             <option value="">Select here ...</option>
                                             <option value="Hotel Management">a. Hotel Management</option>
                                             <option value="NHTTI">b. NHTTI</option>
@@ -423,7 +560,7 @@
                                     <div class="mb-3">
                                         <label for="" class="form-label">20. Are you willing to work under pressure at
                                             sea motions?</label>
-                                        <select class="form-select" name="sea_motion_work" aria-label="Default select example">
+                                        <select required class="form-select" name="sea_motion_work" aria-label="Default select example">
                                             <option value="">Select here ...</option>
                                             <option value="I work well under pressure because I use the pressure to help me work more efficiently">I work well under pressure because I use the pressure to
                                                 help me work more efficiently
@@ -440,12 +577,12 @@
                                         <div class="custom_radio_button_form">
                                             <div class="row">
                                                 <div class="col-6">
-                                                    <input type="radio" value="yes" name="get_us_visa" id="visayes"
+                                                    <input type="radio" data-parsley-required="true" value="yes" name="get_us_visa" id="visayes"
                                                            checked="checked"/>
                                                     <label for="visayes">Yes</label>
                                                 </div>
                                                 <div class="col-6">
-                                                    <input type="radio" value="no" name="get_us_visa" id="visano"/>
+                                                    <input type="radio" data-parsley-required="true" value="no" name="get_us_visa" id="visano"/>
                                                     <label for="visano">No</label>
                                                 </div>
                                             </div>
@@ -457,12 +594,12 @@
                                         <div class="custom_radio_button_form">
                                             <div class="row">
                                                 <div class="col-6">
-                                                    <input type="radio" value="yes" name="visa_cancelled_or_not" id="revokedyes"
+                                                    <input type="radio" data-parsley-required="true" value="yes" name="visa_cancelled_or_not" id="revokedyes"
                                                            checked="checked"/>
                                                     <label for="revokedyes">Yes</label>
                                                 </div>
                                                 <div class="col-6">
-                                                    <input type="radio" value="no" name="visa_cancelled_or_not" id="revokedno"/>
+                                                    <input type="radio" data-parsley-required="true" value="no" name="visa_cancelled_or_not" id="revokedno"/>
                                                     <label for="revokedno">No</label>
                                                 </div>
                                             </div>
@@ -475,12 +612,12 @@
                                         <div class="custom_radio_button_form">
                                             <div class="row">
                                                 <div class="col-6">
-                                                    <input type="radio" value="yes" name="refused_us_visa" id="refusedyes"
+                                                    <input type="radio" data-parsley-required="true" value="yes" name="refused_us_visa" id="refusedyes"
                                                            checked="checked"/>
                                                     <label for="refusedyes">Yes</label>
                                                 </div>
                                                 <div class="col-6">
-                                                    <input type="radio" value="no" name="refused_us_visa" id="refusedno"/>
+                                                    <input type="radio" data-parsley-required="true" value="no" name="refused_us_visa" id="refusedno"/>
                                                     <label for="refusedno">No</label>
                                                 </div>
                                             </div>
@@ -492,12 +629,12 @@
                                         <div class="custom_radio_button_form">
                                             <div class="row">
                                                 <div class="col-6">
-                                                    <input type="radio" value="yes" name="travel_country" id="traveledyes"
+                                                    <input type="radio" data-parsley-required="true" value="yes" name="travel_country" id="traveledyes"
                                                            checked="checked"/>
                                                     <label for="traveledyes">Yes</label>
                                                 </div>
                                                 <div class="col-6">
-                                                    <input type="radio" value="no" name="travel_country" id="traveledno"/>
+                                                    <input type="radio" data-parsley-required="true" value="no" name="travel_country" id="traveledno"/>
                                                     <label for="traveledno">No</label>
                                                 </div>
                                             </div>
@@ -509,12 +646,12 @@
                                         <div class="custom_radio_button_form">
                                             <div class="row">
                                                 <div class="col-6">
-                                                    <input type="radio" value="yes" name="terrorist_organization_member" id="representativeyes"
+                                                    <input type="radio" data-parsley-required="true" value="yes" name="terrorist_organization_member" id="representativeyes"
                                                            checked="checked"/>
                                                     <label for="representativeyes">Yes</label>
                                                 </div>
                                                 <div class="col-6">
-                                                    <input type="radio" value="no" name="terrorist_organization_member" id="representativeno"/>
+                                                    <input type="radio" data-parsley-required="true" value="no" name="terrorist_organization_member" id="representativeno"/>
                                                     <label for="representativeno">No</label>
                                                 </div>
                                             </div>
@@ -526,12 +663,12 @@
                                         <div class="custom_radio_button_form">
                                             <div class="row">
                                                 <div class="col-6">
-                                                    <input type="radio" value="yes" name="police_clearance_certificate" id="clearanceyes"
+                                                    <input type="radio" data-parsley-required="true" value="yes" name="police_clearance_certificate" id="clearanceyes"
                                                            checked="checked"/>
                                                     <label for="clearanceyes">Yes</label>
                                                 </div>
                                                 <div class="col-6">
-                                                    <input type="radio" value="no" name="police_clearance_certificate" id="clearanceno"/>
+                                                    <input type="radio" data-parsley-required="true" value="no" name="police_clearance_certificate" id="clearanceno"/>
                                                     <label for="clearanceno">No</label>
                                                 </div>
                                             </div>
@@ -544,12 +681,12 @@
                                         <div class="custom_radio_button_form">
                                             <div class="row">
                                                 <div class="col-6">
-                                                    <input type="radio" value="yes" name="illegal_activity" id="seekyes"
+                                                    <input type="radio" data-parsley-required="true" value="yes" name="illegal_activity" id="seekyes"
                                                            checked="checked"/>
                                                     <label for="seekyes">Yes</label>
                                                 </div>
                                                 <div class="col-6">
-                                                    <input type="radio" value="no" name="illegal_activity" id="seekno"/>
+                                                    <input type="radio" data-parsley-required="true" value="no" name="illegal_activity" id="seekno"/>
                                                     <label for="seekno">No</label>
                                                 </div>
                                             </div>
@@ -562,12 +699,12 @@
                                         <div class="custom_radio_button_form">
                                             <div class="row">
                                                 <div class="col-6">
-                                                    <input type="radio" value="yes" name="arrested" id="arrestedyes"
+                                                    <input type="radio" data-parsley-required="true" value="yes" name="arrested" id="arrestedyes"
                                                            checked="checked"/>
                                                     <label for="arrestedyes">Yes</label>
                                                 </div>
                                                 <div class="col-6">
-                                                    <input type="radio" value="no" name="arrested" id="arrestedno"/>
+                                                    <input type="radio" data-parsley-required="true" value="no" name="arrested" id="arrestedno"/>
                                                     <label for="arrestedno">No</label>
                                                 </div>
                                             </div>
@@ -580,12 +717,12 @@
                                         <div class="custom_radio_button_form">
                                             <div class="row">
                                                 <div class="col-6">
-                                                    <input type="radio" value="yes" name="mental_or_physical_disorder" id="mentalyes"
+                                                    <input type="radio" data-parsley-required="true" value="yes" name="mental_or_physical_disorder" id="mentalyes"
                                                            checked="checked"/>
                                                     <label for="mentalyes">Yes</label>
                                                 </div>
                                                 <div class="col-6">
-                                                    <input type="radio" value="no" name="mental_or_physical_disorder" id="mentalno"/>
+                                                    <input type="radio" data-parsley-required="true" value="no" name="mental_or_physical_disorder" id="mentalno"/>
                                                     <label for="mentalno">No</label>
                                                 </div>
                                             </div>
@@ -601,12 +738,12 @@
                                         <div class="custom_radio_button_form">
                                             <div class="row">
                                                 <div class="col-6">
-                                                    <input type="radio" value="yes" name="disease" id="communicableyes"
+                                                    <input type="radio"  data-parsley-required="true" value="yes" name="disease" id="communicableyes"
                                                            checked="checked"/>
                                                     <label for="communicableyes">Yes</label>
                                                 </div>
                                                 <div class="col-6">
-                                                    <input type="radio" value="no" name="disease" id="communicableno"/>
+                                                    <input type="radio" data-parsley-required="true" value="no" name="disease" id="communicableno"/>
                                                     <label for="communicableno">No</label>
                                                 </div>
                                             </div>
@@ -619,12 +756,12 @@
                                         <div class="custom_radio_button_form">
                                             <div class="row">
                                                 <div class="col-6">
-                                                    <input type="radio" value="yes" name="insurgent_organization" id="servedyes"
+                                                    <input type="radio" data-parsley-required="true" value="yes" name="insurgent_organization" id="servedyes"
                                                            checked="checked"/>
                                                     <label for="servedyes">Yes</label>
                                                 </div>
                                                 <div class="col-6">
-                                                    <input type="radio" value="no" name="insurgent_organization" id="servedno"/>
+                                                    <input type="radio" data-parsley-required="true" value="no" name="insurgent_organization" id="servedno"/>
                                                     <label for="servedno">No</label>
                                                 </div>
                                             </div>
@@ -635,12 +772,12 @@
                                         <div class="custom_radio_button_form">
                                             <div class="row">
                                                 <div class="col-6">
-                                                    <input type="radio" value="yes"  name="served_military" id="militaryyes"
+                                                    <input type="radio" data-parsley-required="true" value="yes"  name="served_military" id="militaryyes"
                                                            checked="checked"/>
                                                     <label for="militaryyes">Yes</label>
                                                 </div>
                                                 <div class="col-6">
-                                                    <input type="radio" value="no" name="served_military" id="militaryno"/>
+                                                    <input type="radio" data-parsley-required="true" value="no" name="served_military" id="militaryno"/>
                                                     <label for="militaryno">No</label>
                                                 </div>
                                             </div>
@@ -651,12 +788,12 @@
                                         <div class="custom_radio_button_form">
                                             <div class="row">
                                                 <div class="col-6">
-                                                    <input type="radio" value="yes" name="charitable_organization" id="contributedyes"
+                                                    <input type="radio" data-parsley-required="true" value="yes" name="charitable_organization" id="contributedyes"
                                                            checked="checked"/>
                                                     <label for="contributedyes">Yes</label>
                                                 </div>
                                                 <div class="col-6">
-                                                    <input type="radio" value="no" name="charitable_organization" id="contributedno"/>
+                                                    <input type="radio" data-parsley-required="true" value="no" name="charitable_organization" id="contributedno"/>
                                                     <label for="contributedno">No</label>
                                                 </div>
                                             </div>
@@ -682,8 +819,8 @@
 
 <!-- ======= Footer ======= -->
 @include('front.include.footer')
-
-<script src="{{asset('/')}}public/front/assets/js/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+{{-- <script src="{{asset('/')}}public/front/assets/js/jquery-3.5.1.min.js"></script> --}}
 <script src="{{asset('/')}}public/front/assets/js/navik.menu.js"></script>
 
 </body>

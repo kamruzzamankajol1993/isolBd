@@ -34,8 +34,7 @@
     <section class="page_top_section">
         <div class="container">
             <div class="page-header my-auto">
-                <h3>Interworld Shipping Overseas Limited</h3>
-                <h2>Cruise-Ship Recruitment</h2>
+                <h2>Cruise Ship Recruitment</h2>
             </div>
         </div>
     </section>
@@ -46,8 +45,17 @@
 
         <div class="container pt-4">
             <div class="section-title">
-                <h2>Recruitment</h2>
-                <p class="text-white">ClassNK does periodically require the services highly qualified and experienced surveyors in worldwide offices. Currently we are recruiting following positions. For further details, please contact designated office to enquire directly.</p>
+                <h2>Cruise Ship</h2>
+                <p class="text-white">
+                    Embarking on a cruise ship journey transcends a mere occupation; it becomes a
+distinctive lifestyle intertwined with a colorful global community. As you voyage
+through a myriad of destinations, you&#39;ll create indelible bonds with your fellow
+crew members. Navigating the trials of providing outstanding service to
+passengers amidst the expansive seas, maintaining high standards can be both
+gratifying and challenging. In the spirit of the unpredictable, you might find
+yourself celebrating a sun-kissed Christmas in the tropics or enjoying a Bank
+Holiday in Barcelona, enriching your voyage with remarkable experiences.
+                </p>
             </div>
 
             <div class="row mt-4">

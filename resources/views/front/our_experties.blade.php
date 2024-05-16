@@ -34,7 +34,6 @@
     <section class="page_top_section">
         <div class="container">
             <div class="page-header my-auto">
-                <h3>Interworld Shipping Overseas Limited</h3>
                 <h2>Our Expertise</h2>
             </div>
         </div>
@@ -44,28 +43,40 @@
 
 <section>
         <div class="container">
-            <p>
-                At ISOL, as a premier HR Management Service recruitment agency dedicated to
-                the cruise liner industry, we bring unparalleled expertise and a deep
-                understanding of the industry&#39;s unique staffing needs.
-            </p>
             <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 mb-4">
-
-                    <div class="expert_box">
-
-                        <div class="section-title">
-                            <h2>Our Expertise Covers: </h2>
-                        </div>
-                        <ol class="oll">
-                            <li><span>Industry insight</span></li>
-                            <li><span>Global Talent Network</span></li>
-                            <li><span>Cruise Specific Recruitment</span></li>
-                            <li><span>Rigorous Screening &amp; Assessment</span></li>
-                            <li><span>Tailor-made Staffing Solutions</span></li>
-                            <li><span>Dedicated solutions and follow up</span></li>
-                        </ol>
+                <div class="col-lg-12 ">
+                    <div class="card-body">
+                        <img src="{{ asset('/') }}public/front/assets/img/experties.png" style="width:100%;" alt="">
                     </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 mb-4" style="text-align: justify">
+                    <p>
+                        An international staffing agency plays a pivotal role in connecting candidates with
+job opportunities across various countries. These agencies offer numerous
+benefits, such as global reach, industry expertise, cultural understanding,
+streamlined processes, and flexible staffing solutions. When selecting an
+international staffing agency, it is crucial to evaluate their reputation, experience,
+industry specialization, as well as their expertise, consulting services, knowledge,
+team, advice, trust, and research capabilities.
+                    </p>
+                    <p>
+                        In the maritime industry, adherence to MLC Regulation 1.4 is essential, as it
+ensures that seafarers are not burdened with any recruitment or placement fees.
+This regulation is designed to safeguard the rights and welfare of seafarers during
+the recruitment process.
+                    </p>
+                    <p>
+                        ISOL, our organization, is committed to professionalism, accountability, and work
+excellence while maintaining the highest industry standards. Our primary goal is
+to offer the best job opportunities for candidates and ensure the well-being and
+safety of seafarers. As we embark on our journey with ISOL, we have developed a
+comprehensive candidate selection process that includes various assessments,
+collaborations with global recruiting partners from around the world, and in-
+depth interviews. By understanding and addressing the needs of both candidates
+and clients, ISOL continues to strengthen its value as a leading recruitment and
+HR managing organization in the industry, leveraging its expertise, consulting
+services, knowledge, team, advice, trust, and research capabilities.
+                    </p>
                 </div>
             </div>
         </div>

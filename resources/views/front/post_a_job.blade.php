@@ -36,7 +36,6 @@
     <section class="page_top_section">
         <div class="container">
             <div class="page-header my-auto">
-                <h3>Interworld Shipping Overseas Limited</h3>
                 <h2>Partner With Us</h2>
             </div>
         </div>

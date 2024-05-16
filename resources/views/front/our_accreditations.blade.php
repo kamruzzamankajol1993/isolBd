@@ -34,7 +34,6 @@
     <section class="page_top_section">
         <div class="container">
             <div class="page-header my-auto">
-                <h3>Interworld Shipping Overseas Limited</h3>
                 <h2>Accreditations</h2>
             </div>
         </div>
@@ -60,23 +59,9 @@
                             ISOL (Interworld Shipping Overseas Limited) is a Licensed and MLC Certified International HR
                             Management Service Provider.
                         </p>
-                        <div class="expert_box mb-4">
-                            <div class="section-title">
-                                <h2>We provide services for </h2>
-                            </div>
-                            <ol class="oll">
-                                <li><span>Maritime, Oil and Gas Sectors</span></li>
-                                <li><span>Cruise Ships</span></li>
-                                <li><span>Mega-Yachts</span></li>
-                                <li><span>River Cruise</span></li>
-                                <li><span>Cargo Shipping</span></li>
-                                <li><span>Merchant Navy’s</span></li>
-                                <li><span>Hotels &amp; Resorts</span></li>
-                                <li><span>Chartered Crew</span></li>
-                                <li><span>Offshore</span></li>
-                                <li><span>Hospitality Butlers</span></li>
-                            </ol>
-                        </div>
+                        <p>We provide services for Maritime, Oil and Gas Sectors, Cruise Ships, Mega-Yachts, River Cruise,
+Cargo Shipping, Merchant Navy’s, Hotels &amp; Resorts, Chartered Crew, Offshore and Hospitality
+Butlers worldwide respectively.</p>
                         <p>If you are looking for quality, reliability and efficient services – ISOL is the brand name and
                             partner you are sourcing for. We offer flexible HR solutions, allowing you to focus on your core
                             business goals.

@@ -42,43 +42,79 @@
     <!-- ======= About Section ======= -->
 
     <section class="">
+<?php
 
+//dd($searchData);
+    ?>
         <div class="container pt-4">
             <div class="card">
                 <div class="card-body custom_form_color">
-                    @include('flash_message')
                     <form class="" method="get" action="{{ route('jobPageSearch') }}">
+
+                        <!-- new code start --->
+
                         <div class="custom_form_div">
                             <div class="row ">
                                 <div class="col">
                                     <select class="form-select" id="job_cat" aria-label="Default select example" name="job_category">
+
+
+                                        @if(empty($searchData[0]))
                                         <option value="" selected="">Category</option>
+                                        @else
+                                        <option value="{{ $searchData[0] }}" selected="">{{ $searchData[0] }}</option>
+                                        @endif
+
+
                                         @foreach($headline_list1 as $headline_lists)
-                                        <option value="{{ $headline_lists->name }}"  {{ $sJobCat == $headline_lists->name ? 'selected':'' }}>{{ $headline_lists->name }}</option>
+                                        <option value="{{ $headline_lists->name }}"  >{{ $headline_lists->name }}</option>
                                         @endforeach
 
                                     </select>
                                 </div>
                                 <div class="col">
                                     <select class="form-select" id="dp_name" aria-label="Default select example" name="job_department">
+
+
+                                        @if(empty($searchData[1]))
                                         <option value="" selected="">Department</option>
+                                        @else
+                                        <option value="{{ $searchData[1] }}" selected="">{{ $searchData[1] }}</option>
+                                        @endif
+
                                         @foreach($headline_list2 as $headline_lists)
-                                        <option value="{{ $headline_lists->name }}"  {{ $sJobDep == $headline_lists->name ? 'selected':'' }}>{{ $headline_lists->name }}</option>
+                                        <option value="{{ $headline_lists->name }}"  >{{ $headline_lists->name }}</option>
                                         @endforeach
 
                                     </select>
                                 </div>
                                 <div class="col">
                                     <select class="form-select" id="job_title_name" aria-label="Default select example" name="job_title">
+
+
+                                        @if(empty($searchData[2]))
                                         <option value="" selected="">Job Title</option>
+                                        @else
+                                        <option value="{{ $searchData[2] }}" selected="">{{ $searchData[2] }}</option>
+                                        @endif
+
+
                                         @foreach($headline_list as $headline_lists)
-                                        <option value="{{ $headline_lists->name }}" {{ $sJobTit == $headline_lists->name ? 'selected':'' }}>{{ $headline_lists->name }}</option>
+                                        <option value="{{ $headline_lists->name }}" >{{ $headline_lists->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
                                 <div class="col">
                                     <select class="form-select" id="job_duration" aria-label="Default select example" name="job_duration">
+
+
+                                        @if(empty($searchData[3]))
                                         <option value="" selected="">Type of Contact</option>
+                                        @else
+                                        <option value="{{ $searchData[3] }}" selected="">{{ $searchData[3] }}</option>
+                                        @endif
+
+
                                         @foreach($contractList as $headline_lists)
                                         <option value="{{ $headline_lists->name }}" >{{ $headline_lists->name }}</option>
                                         @endforeach
@@ -86,7 +122,15 @@
                                 </div>
                                 <div class="col">
                                     <select class="form-select" id="job_area" aria-label="Default select example" name="job_area">
+
+
+                                        @if(empty($searchData[4]))
                                         <option value="" selected="">Location</option>
+                                        @else
+                                        <option value="{{ $searchData[4] }}" selected="">{{ $searchData[4] }}</option>
+                                        @endif
+
+
                                         @foreach($locationList as $headline_lists)
                                         <option value="{{ $headline_lists->name }}" >{{ $headline_lists->name }}</option>
                                         @endforeach
@@ -99,17 +143,15 @@
                                 </div>
                             </div>
                         </div>
+
+                        <!-- new code end -->
+
                     </form>
                     <div class="">
                         <div class="vacancies">
                             <section class="table">
 
-                                @if(count($jobListAll) == 0)
-
-                              <h3> Not Available </h3>
-                                @else
-
-                                @foreach($jobListAll as $jobListAlls)
+                                @foreach($jobListAllSearch as $jobListAlls)
                                 <div class="container">
                                     <div>
                                         <h3 style="display: inline">{{ $jobListAlls->job_title_id }} </h3>
@@ -136,7 +178,6 @@
 
                                 </div>
 @endforeach
-@endif
 
                             </section>
                         </div>
@@ -155,49 +196,6 @@
 
 <script src="{{asset('/')}}public/front/assets/js/jquery-3.5.1.min.js"></script>
 <script src="{{asset('/')}}public/front/assets/js/navik.menu.js"></script>
-
-
-<script>
-    $(document).ready(function(){
-        $("#job_cat").change(function(){
-
-            var cat_name = $(this).val()
-
-
-
-            $.ajax({
-            url: "{{ route('get_dp_name_from_cat') }}",
-            method: 'GET',
-            data: {cat_name:cat_name},
-            success: function(data) {
-
-              $("#dp_name").html('');
-              $("#dp_name").html(data);
-            }
-        });
-    });
-
-
-    $("#dp_name").change(function(){
-
-var cat_name = $(this).val()
-
-
-
-$.ajax({
-url: "{{ route('get_title_name_from_dp') }}",
-method: 'GET',
-data: {cat_name:cat_name},
-success: function(data) {
-
-  $("#job_title_name").html('');
-  $("#job_title_name").html(data);
-}
-});
-});
-
-});
-</script>
 
 </body>
 </html>

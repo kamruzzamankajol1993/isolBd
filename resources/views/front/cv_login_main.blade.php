@@ -26,6 +26,144 @@
 
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css"/>
+
+      <!-- CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+
+<style>
+
+    .swal2-confirm{
+
+        margin-left:10px;
+    }
+
+
+
+
+    .select2.select2-container .select2-selection--multiple .select2-selection__choice .select2-selection__choice__remove {
+position: absolute !important;
+top: 0 !important;
+left: 0 !important;
+height: 22px !important;
+width: 22px !important;
+margin: 0 !important;
+text-align: center !important;
+color: #e74c3c !important;
+font-weight: bold !important;
+font-size: 16px !important;
+}
+
+
+
+
+    </style>
+
+
+    {{-- <script src="{{ asset('/') }}public/admin/assets/js/jquery-3.5.1.min.js"></script> --}}
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <link rel="stylesheet" href="https://parsleyjs.org/src/parsley.css">
+    <link href='https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/ui-lightness/jquery-ui.css'rel='stylesheet'>
+<script src="{{ asset('/')}}public/parsely1.js"></script>
+
+<style>
+
+.parsley-required{
+
+    margin-top:10px;
+}
+
+.box
+
+{
+
+ width:100%;
+
+ max-width:600px;
+
+ background-color:#f9f9f9;
+
+ border:1px solid #ccc;
+
+ border-radius:5px;
+
+ padding:16px;
+
+ margin:0 auto;
+
+}
+
+input.parsley-success,
+
+select.parsley-success,
+
+textarea.parsley-success {
+
+  color: #468847;
+
+  background-color: #DFF0D8;
+
+  border: 1px solid #D6E9C6;
+
+}
+
+input.parsley-error,
+
+select.parsley-error,
+
+textarea.parsley-error {
+
+  color: #B94A48;
+
+  background-color: #F2DEDE;
+
+  border: 1px solid #EED3D7;
+
+}
+
+
+.parsley-errors-list {
+
+  margin: 2px 0 3px;
+
+  padding: 0;
+
+  list-style-type: none;
+
+  font-size: 0.9em;
+
+  line-height: 0.9em;
+
+  opacity: 0;
+
+
+  transition: all .3s ease-in;
+
+  -o-transition: all .3s ease-in;
+
+  -moz-transition: all .3s ease-in;
+
+  -webkit-transition: all .3s ease-in;
+
+}
+
+
+.parsley-errors-list.filled {
+
+  opacity: 1;
+
+}
+
+
+
+.error,.parsley-type, .parsley-required, .parsley-equalto, .parsley-pattern, .parsley-length{
+
+ color:#ff0000;
+
+}
+
+
+
+</style>
 </head>
 <body>
 
@@ -37,8 +175,6 @@
     <section class="page_top_section">
         <div class="container">
             <div class="page-header my-auto">
-                <h3>Interworld Shipping
-                    Hospitality Overseas Limited</h3>
                 <h2>CV Login</h2>
             </div>
         </div>
@@ -64,7 +200,7 @@
                                         You'll receive an email when you register, and then again once a job comes
                                         up that you would be interested in. </p>
                                 </div>
-                                <form action="{{ route('jobSeekerPartTwoPost') }}" method="post" enctype="multipart/form-data">
+                                <form action="{{ route('jobSeekerPartTwoPost') }}" method="post" enctype="multipart/form-data" id="form" data-parsley-validate="">
                                     @csrf
                                     <input type="hidden" value="{{ $decode }}" name="id">
                                     <div class="form_header mb-3">
@@ -75,19 +211,19 @@
 
                                     <div class="mb-3">
                                         <label for="" class="form-label">First Name</label>
-                                        <input class="form-control" name="first_name" type="text">
+                                        <input required class="form-control" name="first_name" type="text">
                                     </div>
                                     <div class="mb-3">
                                         <label for="" class="form-label">Last Name</label>
-                                        <input class="form-control" name="last_name" type="text">
+                                        <input required class="form-control" name="last_name" type="text">
                                     </div>
                                     <div class="mb-3">
                                         <label for="" class="form-label">Email Address</label>
-                                        <input class="form-control" name="email_address" type="email">
+                                        <input required class="form-control" name="email_address" type="email">
                                     </div>
                                     <div class="mb-3">
                                         <label for="" class="form-label">Phone Number</label>
-                                        <input class="form-control" name="phone" id="phone" type="tel" name="phone">
+                                        <input required class="form-control" name="phone" id="phone" type="tel" name="phone">
                                     </div>
 
 
@@ -99,13 +235,13 @@
                                     <div class="mb-3">
                                         <label for="" class="form-label">Resume / CV </label>
                                         <small>Accepted file formats are .pdf and .docx </small>
-                                        <input name="cv" class="form-control" accept=".pdf" type="file">
+                                        <input required name="cv" class="form-control" accept=".pdf" type="file">
                                     </div>
                                     <div class="mb-3">
                                         <label for="" class="form-label">Personal Summary </label>
                                         <small>This section is optional. Use it to tell us a little more about
                                             yourself. </small>
-                                        <textarea name="personal_summary" class="form-control" id="" rows="4"></textarea>
+                                        <textarea required name="personal_summary" class="form-control" id="" rows="4"></textarea>
                                     </div>
 
                                     <div class="form_header mb-3 mt-5">
@@ -115,7 +251,7 @@
 
                                     <div class="mb-3">
                                         <label for="" class="form-label">Teams</label>
-                                        <select name="team" class="form-select" aria-label="Default select example">
+                                        <select required name="team" class="form-select" aria-label="Default select example">
                                             <option value="">Select here ...</option>
                                             <option value="Beverage">Beverage</option>
                                             <option value="Guest service">Guest service</option>
@@ -132,7 +268,7 @@
                                     <div class="mb-3">
                                         <label for="" class="form-label">Do you currently work, or have you ever worked,
                                             for The Ritz-Carlton brand? </label>
-                                        <select name="ritz_carlton_brand_work" class="form-select" aria-label="Default select example">
+                                        <select required name="ritz_carlton_brand_work" class="form-select" aria-label="Default select example">
                                             <option value="">Select here ...</option>
                                             <option value="Yes, I currently work for The Ritz-Carlton.">Yes, I currently work for The Ritz-Carlton.</option>
                                             <option value="Yes, I currently work for The Ritz-Carlton on a J-1 visa.">Yes, I currently work for The Ritz-Carlton on a J-1 visa.</option>
@@ -148,7 +284,7 @@
                                     <div class="mb-3">
                                         <label for="" class="form-label">Do you currently hold a valid Schengen
                                             visa? </label>
-                                        <select name="valid_schengen_visa" class="form-select" aria-label="Default select example">
+                                        <select required name="valid_schengen_visa" class="form-select" aria-label="Default select example">
                                             <option value="">Select here ...</option>
                                             <option value="yes">Yes</option>
                                             <option value="no">NO</option>
@@ -172,7 +308,7 @@
                                         <div class="col-6">
                                             <div class="mb-3">
                                                 <label for="" class="form-label">Gender </label>
-                                                <select name="gender" class="form-select" aria-label="Default select example">
+                                                <select required name="gender" class="form-select" aria-label="Default select example">
                                                     <option value="">Select here ...</option>
                                                     <option value="Female">Female</option>
                                                     <option value="Male">Male</option>
@@ -184,7 +320,7 @@
                                         <div class="col-6">
                                             <div class="mb-3">
                                                 <label for="" class="form-label">Gender Identity </label>
-                                                <select name="gender_identity" class="form-select" aria-label="Default select example">
+                                                <select required name="gender_identity" class="form-select" aria-label="Default select example">
                                                     <option value="">Select here ...</option>
                                                     <option value="Female">Female</option>
                                                     <option value="Male">Male</option>
@@ -197,7 +333,7 @@
                                         <div class="col-6">
                                             <div class="mb-3">
                                                 <label for="" class="form-label">Nationality </label>
-                                                <select name="nationality" class="form-select" aria-label="Default select example">
+                                                <select required name="nationality" class="form-select" aria-label="Default select example">
                                                     <option value="">Select here ...</option>
                                                     <option value="Bangladesh">Bangladesh</option>
                                                     <option value="Indian">Indian</option>
@@ -221,7 +357,7 @@
                                         <div class="col-6">
                                             <div class="mb-3">
                                                 <label for="" class="form-label">Marital Status </label>
-                                                <select name="martial_status" class="form-select" aria-label="Default select example">
+                                                <select required name="martial_status" class="form-select" aria-label="Default select example">
                                                     <option selected>Select here ...</option>
                                                     <option value="Single">Single</option>
                                                     <option value="Married">Married</option>
@@ -233,7 +369,7 @@
                                         <div class="col-6">
                                             <div class="mb-3">
                                                 <label for="" class="form-label">Age Bracket </label>
-                                                <select name="age_bracket" class="form-select" aria-label="Default select example">
+                                                <select required name="age_bracket" class="form-select" aria-label="Default select example">
                                                     <option value="">Select here ...</option>
                                                     <option value="Under 18 years">Under 18 years</option>
                                                     <option value="18-20 years">18-20 years</option>
@@ -254,7 +390,7 @@
                                         <div class="col-6">
                                             <div class="mb-3">
                                                 <label for="" class="form-label">Disability </label>
-                                                <select name="disability" class="form-select" aria-label="Default select example">
+                                                <select required name="disability" class="form-select" aria-label="Default select example">
                                                     <option value="">Select here ...</option>
                                                     <option value="I have a disability">I have a disability</option>
                                                     <option value="I do not have a disability">I do not have a disability</option>
@@ -265,7 +401,7 @@
                                         <div class="col-6">
                                             <div class="mb-3">
                                                 <label for="" class="form-label">Veteran Status </label>
-                                                <select name="veteran_status" class="form-select" aria-label="Default select example">
+                                                <select required name="veteran_status" class="form-select" aria-label="Default select example">
                                                     <option value="">Select here ...</option>
                                                     <option value="Active Wartime or Combat Badge veteran">Active Wartime or Combat Badge veteran
                                                     </option>
@@ -283,7 +419,7 @@
                                         <div class="col-6">
                                             <div class="mb-3">
                                                 <label for="" class="form-label">Preferred Pronouns </label>
-                                                <select name="preferred_pronouns" class="form-select" aria-label="Default select example">
+                                                <select required name="preferred_pronouns" class="form-select" aria-label="Default select example">
                                                     <option value="">Select here ...</option>
                                                     <option value="She/Her/Hers">She/Her/Hers</option>
                                                     <option value="He/Him/His">He/Him/His</option>
@@ -361,8 +497,8 @@
 
 <!-- ======= Footer ======= -->
 @include('front.include.footer')
-
-<script src="{{asset('/')}}public/front/assets/js/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+{{-- <script src="{{asset('/')}}public/front/assets/js/jquery-3.5.1.min.js"></script> --}}
 <script src="{{asset('/')}}public/front/assets/js/navik.menu.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>

@@ -34,7 +34,6 @@
     <section class="page_top_section">
         <div class="container">
             <div class="page-header my-auto">
-                <h3>Interworld Shipping Overseas Limited</h3>
                 <h2>Hotel & Resorts Recruitment</h2>
             </div>
         </div>
@@ -46,13 +45,20 @@
 
         <div class="container pt-4">
             <div class="section-title">
-                <h2>Recruitment</h2>
-                <p>ClassNK does periodically require the services highly qualified and experienced surveyors in worldwide offices. Currently we are recruiting following positions. For further details, please contact designated office to enquire directly.</p>
+                <h2>Hotel & Resort</h2>
+                <p class="text-white">
+                    Hotel professionals, with their distinct vocation, commit to providing superior
+services and memorable experiences for their guests. As they journey through
+diverse locations, they foster enduring bonds with their coworkers. In this field,
+they skillfully maneuver the intricacies of maintaining high service standards
+amidst the dynamic nature of the hospitality sector, which can be both gratifying
+and challenging.
+                </p>
             </div>
 
             <div class="row mt-4">
                 <div class="col-lg-12 ">
-                    <table class="table table-bordered">
+                    <table class="table table-bordered text-white">
                         <thead>
                         <tr>
                             <th scope="col">Location</th>

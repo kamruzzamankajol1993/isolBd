@@ -34,7 +34,6 @@
     <section class="page_top_section">
         <div class="container">
             <div class="page-header my-auto">
-                <h3>Interworld Shipping Overseas Limited</h3>
                 <h2>Merchent Navy Recruitment</h2>
             </div>
         </div>
@@ -46,13 +45,16 @@
 
         <div class="container pt-4">
             <div class="section-title">
-                <h2>Recruitment</h2>
-                <p>ClassNK does periodically require the services highly qualified and experienced surveyors in worldwide offices. Currently we are recruiting following positions. For further details, please contact designated office to enquire directly.</p>
+                <h2>Merchent Navy</h2>
+                <p class="text-white">In the Merchant Navy, professionals enjoy diverse maritime adventures. They
+transport cargo and passengers, forming connections with diverse cultures. The
+job offers challenges, yet rewards with breathtaking sights and unique
+experiences on various vessels.</p>
             </div>
 
             <div class="row mt-4">
                 <div class="col-lg-12 ">
-                    <table class="table table-bordered">
+                    <table class="table table-bordered text-white">
                         <thead>
                         <tr>
                             <th scope="col">Location</th>

@@ -34,7 +34,6 @@
     <section class="page_top_section">
         <div class="container">
             <div class="page-header my-auto">
-                <h3>Interworld Shipping Overseas Limited</h3>
                 <h2>Offshore Recruitment</h2>
             </div>
         </div>
@@ -46,13 +45,16 @@
 
         <div class="container pt-4">
             <div class="section-title">
-                <h2>Recruitment</h2>
-                <p>ClassNK does periodically require the services highly qualified and experienced surveyors in worldwide offices. Currently we are recruiting following positions. For further details, please contact designated office to enquire directly.</p>
+                <h2>Offshore</h2>
+                <p class="text-white">Offshore refers to activities, operations, or locations that are beyond the
+immediate coastline or territorial waters of a country. In various industries,
+offshore operations play a significant role in expanding businesses, accessing new
+markets, and exploring untapped resources. Key aspects of offshore involve.</p>
             </div>
 
             <div class="row mt-4">
                 <div class="col-lg-12 ">
-                    <table class="table table-bordered">
+                    <table class="table table-bordered text-white">
                         <thead>
                         <tr>
                             <th scope="col">Location</th>

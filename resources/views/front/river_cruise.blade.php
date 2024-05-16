@@ -34,7 +34,6 @@
     <section class="page_top_section">
         <div class="container">
             <div class="page-header my-auto">
-                <h3>Interworld Shipping Overseas Limited</h3>
                 <h2>River Cruise Recruitment</h2>
             </div>
         </div>
@@ -46,13 +45,20 @@
 
         <div class="container pt-4">
             <div class="section-title">
-                <h2>Recruitment</h2>
-                <p>ClassNK does periodically require the services highly qualified and experienced surveyors in worldwide offices. Currently we are recruiting following positions. For further details, please contact designated office to enquire directly.</p>
+                <h2>River Cruise</h2>
+                <p class="text-white">
+                    Cruise journeys, Megayacht adventures, or river cruises offer more than just jobs;
+they transform into unique lifestyles connected to a diverse global community.
+Traveling across various destinations fosters lasting friendships with crew
+members. Balancing exceptional service to passengers while sailing through vast
+seas or winding rivers can be both rewarding and demanding, reflecting the
+nature of the unpredictable maritime world.
+                </p>
             </div>
 
             <div class="row mt-4">
                 <div class="col-lg-12 ">
-                    <table class="table table-bordered">
+                    <table class="table table-bordered text-white">
                         <thead>
                         <tr>
                             <th scope="col">Location</th>

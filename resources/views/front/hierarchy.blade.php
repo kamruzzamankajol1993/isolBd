@@ -34,7 +34,6 @@
     <section class="page_top_section">
         <div class="container">
             <div class="page-header my-auto">
-                <h3>Interworld Shipping Overseas Limited</h3>
                 <h2>Hierarchy</h2>
             </div>
         </div>
@@ -84,7 +83,7 @@
                         </li>
                         <li>
                             Physiological needs.
-                            This level denotes the physical accommodations your property delivers – a comfortable
+                            This level denotes the physical accommodations your property delivers  a comfortable
                             night’s sleep, a functioning
                             washroom for proper hygiene, essential beverages like water and sustenance (note that this
                             is different from ‘food’

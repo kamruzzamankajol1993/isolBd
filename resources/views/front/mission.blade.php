@@ -34,8 +34,7 @@
     <section class="page_top_section">
         <div class="container">
             <div class="page-header my-auto">
-                <h3>Interworld Shipping Overseas Limited</h3>
-                <h2>Mission</h2>
+                <h2>Our Mission</h2>
             </div>
         </div>
     </section>
@@ -46,15 +45,38 @@
 
         <div class="container pt-4">
             <div class="row ">
-                <div class="col-lg-12 d-flex flex-column justify-content-center inquiry-content">
-                    <h2>Our Mission</h2>
+                <div class="col-lg-12 ">
+                    <div class="card-body">
+                        <img src="{{ asset('/') }}public/front/assets/img/Mission_1.png" style="width:100%;" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-12 mt-5 d-flex flex-column justify-content-center inquiry-content">
+                    <h2>Our mission is centered around key objectives:</h2>
 
 
                     <div class="mission_statement">
                         <ul>
-                            <li>To be the finest provider of Seafarers to the Global Maritime Industry and ensure
-                                the highest quality, healthcare, safety and work environment.</li>
-                            <li>To supply highly trained crew work force with professionalism and integrity.</li>
+                            <li>Our primary objective is to become the leading provider of highly skilled, ISOL seafarers within the
+global maritime sector, emphasizing optimal health, safety, and work environment standards. We are
+committed to offering ISOL seafarers who not only demonstrate necessary expertise but also
+prioritize the well-being of themselves and their colleagues. By concentrating on these vital aspects,
+we aim to revolutionize industry benchmarks and contribute to a more secure, health-conscious, and
+collaborative work environment for all seafarers.</li>
+                            <li>
+                                We are dedicated to supplying a highly professional and well-trained ISOL crew workforce, upholding
+integrity in our operations. This commitment involves consistently investing in the ongoing
+education, training, and development of our ISOL seafarers, ensuring they are well-versed in cutting-
+edge knowledge and techniques. By doing so, we strive to provide clients with a highly skilled and
+dedicated ISOL workforce that maintains the highest standards of professionalism and integrity,
+fostering long-lasting relationships built on trust and mutual respect.
+                            </li>
+                            <li>
+                                As an industry leader in delivering exceptional ISOL seafarers for the global maritime sector, we
+prioritize the well-being and safety of our ISOL workforce while supplying a highly professional crew.
+We achieve this by focusing on quality assurance, health and safety protocols, and fostering a
+supportive work environment, consistently investing in our ISOL seafarers&#39; continuous education,
+training, and development, and nurturing strong relationships based on trust and mutual respect.
+                            </li>
                         </ul>
                     </div>
 

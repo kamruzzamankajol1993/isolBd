@@ -34,7 +34,7 @@
     <section class="page_top_section">
         <div class="container">
             <div class="page-header my-auto">
-                <h2>Crew Login</h2>
+                <h2>Check Email</h2>
             </div>
         </div>
     </section>
@@ -62,16 +62,17 @@
                 <div class="col-lg-7 col-md-7 col-sm-12 col-12">
                     <div class="card">
                         <div class="card-header">
-                            Returning Visitor
-                            @include('flash_message')
+                            Forget Password
                         </div>
                         <div class="card-body">
-                            <p class="card-title mb-3">Sign in here to review the status of your application, apply for a different job, or update your information.</p>
-                            <form action="">
+                            <p class="card-title mb-3">Check Mail For Changing Password.</p>
+                            <form id="form" class="theme-form login-form" action="{{route('checkMailPost')}}" method="post">
+                                @csrf
+                                @include('flash_message')
                                 <div class="form-group row mb-3">
                                     <label class="form-label col-12">Email Address</label>
                                     <div class="col-sm-11">
-                                        <input type="Email" class="form-control" id="" placeholder="Email">
+                                        <input type="email" name="email" class="form-control" id="emailAddress" placeholder="Email">
                                     </div>
                                     <div class="col-sm-1 my-auto">
                                         <img src="{{asset('/')}}public/front/assets/img/asterisk-black-star-shape.png" class="img-fluid crew_reg_icon" alt="">
@@ -79,26 +80,32 @@
 
 
                                 </div>
-                                <div class="form-group row mb-3">
-                                    <label class="form-label col-12">Password</label>
-                                    <div class="col-sm-11">
-                                    <input type="password" class="form-control" id="password" placeholder="Password">
-                                    </div>
-                                    <div class="col-sm-1 my-auto">
-                                        <img src="{{asset('/')}}public/front/assets/img/asterisk-black-star-shape.png" class="img-fluid crew_reg_icon" alt="">
-                                    </div>
-                                </div>
+                                
+                                 <div id="finalValueHtml">
+                                     
+                                 </div>
+                                <!--<div class="form-group row mb-3">-->
+                                <!--    <label class="form-label col-12">Password</label>-->
+                                <!--    <div class="col-sm-11">-->
+                                <!--    <input type="password" class="form-control" id="" placeholder="Password">-->
+                                <!--    </div>-->
+                                <!--    <div class="col-sm-1 my-auto">-->
+                                <!--        <img src="{{asset('/')}}public/front/assets/img/asterisk-black-star-shape.png" class="img-fluid crew_reg_icon" alt="">-->
+                                <!--    </div>-->
+                                <!--</div>-->
 
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" id="checkbox1" value="option1" >
-                                    <label class="form-check-label" for="checkbox1" onclick="myFunction()">See Password</label>
-                                </div>
-                            </form>
-                            <div class="links">
+                                <!--<div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="" value="option1">
+                                    <label class="form-check-label" for="">Remember me</label>
+                                </div>-->
+                          
+                            <!--<div class="links">
                                 <a href="{{route('forgetPassword')}}">I have forgotten my password</a>
-                            </div>
+                            </div>-->
                             <hr style="height:1px;background-color: #b34e07;">
-                            <a href="#" class="btn btn-secondary">Sign In</a>
+                            <button type="submit" class="btn btn-secondary" id="finalValue">Send Email</button>
+                         </form>
+                       
                         </div>
                     </div>
                 </div>
@@ -130,15 +137,35 @@
 
 <script src="{{asset('/')}}public/front/assets/js/jquery-3.5.1.min.js"></script>
 <script src="{{asset('/')}}public/front/assets/js/navik.menu.js"></script>
+
 <script>
-        function myFunction() {
-          var x = document.getElementById("password");
-          if (x.type === "password") {
-            x.type = "text";
-          } else {
-            x.type = "password";
-          }
+    $(document).ready(function () {
+        $("#emailAddress").keyup(function () {
+            var mainId = $(this).val();
+            //alert(mainId);
+
+            $.ajax({
+        url: "{{ route('checkMailForPassword') }}",
+        method: 'GET',
+        data: {mainId:mainId},
+        success: function(data) {
+
+            //alert(data);
+
+         if(data == 0){
+            $('#finalValueHtml').html('email not available');
+            $('#finalValue').attr('disabled','disabled');
+
+         }else{
+            $('#finalValue').removeAttr('disabled');
+            $('#finalValueHtml').html('email available');
+
+         }
         }
-        </script>
+    });
+        });
+    });
+</script>
+
 </body>
 </html>

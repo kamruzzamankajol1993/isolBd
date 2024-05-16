@@ -28,8 +28,10 @@ use App\Http\Controllers\Admin\JobdepartmentController;
 use App\Http\Controllers\Admin\JobtitleController;
 use App\Http\Controllers\Admin\JobcategoryController;
 use App\Http\Controllers\Front\FrontController;
+use App\Http\Controllers\Front\SearchController;
 use App\Http\Controllers\Admin\PartnerWithUsController;
 use App\Http\Controllers\Admin\JobSeekerController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -41,6 +43,15 @@ use App\Http\Controllers\Admin\JobSeekerController;
 |
 */
 
+
+
+Route::get('/mainSearch', [SearchController::class, 'mainSearch'])->name('mainSearch');
+Route::get('/jobPageSearch', [SearchController::class, 'jobPageSearch'])->name('jobPageSearch');
+
+Route::get('/job_category_wise/{id}', [FrontController::class, 'job_category_wise'])->name('job_category_wise');
+
+
+Route::get('/job_details/{slug}', [FrontController::class, 'job_details'])->name('job_details');
 Route::get('/', [FrontController::class, 'index'])->name('index');
 //CV Login
 //Route::get('/cv_login_form',[LoginController::class,'cv_login_form'])->name('cv_login_form');
@@ -51,6 +62,11 @@ Route::get('/job_search_page',[LoginController::class,'job_search_page'])->name(
 Route::get('/get_dp_name_from_cat', [FrontController::class, 'get_dp_name_from_cat'])->name('get_dp_name_from_cat');
 Route::get('/get_title_name_from_dp', [FrontController::class, 'get_title_name_from_dp'])->name('get_title_name_from_dp');
 
+
+Route::get('/terms_condition', [FrontController::class, 'terms_condition'])->name('terms_condition');
+Route::get('/privacy_policy', [FrontController::class, 'privacy_policy'])->name('privacy_policy');
+Route::get('/recruitment', [FrontController::class, 'recruitment'])->name('recruitment');
+Route::get('/fraud_warning', [FrontController::class, 'fraud_warning'])->name('fraud_warning');
 
 Route::get('/how_it_work', [FrontController::class, 'how_it_work'])->name('how_it_work');
 Route::get('/mission', [FrontController::class, 'mission'])->name('mission');
@@ -110,6 +126,13 @@ Route::get('/clear', function() {
 });
 
 Auth::routes();
+
+        Route::post('/checkMailPost',[AdminsController::class, 'checkMailPost'])->name('checkMailPost');
+        Route::get('/forgetPassword',[AdminsController::class, 'forgetPassword'])->name('forgetPassword');
+        Route::get('/checkMailForPassword',[AdminsController::class, 'checkMailForPassword'])->name('checkMailForPassword');
+        Route::get('/newEmailNotify', [AdminsController::class, 'newEmailNotify'])->name('newEmailNotify');
+        Route::post('/postPasswordChange',[AdminsController::class, 'postPasswordChange'])->name('postPasswordChange');
+        Route::get('/accountPasswordChange/{id}', [AdminsController::class, 'accountPasswordChange'])->name('accountPasswordChange');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
@@ -315,6 +338,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('admins/edit/{id}', [AdminsController::class, 'edit'])->name('admin.admins.edit');
     Route::post('admins/update', [AdminsController::class, 'update'])->name('admin.admins.update');
     Route::delete('admins/delete/{id}', [AdminsController::class, 'delete'])->name('admin.admins.delete');
+
 
 
     Route::get('profile', [ProfileController::class, 'index'])->name('admin.profile');

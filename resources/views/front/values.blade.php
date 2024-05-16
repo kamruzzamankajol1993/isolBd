@@ -34,8 +34,7 @@
     <section class="page_top_section">
         <div class="container">
             <div class="page-header my-auto">
-                <h3>Interworld Shipping Overseas Limited</h3>
-                <h2>Values</h2>
+                <h2>Our Values</h2>
             </div>
         </div>
     </section>
@@ -46,74 +45,93 @@
 
         <div class="container pt-4">
             <div class="row ">
-               <div class="col-lg-12 d-flex flex-column justify-content-center inquiry-content">
+                <div class="col-lg-12 ">
+                    <div class="card-body">
+                        <img src="{{ asset('/') }}public/front/assets/img/Value_1.jpeg" style="width:100%;" alt="">
+                    </div>
+                </div>
+               <div class="col-lg-12 mt-5 d-flex flex-column justify-content-center inquiry-content">
                     <div class="section-title">
-                        <h2>Our Values</h2>
+                        <h2>Our values encompass two primary aspects:</h2>
                     </div>
                     <div class="mission_statement">
                         <ul>
-                            <li>It is known and been said that Bangladesh seafarers are some of the best in the
-                                world.
+                            <li>
+                                ISOL values the exceptional skills and professionalism of Bangladeshi seafarers, showcasing their
+talents globally. By upholding our nation&#39;s maritime workforce reputation, we contribute to industry
+standards and worldwide recognition of Bangladeshi seafarers. Our dedication to clients involves
+providing comprehensive support, resources, and expertise for easy access to skilled seafarers,
+fostering strong relationships and industry growth.
                             </li>
-                            <li>We will help you find your seafarer requirements.</li>
+                            <li>
+                                To enhance our commitment to the Global Marine Industry and Cruise Liner sector, ISOL&#39;s core
+values revolve around two primary aspects: promoting Bangladeshi seafarers&#39; excellence and offering
+unwavering client support. By focusing on these values, we maintain our leading position in the
+industry and nurture the professionalism of Bangladeshi seafarers.
+                            </li>
+                            <li>
+                                ISOL&#39;s dedication to clients includes helping them fulfill seafarer requirements through
+comprehensive support, resources, and expertise. This commitment ensures easy access to skilled
+seafarers, fostering strong relationships and contributing to the maritime industry&#39;s growth.
+Additionally, ISOL invests in workforce development, promoting collaboration and innovation, and
+engaging with educational institutions and industry associations to attract future talent in the sector.
+                            </li>
                         </ul>
                     </div>
                     <div class="section-title mt-4">
                         <h2>Customer Focus:</h2>
-                        <p>Our valued client(s) is / are our key to success, thus we have to ensure that each client(s) who
-                            seek our service(s) is/are treated with respect, courtesy and sensitivity. We are committed to
-                            meeting the needs of our client(s), and we constantly focus on giving top priority, service and
-                            satisfaction.</p>
+                        <p>Our esteemed clients are the cornerstone of our success. We pledge to treat every client with respect,
+courtesy, and empathy. We are committed to meeting your needs and prioritizing your satisfaction.</p>
                         <h4 style="text-decoration: underline; padding-top: 15px;">This is what we do and advise for an applicant:</h4>
-                        <p>We are ready to…..</p>
+                        <p>We are here to support you throughout your journey:</p>
                         <div class="row mt-5">
                             <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
                                 <div class="mission_statement custom_height_value">
                                     <h4>Help</h4>
-                                    <p>We are available 24/7 to attend, listen to and understand our client’s needs and
+                                    <p style="text-align:justify">Our team is available 24/7 to attend to your needs, listen, and understand your
 
-                                        expectations.</p>
+expectations.</p>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
                                 <div class="mission_statement custom_height_value">
                                     <h4>Assist</h4>
-                                    <p>Our competent HR Manager will assess the crews’ CV’s and provide assistance and
+                                    <p style="text-align:justify">Our competent HR Manager will meticulously evaluate crew CVs and provide guidance on
 
-                                        recommend steps on how to get hired.</p>
+the best steps to secure employment.</p>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
                                 <div class="mission_statement custom_height_value">
                                     <h4>Support</h4>
-                                    <p>We not only provide you with leads on latest cruise ship jobs, but also valuable
+                                    <p style="text-align:justify">We not only provide you with leads on latest cruise ship jobs, but also valuable
 
-                                        information and support for job seekers.</p>
+information and support for job seekers.</p>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
                                 <div class="mission_statement custom_height_value">
                                     <h4>Offer Tips</h4>
-                                    <p>The best way to get a job is to do your own research and find out every possible
-                                        detail about working on a cruise ship by visiting their websites and then decide if
-                                        you can adapt to the job.</p>
+                                    <p style="text-align:justify">We go beyond by offering you the latest cruise ship job leads and valuable information to
+
+support your job search.</p>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
                                 <div class="mission_statement custom_height_value">
                                     <h4>Guide</h4>
-                                    <p>After visiting our cruise liner website and if you find something suitable, ensure to
-                                        update your CV to demonstrate your suitability for the job. Recruiters have only a
-                                        few seconds to look at your CV so make sure you prepare a clear, brief, informative
-                                        and well styled CV.</p>
+                                    <p style="text-align:justify">To increase your chances of success, we advise you to conduct thorough research on
+working in the cruise ship industry, adapt to the job requirements, and present a well-
+crafted</p>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
                                 <div class="mission_statement custom_height_value">
                                     <h4>Advice</h4>
-                                    <p>Do not apply for positions if you have no or little previous experience; and do not
-                                        apply for jobs which require qualifications you don&#39;t hold – you will be only wasting
-                                        your time and the recruiter’s time.</p>
+                                    <p style="text-align:justify">After exploring our cruise liner website and finding a suitable opportunity, ensure to
+update your CV to showcase your suitability for the role. Remember, recruiters often
+make quick decisions based on your CV, so make it clear, concise, informative, and visually
+appealing</p>
                                 </div>
                             </div>
                         </div>

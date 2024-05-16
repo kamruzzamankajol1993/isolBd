@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use App\Models\Admin;
+use Mail;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
@@ -33,6 +34,29 @@ class AdminsController extends Controller
         $roles  = Role::all();
         return view('backend.admins.index', compact('users','roles'));
     }
+    
+    
+    public function checkMailForPassword(Request $request){
+
+        $email = $request->mainId;
+        $checkMail = Admin::where('email',$email)->count();
+        return $checkMail;
+    }
+
+
+    public function checkMailPost(Request $request){
+
+        Mail::send('email.passwordChangeEmail', ['id' =>$request->email], function($message) use($request){
+            $message->to($request->email);
+            $message->subject('Password Change Email');
+        });
+
+
+        return redirect()->route('crew_login')->with('success','Email Send successfully!');
+
+
+    }
+    
 
     /**
      * Show the form for creating a new resource.
@@ -46,6 +70,11 @@ class AdminsController extends Controller
         }
         $roles  = Role::all();
         return view('backend.admins.create', compact('roles'));
+    }
+    
+     public function forgetPassword(){
+        
+        return view('backend.admins.forgetPassword');
     }
 
     /**

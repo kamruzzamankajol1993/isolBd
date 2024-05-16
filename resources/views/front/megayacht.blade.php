@@ -34,8 +34,7 @@
     <section class="page_top_section">
         <div class="container">
             <div class="page-header my-auto">
-                <h3>Interworld Shipping Overseas Limited</h3>
-                <h2>Mega-Yacht Recruitment</h2>
+                <h2>Mega Yacht Recruitment</h2>
             </div>
         </div>
     </section>
@@ -46,13 +45,17 @@
 
         <div class="container pt-4">
             <div class="section-title">
-                <h2>Recruitment</h2>
-                <p>ClassNK does periodically require the services highly qualified and experienced surveyors in worldwide offices. Currently we are recruiting following positions. For further details, please contact designated office to enquire directly.</p>
+                <h2>Mega Yacht</h2>
+                <p class="text-white">Cruise and Megayacht journeys transform work into distinctive lifestyles,
+connected to a diverse global community. Traveling through various destinations
+forms lasting bonds with crew members. Balancing exceptional service to
+passengers while sailing vast seas can be both rewarding and demanding,
+reflecting the unpredictable nature of the maritime world.</p>
             </div>
 
             <div class="row mt-4">
                 <div class="col-lg-12 ">
-                    <table class="table table-bordered">
+                    <table class="table table-bordered text-white">
                         <thead>
                         <tr>
                             <th scope="col">Location</th>
