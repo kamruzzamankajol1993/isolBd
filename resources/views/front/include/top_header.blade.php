@@ -77,17 +77,17 @@
                     <li ><a href="#" class="other_button">Insight</a>
                         <ul>
                             <li><a href="{{ route('event') }}">Event</a></li>
-                            <li><a href="{{ route('blog') }}">Blog</a></li>
-                            <li><a href="#">Newsletter</a></li>
+                            <li><a target="_blank" href="{{ $ins_blog }}">Blog</a></li>
+                            <li><a target="_blank" href="{{route('newsLetterPdf')}}">Newsletter</a></li>
                             <li><a href="{{ route('faq') }}">FAQ</a></li>
                         </ul>
                     </li>
                     <li ><a href="#" class="other_button">Contact</a>
                         <ul>
-                            <li><a href="#">Interview Appointment</a></li>
-                            <li><a href="#">Enquiry</a></li>
-                            <li><a href="#">Complain</a></li>
-                            <li><a href="#">Survey</a></li>
+                            <li><a href="{{ route('interview_appointment_meeting_schedule') }}">Interview Appointment</a></li>
+                            <li><a href="{{ route('Inquiry') }}">Enquiry</a></li>
+                            <li><a href="{{ route('complain') }}">Complain</a></li>
+                            <li><a href="{{ route('survey') }}">Survey</a></li>
                         </ul>
                     </li>
                     <li><a href="{{ route('crew_login') }}" class="other_button">Hire Employee</a></li>

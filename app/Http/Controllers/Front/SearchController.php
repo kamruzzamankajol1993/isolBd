@@ -40,7 +40,7 @@ class SearchController extends Controller
             'headline_list1',
             'headline_list2',
             'locationList',
-            'contractList',));
+            'contractList'));
 
         }elseif(empty($request->job_category) && empty($request->job_title) && empty($request->job_area) && empty($request->job_duration)){
 
@@ -55,7 +55,7 @@ class SearchController extends Controller
             'headline_list1',
             'headline_list2',
             'locationList',
-            'contractList',));
+            'contractList'));
 
         }elseif(empty($request->job_category) && empty($request->job_department) && empty($request->job_area) && empty($request->job_duration)){
 
@@ -70,7 +70,7 @@ class SearchController extends Controller
             'headline_list1',
             'headline_list2',
             'locationList',
-            'contractList',));
+            'contractList'));
 
         }elseif(empty($request->job_category) && empty($request->job_department) && empty($request->job_title) && empty($request->job_duration)){
 
@@ -84,7 +84,7 @@ class SearchController extends Controller
             'headline_list1',
             'headline_list2',
             'locationList',
-            'contractList',));
+            'contractList'));
 
         }elseif(empty($request->job_category) && empty($request->job_department) && empty($request->job_title) && empty($request->job_area)){
 
@@ -99,7 +99,7 @@ class SearchController extends Controller
             'headline_list1',
             'headline_list2',
             'locationList',
-            'contractList',));
+            'contractList'));
 
         }elseif(empty($request->job_title) && empty($request->job_area) && empty($request->job_duration)){
 
@@ -115,7 +115,7 @@ class SearchController extends Controller
             'headline_list1',
             'headline_list2',
             'locationList',
-            'contractList',));
+            'contractList'));
 
         }elseif(empty($request->job_department) && empty($request->job_area) && empty($request->job_duration)){
 
@@ -131,7 +131,7 @@ class SearchController extends Controller
             'headline_list1',
             'headline_list2',
             'locationList',
-            'contractList',));
+            'contractList'));
 
         }elseif(empty($request->job_department) && empty($request->job_title) && empty($request->job_duration)){
 
@@ -147,7 +147,7 @@ class SearchController extends Controller
             'headline_list1',
             'headline_list2',
             'locationList',
-            'contractList',));
+            'contractList'));
 
         }elseif(empty($request->job_department) && empty($request->job_title) && empty($request->job_area)){
 
@@ -163,7 +163,7 @@ class SearchController extends Controller
             'headline_list1',
             'headline_list2',
             'locationList',
-            'contractList',));
+            'contractList'));
 
         }elseif(empty($request->job_category) && empty($request->job_title) && empty($request->job_area)){
 
@@ -179,7 +179,7 @@ class SearchController extends Controller
             'headline_list1',
             'headline_list2',
             'locationList',
-            'contractList',));
+            'contractList'));
 
         }elseif(empty($request->job_category) && empty($request->job_title) && empty($request->job_duration)){
 
@@ -195,7 +195,7 @@ class SearchController extends Controller
             'headline_list1',
             'headline_list2',
             'locationList',
-            'contractList',));
+            'contractList'));
 
         }elseif(empty($request->job_category) && empty($request->job_area) && empty($request->job_duration)){
 
@@ -211,7 +211,7 @@ class SearchController extends Controller
             'headline_list1',
             'headline_list2',
             'locationList',
-            'contractList',));
+            'contractList'));
 
         }elseif(empty($request->job_category) && empty($request->job_department) && empty($request->job_duration)){
 
@@ -227,7 +227,7 @@ class SearchController extends Controller
             'headline_list1',
             'headline_list2',
             'locationList',
-            'contractList',));
+            'contractList'));
 
         }elseif(empty($request->job_category) && empty($request->job_department) && empty($request->job_area)){
 
@@ -243,7 +243,7 @@ class SearchController extends Controller
             'headline_list1',
             'headline_list2',
             'locationList',
-            'contractList',));
+            'contractList'));
 
         }elseif(empty($request->job_category) && empty($request->job_department) && empty($request->job_title)){
 
@@ -259,7 +259,7 @@ class SearchController extends Controller
             'headline_list1',
             'headline_list2',
             'locationList',
-            'contractList',));
+            'contractList'));
 
         }
         elseif(empty($request->job_category) && empty($request->job_duration)){
@@ -277,7 +277,7 @@ class SearchController extends Controller
             'headline_list1',
             'headline_list2',
             'locationList',
-            'contractList',));
+            'contractList'));
 
         }elseif(empty($request->job_category) && empty($request->job_title)){
 
@@ -294,7 +294,7 @@ class SearchController extends Controller
             'headline_list1',
             'headline_list2',
             'locationList',
-            'contractList',));
+            'contractList'));
 
         }elseif(empty($request->job_category) && empty($request->job_area)){
 
@@ -311,7 +311,7 @@ class SearchController extends Controller
             'headline_list1',
             'headline_list2',
             'locationList',
-            'contractList',));
+            'contractList'));
 
         }elseif(empty($request->job_category) && empty($request->job_duration)){
 
@@ -328,7 +328,7 @@ class SearchController extends Controller
             'headline_list1',
             'headline_list2',
             'locationList',
-            'contractList',));
+            'contractList'));
 
         }elseif(empty($request->job_department) && empty($request->job_duration)){
 
@@ -345,7 +345,7 @@ class SearchController extends Controller
             'headline_list1',
             'headline_list2',
             'locationList',
-            'contractList',));
+            'contractList'));
 
         }elseif(empty($request->job_department) && empty($request->job_title)){
 
@@ -362,7 +362,7 @@ class SearchController extends Controller
             'headline_list1',
             'headline_list2',
             'locationList',
-            'contractList',));
+            'contractList'));
 
         }elseif(empty($request->job_department) && empty($request->job_area)){
 
@@ -379,7 +379,7 @@ class SearchController extends Controller
             'headline_list1',
             'headline_list2',
             'locationList',
-            'contractList',));
+            'contractList'));
 
         }elseif(empty($request->job_title) && empty($request->job_area)){
 
@@ -396,7 +396,7 @@ class SearchController extends Controller
             'headline_list1',
             'headline_list2',
             'locationList',
-            'contractList',));
+            'contractList'));
 
         }elseif(empty($request->job_title) && empty($request->job_duration)){
 
@@ -413,7 +413,7 @@ class SearchController extends Controller
             'headline_list1',
             'headline_list2',
             'locationList',
-            'contractList',));
+            'contractList'));
 
         }elseif(empty($request->job_area) && empty($request->job_duration)){
 
@@ -430,7 +430,7 @@ class SearchController extends Controller
             'headline_list1',
             'headline_list2',
             'locationList',
-            'contractList',));
+            'contractList'));
 
         }elseif(empty($request->job_category)){
 
@@ -448,7 +448,7 @@ class SearchController extends Controller
              'headline_list1',
              'headline_list2',
              'locationList',
-             'contractList',));
+             'contractList'));
 
         }elseif(empty($request->job_department)){
 
@@ -466,7 +466,7 @@ class SearchController extends Controller
             'headline_list1',
             'headline_list2',
             'locationList',
-            'contractList',));
+            'contractList'));
 
         }elseif(empty($request->job_title)){
 
@@ -484,7 +484,7 @@ class SearchController extends Controller
             'headline_list1',
             'headline_list2',
             'locationList',
-            'contractList',));
+            'contractList'));
 
         }elseif(empty($request->job_area)){
 
@@ -502,7 +502,7 @@ class SearchController extends Controller
             'headline_list1',
             'headline_list2',
             'locationList',
-            'contractList',));
+            'contractList'));
 
         }elseif(empty($request->job_duration)){
 
@@ -520,7 +520,7 @@ class SearchController extends Controller
             'headline_list1',
             'headline_list2',
             'locationList',
-            'contractList',));
+            'contractList'));
 
         }else{
 
@@ -539,7 +539,7 @@ class SearchController extends Controller
              'headline_list1',
              'headline_list2',
              'locationList',
-             'contractList',));
+             'contractList'));
 
         }
 

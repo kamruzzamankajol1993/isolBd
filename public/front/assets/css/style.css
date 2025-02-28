@@ -134,7 +134,7 @@ a:active {
 .header_text {
     font-size: 50px;
     font-variant: small-caps;
-    color: #243669;
+    color: white;
     font-family: myFirstFont, serif;
     font-weight: bold;
     letter-spacing: 3px;
@@ -2422,7 +2422,7 @@ blockquote.blockstyle:after {
 .down-arrow {
     display: inline-block;
     position: relative;
-    background: #3C9FB4;
+    background: #bf5527;
     padding: 15px 0;
     width: 100%;
     text-align: center;
@@ -2438,7 +2438,7 @@ blockquote.blockstyle:after {
     top: 100%;
     width: 0;
     height: 0;
-    border-top: 10px solid #3C9FB4;
+    border-top: 10px solid #bf5527;
     border-right: 10px solid transparent;
     border-bottom: 0 solid transparent;
     border-left: 10px solid transparent;
@@ -2487,9 +2487,14 @@ blockquote.blockstyle:after {
     text-align: center;
 }
 
+.client_image img
+{
+   max-height: 150px;
+}
+
 .client_text
 {
-    color:white;
+    color:#bf5527;
 }
 
 .client_text p
@@ -2517,7 +2522,7 @@ blockquote.blockstyle:after {
 
 .work_button_box
 {
-    background-color: #3C9FB4;
+    background-color: #bf5527;
     padding: 20px 40px;
     height:100px;
 }
@@ -2532,6 +2537,7 @@ blockquote.blockstyle:after {
 .btn-work
 {
     background-color: #bf221c;
+    border:none !important;
 }
 
 .custom_height_value

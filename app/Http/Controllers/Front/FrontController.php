@@ -10,8 +10,155 @@ use App\Models\Jobcategory;
 use App\Models\PartnerWithUs;
 use App\Models\JobSeeker;
 use DB;
+use Carbon;
+use Response;
 class FrontController extends Controller
 {
+    
+    public function newsLetterPdf(){
+
+
+    $get_file_data = DB::table('demoPdf')->where('id',2)->value('pdffile');
+
+    $file_path = url('public/'.$get_file_data);
+                            $filename  = pathinfo($file_path, PATHINFO_FILENAME);
+
+    $file= public_path('/'). $get_file_data;
+
+    $headers = array(
+              'Content-Type: application/pdf',
+            );
+
+    // return Response::download($file,$filename.'.pdf', $headers);
+
+    return Response::make(file_get_contents($file), 200, [
+        'content-type'=>'application/pdf',
+    ]);
+
+
+   }
+
+
+ public function demoFormat(){
+
+
+    $get_file_data = DB::table('demoPdf')->where('id',1)->value('pdffile');
+
+    $file_path = url('public/'.$get_file_data);
+                            $filename  = pathinfo($file_path, PATHINFO_FILENAME);
+
+    $file= public_path('/'). $get_file_data;
+
+    $headers = array(
+              'Content-Type: application/pdf',
+            );
+
+    // return Response::download($file,$filename.'.pdf', $headers);
+
+    return Response::make(file_get_contents($file), 200, [
+        'content-type'=>'application/pdf',
+    ]);
+
+
+   }
+   
+   
+   public function interview_appointment_meeting_schedulePost(Request $request){
+       
+       
+       if ($request->hasfile('cv')) {
+            $file = $request->file('cv');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extension;
+            $file->move('public/uploads/', $filename);
+            $cv = 'uploads/' . $filename;
+        }else{
+            
+            $cv =0;
+        }
+       
+       
+        DB::table('m_schedules')->insert([
+    'first_name' => $request->first_name,
+    'last_name' => $request->last_name,
+    'mobile_number' => $request->mobile_number,
+    'email_address' => $request->email_address,
+    'msg' => $request->msg,
+    'cv' => $cv,
+    "created_at" =>  \Carbon\Carbon::now(), # new \Datetime()
+            "updated_at" => \Carbon\Carbon::now(),  # new \Datetime()
+    
+]);
+
+  return redirect()->back()->with('success','Submit successfully!');
+       
+   }
+    
+    
+     public function InquiryPost(Request $request){
+        
+        //dd($request->all());
+        
+        DB::table('inquiries')->insert([
+    'first_name' => $request->first_name,
+    'last_name' => $request->last_name,
+    'mobile_number' => $request->mobile_number,
+    'email_address' => $request->email_address,
+    'msg' => $request->msg,
+    "created_at" =>  \Carbon\Carbon::now(), # new \Datetime()
+            "updated_at" => \Carbon\Carbon::now(),  # new \Datetime()
+    
+]);
+
+  return redirect()->back()->with('success','Submit successfully!');
+    }
+    
+    public function complainPost(Request $request){
+        
+        //dd($request->all());
+        
+        DB::table('complains')->insert([
+    'first_name' => $request->first_name,
+    'last_name' => $request->last_name,
+    'mobile_number' => $request->mobile_number,
+    'email_address' => $request->email_address,
+    'subject' => $request->subject,
+    'msg' => $request->msg,
+    "created_at" =>  \Carbon\Carbon::now(), # new \Datetime()
+            "updated_at" => \Carbon\Carbon::now(),  # new \Datetime()
+    
+]);
+
+  return redirect()->back()->with('success','Submit successfully!');
+    }
+    
+    
+    public function surveyPost(Request $request){
+        
+        //dd($request->all());
+        
+        DB::table('surveys')->insert([
+    'employee_status' => $request->employee_status,
+    'duration' => $request->duration,
+    'enjoy_rating' => $request->enjoy_rating,
+    'encourage_rating' => $request->encourage_rating,
+    'teamwork_rating' => $request->teamwork_rating,
+    'respect_rating' => $request->respect_rating,
+    'listen_rating' => $request->listen_rating,
+    'support_rating' => $request->support_rating,
+    'do_not_offer' => $request->do_not_offer,
+    'onBoard' => $request->onBoard,
+    'contract' => $request->contract,
+    'benefit' => implode(",",$request->benefit),
+    'loyal' => implode(",",$request->loyal),
+    'leaving' => implode(",",$request->leaving),
+    "created_at" =>  \Carbon\Carbon::now(), # new \Datetime()
+            "updated_at" => \Carbon\Carbon::now(),  # new \Datetime()
+    
+]);
+
+  return redirect()->back()->with('success','Submit successfully!');
+    }
 
     public function job_category_wise($id){
 
@@ -48,9 +195,27 @@ class FrontController extends Controller
 
     }
 
+    public function interview_appointment_meeting_schedule(){
+         return view('front.interview_appointment_meeting_schedule');
+           }
+           
+    public function complain(){
+         return view('front.complain');
+           }
+           
+   public function Inquiry(){
+         return view('front.Inquiry');
+           }
+           
+    public function survey(){
+         return view('front.survey');
+           }
+           
     public function fraud_warning(){
          return view('front.fraud_warning');
            }
+           
+    
 
    public function privacy_policy(){
          return view('front.privacy_policy');
@@ -353,6 +518,19 @@ public function post_a_job(){
         $save->save();
         return redirect()->route('cv_login_form')->with('success','submit successfully!');
     }
+    
+    public function postEventData(Request $request){
+        $data = array(
+            "event_id" => $request->id,
+            "name" => $request->name,
+            "phone" => $request->phone,
+            "address" => $request->address,
+            "email" => $request->email,
+            "created_at"=> Carbon\Carbon::now(),"updated_at"=> Carbon\Carbon::now());
+DB::table('event_book')->insert($data);
+
+return redirect()->back()->with('success','submit successfully!');
+    }
 
 
 public function crew_cv_searching(){
@@ -372,7 +550,22 @@ public function crew_cv_searching(){
                         return view('front.help24_7');
                         }
                         public function urgent_vacancy(){
-                            return view('front.urgent_vacancy');
+                             $jobListAll = DB::table('jobs')
+        ->where('urgent_vacancy',1)
+        ->where('status',1)->latest()->get();
+        
+        
+        
+        
+        $locationList = DB::table('locations')->get();
+        $contractList = DB::table('contact_types')->get();
+
+        $headline_list = Jobtitle::get();
+        $headline_list2 = Jobdepartment::get();
+        $headline_list1 = Jobcategory::get();
+        
+        
+                            return view('front.urgent_vacancy',compact('headline_list1','headline_list2','headline_list','jobListAll','locationList','contractList'));
                             }
 
                             public function hiring_process(){
@@ -425,7 +618,8 @@ public function crew_cv_searching(){
 
 
                                                                     public function event(){
-                                                                        return view('front.event');
+                                                                        $job_list = DB::table('event')->where('status',1)->latest()->get();
+                                                                        return view('front.event',compact('job_list'));
                                                                         }
 
 

@@ -44,97 +44,103 @@
     <section class="">
 
         <div class="container pt-4">
-            <div class="section-title">
-                <h2>Urgent Vacancy</h2>
-                <p>ClassNK does periodically require the services highly qualified and experienced surveyors in worldwide offices. Currently we are recruiting following positions. For further details, please contact designated office to enquire directly.</p>
-            </div>
+            <div class="card">
+                <div class="card-body custom_form_color">
+                    @include('flash_message')
+                    <form class="" method="get" action="{{ route('jobPageSearch') }}">
+                        <div class="custom_form_div">
+                            <div class="row ">
+                                <div class="col">
+                                    <select class="form-select" id="job_cat" aria-label="Default select example" name="job_category">
+                                        <option value="" selected="">Category</option>
+                                        @foreach($headline_list1 as $headline_lists)
+                                        <option value="{{ $headline_lists->name }}"  >{{ $headline_lists->name }}</option>
+                                        @endforeach
 
-            <div class="row mt-4">
-                <div class="col-lg-12 ">
-                    <table class="table table-bordered text-white">
-                        <thead>
-                        <tr>
-                            <th scope="col">Location</th>
-                            <th scope="col">Position</th>
-                            <th scope="col">Designated Offic</th>
-                            <th scope="col"></th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>Lagos Nigeria, Africa</td>
-                            <td>Ship Surveyor</td>
-                            <td>
-                                Durban Office <br>
-                                Tel: +27-31-3320760 <br>
-                                Email: do@classnk.or.jp
-                            </td>
-                            <td>
-                                <ol>
-                                    <li>Fluent English Speaker</li>
-                                    <li>Permanent resident status holder</li>
-                                    <li>Graduated in naval architecture or
-                                        mechanical engineer, or marine
-                                        engineering.</li>
-                                </ol>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>United Kingdom</td>
-                            <td>Ship Surveyor</td>
-                            <td>
-                                London Office <br>
-                                Tel: +44-20-7628-5102 <br>
-                                Email: ln@classnk.or.jp <br>
-                            </td>
-                            <td>
-                                <ol>
-                                    <li>Fluent English Speaker</li>
-                                    <li>Permanent resident status holder</li>
-                                    <li>Graduated in naval architecture or
-                                        mechanical engineer, or marine
-                                        engineering.</li>
-                                </ol>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Antwerp, Belgium</td>
-                            <td>Ship Surveyor</td>
-                            <td>
-                                Antwerp Office <br>
-                                Tel: +32-3-231-1342 <br>
-                                Email: aw@classnk.or.jp <br>
-                            </td>
-                            <td>
-                                <ol>
-                                    <li>Fluent English Speaker</li>
-                                    <li>Permanent Belgian resident status holder</li>
-                                    <li>Graduated in naval architecture or
-                                        mechanical engineer, or marine
-                                        engineering.</li>
-                                </ol>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Hong Kong, China</td>
-                            <td>Ship Surveyor</td>
-                            <td>
-                                Hong Kong Office <br>
-                                Tel: +852-2517-7023 <br>
-                                Email: hn@classnk.or.jp <br>
-                            </td>
-                            <td>
-                                <ol>
-                                    <li>Fluent English Speaker</li>
-                                    <li>Permanent resident status holder</li>
-                                    <li>Graduated in naval architecture or
-                                        mechanical engineer, or marine
-                                        engineering.</li>
-                                </ol>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
+                                    </select>
+                                </div>
+                                <div class="col">
+                                    <select class="form-select" id="dp_name" aria-label="Default select example" name="job_department">
+                                        <option value="" selected="">Department</option>
+                                        @foreach($headline_list2 as $headline_lists)
+                                        <option value="{{ $headline_lists->name }}"  >{{ $headline_lists->name }}</option>
+                                        @endforeach
+
+                                    </select>
+                                </div>
+                                <div class="col">
+                                    <select class="form-select" id="job_title_name" aria-label="Default select example" name="job_title">
+                                        <option value="" selected="">Job Title</option>
+                                        @foreach($headline_list as $headline_lists)
+                                        <option value="{{ $headline_lists->name }}" >{{ $headline_lists->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="col">
+                                    <select class="form-select" id="job_duration" aria-label="Default select example" name="job_duration">
+                                        <option value="" selected="">Type of Contact</option>
+                                        @foreach($contractList as $headline_lists)
+                                        <option value="{{ $headline_lists->name }}" >{{ $headline_lists->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="col">
+                                    <select class="form-select" id="job_area" aria-label="Default select example" name="job_area">
+                                        <option value="" selected="">Location</option>
+                                        @foreach($locationList as $headline_lists)
+                                        <option value="{{ $headline_lists->name }}" >{{ $headline_lists->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="col-1">
+                                    <div class="d-grid gap-2">
+                                        <button class="btn btn-primary btn-lg" type="submit">Filter</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="">
+                        <div class="vacancies">
+                            <section class="table">
+
+                                @if(count($jobListAll) == 0)
+
+                              <h3> Not Available </h3>
+                                @else
+
+                                @foreach($jobListAll as $jobListAlls)
+                                <div class="container">
+                                    <div>
+                                        <h3 style="display: inline">{{ $jobListAlls->job_title_id }} </h3>
+                                        <p class="posted-date">{{ date('F m, Y', strtotime($jobListAlls->post_date)) }}</p>
+                                    </div>
+
+                                    <div class="left">
+                                        <span>Type of vessel: {{ $jobListAlls->job_category_id }} </span>
+                                        <img src="https://ojcrew.com/wp-content/themes/oj/img/d4_cards.png">
+
+                                        <p>{{ $jobListAlls->salary }}</p>
+                                        <img src="https://ojcrew.com/wp-content/themes/oj/img/d4_flag.png">
+
+                                        <p>{{ $jobListAlls->job_location }}</p>
+                                        <img src="https://ojcrew.com/wp-content/themes/oj/img/d4_clocl.png">
+
+                                        <p>{{ $jobListAlls->job_contract_type }}</p>
+                                    </div>
+                                    <div class="right">
+                                        <a href="{{ route('job_details',$jobListAlls->job_title_slug) }}"
+                                           class="button apply-button float-end">Apply now</a>
+                                    </div>
+                                    <div class="clear-both"></div>
+
+                                </div>
+@endforeach
+@endif
+
+                            </section>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -149,6 +155,49 @@
 
 <script src="{{asset('/')}}public/front/assets/js/jquery-3.5.1.min.js"></script>
 <script src="{{asset('/')}}public/front/assets/js/navik.menu.js"></script>
+
+
+<script>
+    $(document).ready(function(){
+        $("#job_cat").change(function(){
+
+            var cat_name = $(this).val()
+
+
+
+            $.ajax({
+            url: "{{ route('get_dp_name_from_cat') }}",
+            method: 'GET',
+            data: {cat_name:cat_name},
+            success: function(data) {
+
+              $("#dp_name").html('');
+              $("#dp_name").html(data);
+            }
+        });
+    });
+
+
+    $("#dp_name").change(function(){
+
+var cat_name = $(this).val()
+
+
+
+$.ajax({
+url: "{{ route('get_title_name_from_dp') }}",
+method: 'GET',
+data: {cat_name:cat_name},
+success: function(data) {
+
+  $("#job_title_name").html('');
+  $("#job_title_name").html(data);
+}
+});
+});
+
+});
+</script>
 
 </body>
 </html>

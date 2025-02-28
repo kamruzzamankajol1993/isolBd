@@ -63,6 +63,23 @@ Route::get('/get_dp_name_from_cat', [FrontController::class, 'get_dp_name_from_c
 Route::get('/get_title_name_from_dp', [FrontController::class, 'get_title_name_from_dp'])->name('get_title_name_from_dp');
 
 
+Route::get('/interview_appointment_meeting_schedule', [FrontController::class, 'interview_appointment_meeting_schedule'])->name('interview_appointment_meeting_schedule');
+Route::get('/complain', [FrontController::class, 'complain'])->name('complain');
+Route::get('/Inquiry', [FrontController::class, 'Inquiry'])->name('Inquiry');
+Route::get('/survey', [FrontController::class, 'survey'])->name('survey');
+
+Route::post('/postEventData', [FrontController::class, 'postEventData'])->name('postEventData');
+
+Route::get('/demoFormat', [FrontController::class, 'demoFormat'])->name('demoFormat');
+Route::get('/newsLetterPdf', [FrontController::class, 'newsLetterPdf'])->name('newsLetterPdf');
+
+Route::post('/interview_appointment_meeting_schedulePost', [FrontController::class, 'interview_appointment_meeting_schedulePost'])->name('interview_appointment_meeting_schedulePost');
+Route::post('/complainPost', [FrontController::class, 'complainPost'])->name('complainPost');
+Route::post('/InquiryPost', [FrontController::class, 'InquiryPost'])->name('InquiryPost');
+Route::post('/surveyPost', [FrontController::class, 'surveyPost'])->name('surveyPost');
+
+
+
 Route::get('/terms_condition', [FrontController::class, 'terms_condition'])->name('terms_condition');
 Route::get('/privacy_policy', [FrontController::class, 'privacy_policy'])->name('privacy_policy');
 Route::get('/recruitment', [FrontController::class, 'recruitment'])->name('recruitment');
