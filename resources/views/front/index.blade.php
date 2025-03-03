@@ -927,14 +927,14 @@ priority, service and satisfaction. This is what we do.
                 </div>
                 <div class="row mt-2 ">
                     <div class="col-6">
-                        <a href="https://isol.com.bd/crew_login" type="button" class="align-self-end btn custom-btn1 mb-2"
+                        <a href="{{url('crew_login')}}" type="button" class="align-self-end btn custom-btn1 mb-2"
                                 style="margin-top: auto; width:100%;">Find a Crew
                         </a>
                         <p class="six_last_p">Let's work together and we will bring the ideal candidates to your
                             doorstep</p>
                     </div>
                     <div class="col-6">
-                        <a href="https://isol.com.bd/cv_login_form" type="button" class="align-self-end btn custom-btn2 mb-2"
+                        <a href="{{url('cv_login_form')}}" type="button" class="align-self-end btn custom-btn2 mb-2"
                                 style="margin-top: auto; width:100%;">Upload a CV
                         </a>
                         <p class="six_last_p">Have a career like no other the right career move wiht the help of
@@ -1249,6 +1249,12 @@ Have you found any interesting offer? well, then look for our fascinating articl
     </div>
 
     <!--    ninth section-->
+    <?php  
+
+    $reveiewList = DB::table('employeereviews')->latest()->get();
+    $jobList = DB::table('jobs')->latest()->get();
+
+     ?>
       <!--    ninth section-->
       <div class="section">
         <div class="section-content">
@@ -1262,315 +1268,25 @@ Have you found any interesting offer? well, then look for our fascinating articl
                         <div class="row">
                             <div class="col-md-12">
                                 <div id="testimonial-slider" class="owl-carousel">
-                                    <div class="testimonial">
-                                        <p class="description">
-                                            Professionally excellent, impeccable taste, numerous loyal clients, and quick evaluation skills. Thank you for my success, and I highly recommend ISOL with 5 stars.
-                                        </p>
-                                        <div class="testimonial-profile">
-                                            <div>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                            </div>
-                                        </div>
-                                    </div>
 
+                                    @foreach($reveiewList as $reveiewLists)
                                     <div class="testimonial">
                                         <p class="description">
-                                            Highly professional, impeccable taste, long-term clients, and swift capability assessment. My achievements are due to ISOL, and I wholeheartedly endorse them with 5 stars.
+                                           {{$reveiewLists->des}}
                                         </p>
                                         <div class="testimonial-profile">
                                             <div>
+                                                @for ($i = 1; $i <= $reveiewLists->desig; $i++)
                                                 <span class="bx bxs-star testimonial-checked"></span>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                                <span class="bx bxs-star testimonial-checked"></span>
+                                            @endfor
+
+                                               
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="testimonial">
-                                        <p class="description">
-                                            We are satisfied with ISOL's service and efficiency. They delivered, exceeding expectations. Our gratitude extends.
-                                        </p>
-                                        <div class="testimonial-profile">
-                                            <div>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="testimonial">
-                                        <p class="description">
-                                            Thank you for your assistance and the dedication of the ISOL Staff team. Our new butler fits seamlessly, and we recommend ISOL to our acquaintances.
-                                        </p>
-                                        <div class="testimonial-profile">
-                                            <div>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="testimonial">
-                                        <p class="description">
-                                            ISOL is exceptional, professional, and offers immense benefits through extensive knowledge and experience.
-                                        </p>
-                                        <div class="testimonial-profile">
-                                            <div>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="testimonial">
-                                        <p class="description">
-                                            Outstanding agency, unquestionably the best! ISOL made me feel valued and unique.
-                                        </p>
-                                        <div class="testimonial-profile">
-                                            <div>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="testimonial">
-                                        <p class="description">
-                                            My experience with ISOL and the team members is positive. ISOL stands out in the realm for both job seekers and discerning clients.
-                                        </p>
-                                        <div class="testimonial-profile">
-                                            <div>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="testimonial">
-                                        <p class="description">
-                                            Thank you for your consultancy's service and promptness. You exceeded our expectations and earned our gratitude.
-                                        </p>
-                                        <div class="testimonial-profile">
-                                            <div>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="testimonial">
-                                        <p class="description">
-                                            My ISOL encounter was pleasant, a stark contrast to other Dhaka agencies. I found my desired position within three months.
-                                        </p>
-                                        <div class="testimonial-profile">
-                                            <div>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="testimonial">
-                                        <p class="description">
-                                            Thank you for your support during our butler search. ISOL integrated well, and we appreciate your expertise. We recommend ISOL.
-                                        </p>
-                                        <div class="testimonial-profile">
-                                            <div>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="testimonial">
-                                        <p class="description">
-                                            We are grateful for your appreciation and assistance in finding our exceptional housekeeper. We enhanced our household's efficiency.
-                                        </p>
-                                        <div class="testimonial-profile">
-                                            <div>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="testimonial">
-                                        <p class="description">
-                                            We are delighted by your endorsement as an excellent recruitment agency. Your satisfaction highlights our commitment to personalized service and excellence. Thank you.
-                                        </p>
-                                        <div class="testimonial-profile">
-                                            <div>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="testimonial">
-                                        <p class="description">
-                                            We appreciate your positive experience with ISOL and the team at ISOL. Your trust in our dedication to requirements is valued.
-                                        </p>
-                                        <div class="testimonial-profile">
-                                            <div>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="testimonial">
-                                        <p class="description">
-                                            Thank you for your glowing recommendation of our professionalism and long-term client relationships. Your success is a result of our extensive experience.
-                                        </p>
-                                        <div class="testimonial-profile">
-                                            <div>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="testimonial">
-                                        <p class="description">
-                                            We are honored by your recognition of ISOL's professionalism and clear opportunities. We appreciate your trust and success.
-                                        </p>
-                                        <div class="testimonial-profile">
-                                            <div>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="testimonial">
-                                        <p class="description">
-                                            Thank you for sharing your delightful experience with ISOL. Our clear approach stands out compared to other Dhaka agencies.
-                                        </p>
-                                        <div class="testimonial-profile">
-                                            <div>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="testimonial">
-                                        <p class="description">
-                                            We are grateful for your satisfaction with our service and efficiency. Your new staff member exceeds expectations, and we appreciate your trust in ISOL.
-                                        </p>
-                                        <div class="testimonial-profile">
-                                            <div>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="testimonial">
-                                        <p class="description">
-                                            We are delighted by your positive experience with ISOL. Our clear opportunities make a difference compared to other Dhaka agencies.
-                                        </p>
-                                        <div class="testimonial-profile">
-                                            <div>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="testimonial">
-                                        <p class="description">
-                                            We are grateful for your appreciation of our team's assistance in finding your new crew. He has settled well, and we appreciate your recommendation.
-                                        </p>
-                                        <div class="testimonial-profile">
-                                            <div>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="testimonial">
-                                        <p class="description">
-                                            Thank you for your kind words about our team's assistance in finding your new housekeeper. We are glad to contribute to your satisfaction.
-                                        </p>
-                                        <div class="testimonial-profile">
-                                            <div>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="testimonial">
-                                        <p class="description">
-                                            We are thrilled to receive such high praise for our services. Our priority is to make every individual feel valued and unique, like you. Thank you.
-                                        </p>
-                                        <div class="testimonial-profile">
-                                            <div>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="testimonial">
-                                        <p class="description">
-                                            We appreciate your positive feedback on the team member at ISOL. Our commitment to excellence is evident in your experience. Thank you for your trust and support.
-                                        </p>
-                                        <div class="testimonial-profile">
-                                            <div>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                                <span class="bx bxs-star testimonial-checked"></span>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    @endforeach
+
+                                 
                                 </div>
                             </div>
                         </div>
@@ -1578,12 +1294,12 @@ Have you found any interesting offer? well, then look for our fascinating articl
                     </div>
                     <div class="col-12 mb-3">
                         <div class="row text-center">
-<div class="col-sm-3 counter-Txt"> Reviews:- <span class="counter-value">0</span>
+<div class="col-sm-3 counter-Txt"> Reviews:- <span class="counter-value">{{count($reveiewList)}}</span>
                             </div>
                             <div class="col-sm-3 counter-Txt"> Seafarers:- <span class="counter-value">0</span>
                             </div>
                             <div class="col-sm-3 counter-Txt"> Applied:- <span class="counter-value">0</span></div>
-                            <div class="col-sm-3 counter-Txt"> Available Job:- <span class="counter-value">0</span>
+                            <div class="col-sm-3 counter-Txt"> Available Job:- <span class="counter-value">{{count($jobList)}}</span>
                             </div>
                         </div>
                     </div>
@@ -1857,11 +1573,11 @@ Have you found any interesting offer? well, then look for our fascinating articl
                                 </div>
                             </div>
                             <div class="col-lg-6 col-sm-12 pt-4">
-                                <a href="https://isol.com.bd/crew_login" type="button" class="align-self-end btn custom-btn1 mb-3"
+                                <a href="{{url('crew_login')}}" type="button" class="align-self-end btn custom-btn1 mb-3"
                                         style="margin-top: auto; width:100%;">Find a Crew
                                 </a>
 
-                                <a href="https://isol.com.bd/cv_login_form" type="button" class="align-self-end btn custom-btn2"
+                                <a href="{{url('cv_login_form')}}" type="button" class="align-self-end btn custom-btn2"
                                         style="margin-top: auto; width:100%;">Upload a CV
                                 </a>
                             </div>

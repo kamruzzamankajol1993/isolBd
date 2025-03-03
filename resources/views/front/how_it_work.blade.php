@@ -180,7 +180,7 @@ assure you of a prompt response.
                                 and we will bring the ideal candidates to your doorstep. </p>
                         </div>
                         <div class="col-lg-4">
-                            <a href="https://isol.com.bd/crew_cv_searching" class="btn btn-primary btn-work">Find Crew</a>
+                            <a href="{{url('crew_cv_searching')}}" class="btn btn-primary btn-work">Find Crew</a>
                         </div>
                     </div>
                 </div>
@@ -281,7 +281,7 @@ your career.</p>
                             <p>Have a career like no other! Make the right career move with the help of OJ Crew.  </p>
                         </div>
                         <div class="col-lg-4">
-                            <a href="https://isol.com.bd/crew_login" class="btn btn-primary btn-work">Upload CV</a>
+                            <a href="{{url('crew_login')}}" class="btn btn-primary btn-work">Upload CV</a>
                         </div>
                     </div>
                 </div>
