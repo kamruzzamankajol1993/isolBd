@@ -10,8 +10,26 @@ use App\Models\Jobcategory;
 use App\Models\PartnerWithUs;
 use App\Models\JobSeeker;
 use DB;
+use App\Models\NewsReceiverList;
 class SearchController extends Controller
 {
+
+    public function addNewsReceiver(Request $request){
+
+        //dd($request->all());
+
+
+        $addAllData = new NewsReceiverList();
+        $addAllData->name = $request->name;
+        $addAllData->phone = $request->phone;
+        $addAllData->email = $request->email;
+        $addAllData->save();
+
+        return 1;
+
+
+
+    }
     public function jobPageSearch(Request $request){
 
         $locationList = DB::table('locations')->get();
@@ -568,7 +586,9 @@ class SearchController extends Controller
 
              $sJobCat = $request->job_category_id;
              $sJobDep = $request->job_department_id;
-             $sJobTit = $request->jobjob_title_id_area;
+             $sJobTit = $request->job_title_id;
+
+            // dd( $sJobTit);
 
          return view('front.job_search_page',compact(
 

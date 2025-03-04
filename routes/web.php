@@ -45,6 +45,8 @@ use App\Http\Controllers\Admin\JobSeekerController;
 
 
 
+Route::get('/addNewsReceiver', [SearchController::class, 'addNewsReceiver'])->name('addNewsReceiver');
+
 Route::get('/mainSearch', [SearchController::class, 'mainSearch'])->name('mainSearch');
 Route::get('/jobPageSearch', [SearchController::class, 'jobPageSearch'])->name('jobPageSearch');
 

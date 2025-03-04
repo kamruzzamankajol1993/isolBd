@@ -30,6 +30,31 @@
           rel="stylesheet"> <!-- Google fonts -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"
           rel="stylesheet"> <!-- Google fonts -->
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+
+          <style>
+
+            .alertify .ajs-body .ajs-content {
+                font-weight: bolder;
+                color:red;
+                font-size: 20px;
+            }
+        
+            .alertify .ajs-header{
+        
+                color:red;
+                font-size: 20px;
+        
+            }
+        
+            .alertify .ajs-footer .ajs-buttons .ajs-button{
+        
+                background-color: #006A4E;
+                color: #fff;
+        
+            }
+        
+        </style>
 </head>
 <body>
 
@@ -1093,6 +1118,12 @@ Have you found any interesting offer? well, then look for our fascinating articl
         </div>
     </div>
 
+    <?php  
+
+    $urgentVacancyList = DB::table('tenthrows')->latest()->get();
+
+    ?>
+
     <!--    eight section-->
     <div class="section">
         <div class="section-content">
@@ -1103,146 +1134,22 @@ Have you found any interesting offer? well, then look for our fascinating articl
 
                 <div class="slider urgentBox ">
 
+                   
+                    @foreach($urgentVacancyList as $urgentVacancyLists)
+
                     <div class="slider_box">
                         <div class="card">
                             <div class="card_container">
-                                <img class="card-img-top card_image_section" height="500" src="{{ asset('/') }}public/front/assets/img/urgent_vacancy/1.jpg" alt="Card image cap">
+                                <img class="card-img-top card_image_section" height="500" src="{{$getAllSystemData->adminUrl}}{{$urgentVacancyLists->image}}" alt="Card image cap">
                                 <div class="card_image_button">
-                                    <a href="#"> Apply Now </a>
+                                    <a href="{{$urgentVacancyLists->title}}" target="_blank"> Apply Now </a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="slider_box">
-                        <div class="card">
-                            <div class="card_container">
-                                <img class="card-img-top card_image_section" height="500" src="{{ asset('/') }}public/front/assets/img/urgent_vacancy/3.jpg" alt="Card image cap">
-                                <div class="card_image_button">
-                                    <a href="#"> Apply Now </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="slider_box">
-                        <div class="card">
-                            <div class="card_container">
-                                <img class="card-img-top card_image_section" height="500" src="{{ asset('/') }}public/front/assets/img/urgent_vacancy/4.png" alt="Card image cap">
-                                <div class="card_image_button">
-                                    <a href="#"> Apply Now </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="slider_box">
-                        <div class="card">
-                            <div class="card_container">
-                                <img class="card-img-top card_image_section" height="500" src="{{ asset('/') }}public/front/assets/img/urgent_vacancy/5.jpg" alt="Card image cap">
-                                <div class="card_image_button">
-                                    <a href="#"> Apply Now </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="slider_box">
-                        <div class="card">
-                            <div class="card_container">
-                                <img class="card-img-top card_image_section" height="500" src="{{ asset('/') }}public/front/assets/img/urgent_vacancy/6.png" alt="Card image cap">
-                                <div class="card_image_button">
-                                    <a href="#"> Apply Now </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="slider_box">
-                        <div class="card">
-                            <div class="card_container">
-                                <img class="card-img-top card_image_section" height="500" src="{{ asset('/') }}public/front/assets/img/urgent_vacancy/7.jpg" alt="Card image cap">
-                                <div class="card_image_button">
-                                    <a href="#"> Apply Now </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="slider_box">
-                        <div class="card">
-                            <div class="card_container">
-                                <img class="card-img-top card_image_section" height="500" src="{{ asset('/') }}public/front/assets/img/urgent_vacancy/8.png" alt="Card image cap">
-                                <div class="card_image_button">
-                                    <a href="#"> Apply Now </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="slider_box">
-                        <div class="card">
-                            <div class="card_container">
-                                <img class="card-img-top card_image_section" height="500" src="{{ asset('/') }}public/front/assets/img/urgent_vacancy/9.jpg" alt="Card image cap">
-                                <div class="card_image_button">
-                                    <a href="#"> Apply Now </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="slider_box">
-                        <div class="card">
-                            <div class="card_container">
-                                <img class="card-img-top card_image_section" height="500" src="{{ asset('/') }}public/front/assets/img/urgent_vacancy/10.png" alt="Card image cap">
-                                <div class="card_image_button">
-                                    <a href="#"> Apply Now </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="slider_box">
-                        <div class="card">
-                            <div class="card_container">
-                                <img class="card-img-top card_image_section" height="500" src="{{ asset('/') }}public/front/assets/img/urgent_vacancy/11.jpg" alt="Card image cap">
-                                <div class="card_image_button">
-                                    <a href="#"> Apply Now </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="slider_box">
-                        <div class="card">
-                            <div class="card_container">
-                                <img class="card-img-top card_image_section" height="500" src="{{ asset('/') }}public/front/assets/img/urgent_vacancy/12.png" alt="Card image cap">
-                                <div class="card_image_button">
-                                    <a href="#"> Apply Now </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="slider_box">
-                        <div class="card">
-                            <div class="card_container">
-                                <img class="card-img-top card_image_section" height="500" src="{{ asset('/') }}public/front/assets/img/urgent_vacancy/13.jpg" alt="Card image cap">
-                                <div class="card_image_button">
-                                    <a href="#"> Apply Now </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="slider_box">
-                        <div class="card">
-                            <div class="card_container">
-                                <img class="card-img-top card_image_section" height="500" src="{{ asset('/') }}public/front/assets/img/urgent_vacancy/14.png" alt="Card image cap">
-                                <div class="card_image_button">
-                                    <a href="#"> Apply Now </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="slider_box">
-                        <div class="card">
-                            <div class="card_container">
-                                <img class="card-img-top card_image_section" height="500" src="{{ asset('/') }}public/front/assets/img/urgent_vacancy/24.png" alt="Card image cap">
-                                <div class="card_image_button">
-                                    <a href="#"> Apply Now </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
+                    @endforeach
+                   
                 </div>
             </div>
         </div>
@@ -1253,7 +1160,11 @@ Have you found any interesting offer? well, then look for our fascinating articl
 
     $reveiewList = DB::table('employeereviews')->latest()->get();
     $jobList = DB::table('jobs')->latest()->get();
+    $globalrequirmentNewsList = DB::table('global_requirment_news')->latest()->get();
 
+    $jobSeekerList = DB::table('job_seekers')->latest()->get();
+
+    
      ?>
       <!--    ninth section-->
       <div class="section">
@@ -1296,9 +1207,9 @@ Have you found any interesting offer? well, then look for our fascinating articl
                         <div class="row text-center">
 <div class="col-sm-3 counter-Txt"> Reviews:- <span class="counter-value">{{count($reveiewList)}}</span>
                             </div>
-                            <div class="col-sm-3 counter-Txt"> Seafarers:- <span class="counter-value">0</span>
+                            <div class="col-sm-3 counter-Txt"> Seafarers:- <span class="counter-value">{{$getAllSystemData->seafarers}}</span>
                             </div>
-                            <div class="col-sm-3 counter-Txt"> Applied:- <span class="counter-value">0</span></div>
+                            <div class="col-sm-3 counter-Txt"> Applied:- <span class="counter-value">{{count($jobSeekerList)}}</span></div>
                             <div class="col-sm-3 counter-Txt"> Available Job:- <span class="counter-value">{{count($jobList)}}</span>
                             </div>
                         </div>
@@ -1314,7 +1225,7 @@ Have you found any interesting offer? well, then look for our fascinating articl
                                                 <label for="" class="col-sm-2 col-form-label">Name:-</label>
                                                 <div class="col-sm-10">
                                                     <input type="text" class="form-control cusom_form_control_review"
-                                                           id="" value="">
+                                                           id="namen" value="">
                                                 </div>
                                             </div>
                                         </div>
@@ -1323,7 +1234,7 @@ Have you found any interesting offer? well, then look for our fascinating articl
                                                 <label for="" class="col-sm-3 col-form-label">Whatsappa:-</label>
                                                 <div class="col-sm-9">
                                                     <input type="text" class="form-control cusom_form_control_review"
-                                                           id="" value="">
+                                                           id="phonen" value="">
                                                 </div>
                                             </div>
                                         </div>
@@ -1332,21 +1243,21 @@ Have you found any interesting offer? well, then look for our fascinating articl
                                                 <label for="" class="col-sm-3 col-form-label">Email:-</label>
                                                 <div class="col-sm-9">
                                                     <input type="text" class="form-control cusom_form_control_review"
-                                                           id="" value="">
+                                                           id="emailn" value="">
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-1">
-                                    <button class="btn btn-primary custom_button_text" type="button">Submit</button>
+                                    <button class="btn btn-primary custom_button_text finalSubmitButton" type="button">Submit</button>
                                 </div>
                             </div>
                         </form>
                     </div>
                     <div class="col-12 text-center mt-4" style="font-size: 18px; color: white;">
-                        <input id="checkbox" type="checkbox" />
-                        <label for="checkbox"> I agree to these <a href="#">Terms and Conditions</a>. <span class="text-danger">*</span> </label>
+                        <input id="checkbox submitCheck" class="submitCheck" type="checkbox" />
+                        <label for="checkbox"> I agree to these <a href="{{route('terms_condition')}}">Terms and Conditions</a>. <span class="text-danger">*</span> </label>
                     </div>
                 </div>
             </div>
@@ -1365,21 +1276,13 @@ Have you found any interesting offer? well, then look for our fascinating articl
                     <div class="col-12">
 
                         <div class="slider newsBox">
+
+                            @foreach($globalrequirmentNewsList as $globalrequirmentNewsLists)
                             <div class="slider_box">
-                                <img src="{{ asset('/') }}public/front/assets/img/news/1.jpg" class="img-fluid news_img_box" alt="">
+                                <img src="{{$getAllSystemData->adminUrl}}{{$globalrequirmentNewsLists->image}}" class="img-fluid news_img_box" alt="">
                             </div>
-                            <div class="slider_box">
-                                <img src="{{ asset('/') }}public/front/assets/img/news/2.png" class="img-fluid news_img_box" alt="">
-                            </div>
-                            <div class="slider_box">
-                                <img src="{{ asset('/') }}public/front/assets/img/news/3.jpg" class="img-fluid news_img_box" alt="">
-                            </div>
-                            <div class="slider_box">
-                                <img src="{{ asset('/') }}public/front/assets/img/news/4.Jpg" class="img-fluid news_img_box" alt="">
-                            </div>
-                            <div class="slider_box">
-                                <img src="{{ asset('/') }}public/front/assets/img/news/5.Jpg" class="img-fluid news_img_box" alt="">
-                            </div>
+                            @endforeach
+                          
 
                         </div>
                     </div>
@@ -1412,28 +1315,26 @@ Have you found any interesting offer? well, then look for our fascinating articl
                                     <i class="ri-map-pin-line"></i>
                                     <h4>Location:</h4>
                                     <p>
-                                        1093/5A Khilbaritek, Vatara, Gulshan, <br>
-                                        Dhaka 1212, Bangladesh
+                                        {!!$getAllSystemData->Address!!}
                                     </p>
                                     <br>
                                     <p>
-                                        GPO Box 3030
-                                        <br>
-                                        Dhaka 1000, Bangladesh
+                                        {!!$getAllSystemData->addressTwo!!}
                                     </p>
                                 </div>
 
                                 <div class="email">
                                     <i class="ri-mail-line"></i>
                                     <h4>Email:</h4>
-                                    <p>info@isol.com.bd</p>
+                                    <p>{{$getAllSystemData->Email}}</p>
+                                    <p>{{$getAllSystemData->emailTwo}}</p>
                                 </div>
 
                                 <div class="phone">
                                     <i class="ri-phone-line"></i>
                                     <h4>Call:</h4>
-                                    <p>+880 1982-547679</p>
-                                    <p>+880 28899210</p>
+                                    <p>{{$getAllSystemData->Phone}}</p>
+                                    <p>{{$getAllSystemData->phoneTwo}}</p>
                                 </div>
 
                             </div>
@@ -1445,27 +1346,28 @@ Have you found any interesting offer? well, then look for our fascinating articl
                             <h4>Enquiry</h4>
                             <p>Email us with any questions or inquiries</p>
 
-                            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+                            <form method="post" action="{{route('InquiryPost')}}" role="form" class="php-email-form">
+                                @csrf
                                 <div class="row">
                                     <div class="col-md-6 form-group">
-                                        <input type="text" name="name" class="form-control" id="name"
+                                        <input type="text" name="first_name" class="form-control" id="name"
                                                placeholder="First Name" required>
                                     </div>
                                     <div class="col-md-6 form-group mt-3 mt-md-0">
-                                        <input type="text" class="form-control" name="email" id="email"
+                                        <input type="text" class="form-control" name="last_name" id="email"
                                                placeholder="Last Name" required>
                                     </div>
                                 </div>
                                 <div class="form-group mt-3">
-                                    <input type="text" class="form-control" name="subject" id="subject"
+                                    <input type="text" class="form-control" name="mobile_number" id="subject"
                                            placeholder="Mobile Number" required>
                                 </div>
                                 <div class="form-group mt-3">
-                                    <input type="text" class="form-control" name="subject" id="subject"
+                                    <input type="text" class="form-control" name="email_address" id="subject"
                                            placeholder=" Email Address" required>
                                 </div>
                                 <div class="form-group mt-3">
-                                <textarea class="form-control" name="message" rows="5" placeholder="Message"
+                                <textarea class="form-control" name="msg" rows="5" placeholder="Message"
                                           required></textarea>
                                 </div>
                                 <div class="my-3">
@@ -1565,7 +1467,7 @@ Have you found any interesting offer? well, then look for our fascinating articl
                         <div class="row">
                             <div class="col-lg-6 col-sm-12">
                                 <div class="footer_link_list">
-                                    <p><a href="">Contact</a></p>
+                                    <p><a href="{{route('Inquiry')}}">Contact</a></p>
                                     <p><a href="{{route('privacy_policy')}}">Privacy Policies</a></p>
                                     <p><a href="{{route('terms_condition')}}">Terms & Condition</a></p>
                                     <p><a href="{{route('recruitment')}}">Recruitment Procedures</a></p>
@@ -1592,11 +1494,11 @@ Have you found any interesting offer? well, then look for our fascinating articl
                                 </div>
                                 <div class="col-xl-8 col-sm-12">
                                     <div class="d-flex justify-content-between footer_link">
-                                        <a href="">HOME</a>
-                                        <a href="">HOW IT WORKS</a>
-                                        <a href="">ABOUT US</a>
-                                        <a href="">VACANCIES</a>
-                                        <a href="">CONTACTS</a>
+                                        <a href="{{route('index')}}">HOME</a>
+                                        <a href="{{route('how_it_work')}}">HOW IT WORKS</a>
+                                        <a href="{{route('our_services')}}">ABOUT US</a>
+                                        <a href="{{route('mainSearch')}}">VACANCIES</a>
+                                        <a href="{{route('Inquiry')}}">CONTACTS</a>
                                     </div>
                                 </div>
                             </div>
@@ -1716,11 +1618,78 @@ Have you found any interesting offer? well, then look for our fascinating articl
 <script src="{{ asset('/') }}public/front/assets/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="{{ asset('/') }}public/front/assets/vendor/slick/slick.js" type="text/javascript" charset="utf-8"></script>
 <script src="{{ asset('/') }}public/front/assets/vendor/owlCarousel/owl.carousel.js"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
 <script>
     $(document).ready(function () {
         $("#myModalnews").modal('show');
     });
+</script>
+
+<script>
+    $(document).on('click', '.finalSubmitButton', function () {
+
+
+      
+            if ($('input.submitCheck').prop('checked')) {
+
+            if(!$('#namen').val()){
+
+alertify.alert('Error', 'please input a name');
+
+}else if(!$('#phonen').val()){
+
+alertify.alert('Error', "please input your what's app  number");
+
+}else if(!$('#emailn').val()){
+
+alertify.alert('Error', 'please input your email address');
+
+}else{
+
+$.ajaxSetup({
+headers: {
+'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+}
+});
+
+
+var name = $('#namen').val();
+var phone = $('#phonen').val();
+var email = $('#emailn').val();
+
+$.ajax({
+url: "{{ route('addNewsReceiver') }}",
+method: 'get',
+data: {
+    name:name,
+    phone:phone,
+    email:email,
+},
+success: function(data) {
+
+alertify.set('notifier','position', 'top-center');
+alertify.success('Data Added Successfully');
+var name = $('#namen').val('');
+var phone = $('#phonen').val('');
+var email = $('#emailn').val('');
+
+},
+
+});
+
+}
+
+        }else{
+
+            alertify.alert('Error', 'please check term and condition first');
+
+        }
+
+
+
+
+
+});
 </script>
 
 <script>

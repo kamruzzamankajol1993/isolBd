@@ -70,7 +70,8 @@
                                 </div>
                                 <div class="col">
                                     <select class="form-select" id="job_title_name" aria-label="Default select example" name="job_title">
-                                        <option value="" selected="">Job Title</option>
+                                        {{-- <option value="" >Job Title</option> --}}
+                                        <option value="{{$sJobTit}}" selected>{{$sJobTit}}</option>
                                         @foreach($headline_list as $headline_lists)
                                         <option value="{{ $headline_lists->name }}" {{ $sJobTit == $headline_lists->name ? 'selected':'' }}>{{ $headline_lists->name }}</option>
                                         @endforeach
