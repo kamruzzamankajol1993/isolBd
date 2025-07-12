@@ -43,108 +43,56 @@
 
     <section class="">
 
-        <div class="container pt-4">
+        <div class="container" style="padding-top: 120px; padding-bottom: 50px;">
+    <div class="row">
+        <div class="col-12">
             <div class="card">
-                <div class="card-body custom_form_color">
-                    @include('flash_message')
-                    <form class="" method="get" action="{{ route('jobPageSearch') }}">
-                        <div class="custom_form_div">
-                            <div class="row ">
-                                <div class="col">
-                                    <select class="form-select" id="job_cat" aria-label="Default select example" name="job_category">
-                                        <option value="" selected="">Category</option>
-                                        @foreach($headline_list1 as $headline_lists)
-                                        <option value="{{ $headline_lists->name }}"  {{ $sJobCat == $headline_lists->name ? 'selected':'' }}>{{ $headline_lists->name }}</option>
-                                        @endforeach
-
-                                    </select>
-                                </div>
-                                <div class="col">
-                                    <select class="form-select" id="dp_name" aria-label="Default select example" name="job_department">
-                                        <option value="" selected="">Department</option>
-                                        @foreach($headline_list2 as $headline_lists)
-                                        <option value="{{ $headline_lists->name }}"  {{ $sJobDep == $headline_lists->name ? 'selected':'' }}>{{ $headline_lists->name }}</option>
-                                        @endforeach
-
-                                    </select>
-                                </div>
-                                <div class="col">
-                                    <select class="form-select" id="job_title_name" aria-label="Default select example" name="job_title">
-                                        {{-- <option value="" >Job Title</option> --}}
-                                        <option value="{{$sJobTit}}" selected>{{$sJobTit}}</option>
-                                        @foreach($headline_list as $headline_lists)
-                                        <option value="{{ $headline_lists->name }}" {{ $sJobTit == $headline_lists->name ? 'selected':'' }}>{{ $headline_lists->name }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                                <div class="col">
-                                    <select class="form-select" id="job_duration" aria-label="Default select example" name="job_duration">
-                                        <option value="" selected="">Type of Contact</option>
-                                        @foreach($contractList as $headline_lists)
-                                        <option value="{{ $headline_lists->name }}" >{{ $headline_lists->name }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                                <div class="col">
-                                    <select class="form-select" id="job_area" aria-label="Default select example" name="job_area">
-                                        <option value="" selected="">Location</option>
-                                        @foreach($locationList as $headline_lists)
-                                        <option value="{{ $headline_lists->name }}" >{{ $headline_lists->name }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                                <div class="col-1">
-                                    <div class="d-grid gap-2">
-                                        <button class="btn btn-primary btn-lg" type="submit">Filter</button>
+                <div class="card-header">
+                    <h3>Search Results</h3>
+                    <p class="text-muted">Showing jobs matching your criteria.</p>
+                </div>
+                <div class="card-body">
+                    @if($jobs->count() > 0)
+                        @foreach($jobs as $job)
+                            <div class="card mb-3 shadow-sm">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <h5 class="card-title">{{ $job->position->name ?? 'N/A' }}</h5>
+                                            <h6 class="card-subtitle mb-2 text-muted">{{ $job->agency_name }}</h6>
+                                            <p class="card-text mb-1">
+                                                <strong>Sector:</strong> {{ $job->jobSector->name ?? 'N/A' }} |
+                                                <strong>Department:</strong> {{ $job->department->name ?? 'N/A' }}
+                                            </p>
+                                            <p class="card-text">
+                                                <strong>Salary:</strong> {{ $job->salary }} |
+                                                <strong>Location:</strong> {{ $job->job_area ?? 'N/A' }}
+                                            </p>
+                                        </div>
+                                        <div class="col-md-4 text-md-end align-self-center">
+                                            <a href="{{ route('job_details', $job->job_title_slug) }}" class="btn btn-primary">View Details</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+                        @endforeach
+
+                        <div class="d-flex justify-content-center mt-4">
+                            {{-- This will append the search query to the pagination links --}}
+                            {{ $jobs->appends($searchTerms)->links() }}
                         </div>
-                    </form>
-                    <div class="">
-                        <div class="vacancies">
-                            <section class="table">
-
-                                @if(count($jobListAll) == 0)
-
-                              <h3> Not Available </h3>
-                                @else
-
-                                @foreach($jobListAll as $jobListAlls)
-                                <div class="container">
-                                    <div>
-                                        <h3 style="display: inline">{{ $jobListAlls->job_title_id }} </h3>
-                                        <p class="posted-date">{{ date('F m, Y', strtotime($jobListAlls->post_date)) }}</p>
-                                    </div>
-
-                                    <div class="left">
-                                        <span>Type of vessel: {{ $jobListAlls->job_category_id }} </span>
-                                        <img src="https://ojcrew.com/wp-content/themes/oj/img/d4_cards.png">
-
-                                        <p>{{ $jobListAlls->salary }}</p>
-                                        <img src="https://ojcrew.com/wp-content/themes/oj/img/d4_flag.png">
-
-                                        <p>{{ $jobListAlls->job_location }}</p>
-                                        <img src="https://ojcrew.com/wp-content/themes/oj/img/d4_clocl.png">
-
-                                        <p>{{ $jobListAlls->job_contract_type }}</p>
-                                    </div>
-                                    <div class="right">
-                                        <a href="{{ route('job_details',$jobListAlls->job_title_slug) }}"
-                                           class="button apply-button float-end">Apply now</a>
-                                    </div>
-                                    <div class="clear-both"></div>
-
-                                </div>
-@endforeach
-@endif
-
-                            </section>
+                    @else
+                        <div class="alert alert-warning text-center" role="alert">
+                            <h4>No Jobs Found</h4>
+                            <p>We couldn't find any jobs matching your search criteria. Please try different keywords or filters.</p>
+                            <a href="{{ route('index') }}" class="btn btn-primary mt-2">Back to Home</a>
                         </div>
-                    </div>
+                    @endif
                 </div>
             </div>
         </div>
+    </div>
+</div>
     </section>
 
     <!-- End Mission Vision Section -->

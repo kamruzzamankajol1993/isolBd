@@ -9,12 +9,84 @@ use App\Models\Jobdepartment;
 use App\Models\Jobcategory;
 use App\Models\PartnerWithUs;
 use App\Models\JobSeeker;
+use App\Models\Job;
 use DB;
 use Carbon;
 use Response;
+use App\Models\VesselOrWorkPlace;
+use App\Models\DreamJobPosition;
+use App\Models\DreamJobSector;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;    
+use App\Models\DreamJobDepartment;
 class FrontController extends Controller
 {
-    
+
+     public function getVesselsBySector($sector_id)
+    {
+        $vessels = VesselOrWorkPlace::where('dream_job_sector_id', $sector_id)
+                                    ->select('id', 'name')
+                                    ->get();
+        return response()->json($vessels);
+    }
+
+    /**
+     * Fetches positions/titles based on the selected department.
+     *
+     * @param  int  $department_id
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getPositionsByDepartment($department_id)
+    {
+        $positions = DreamJobPosition::where('dream_job_department_id', $department_id)
+                                     ->select('id', 'name')
+                                     ->get();
+        return response()->json($positions);
+    }
+
+     public function getAutoSuggestions(Request $request)
+    {
+        $query = $request->get('term');
+        if (strlen($query) < 1) {
+            return response()->json([]);
+        }
+
+        $suggestions = [];
+
+        // Search in Sectors (Job Categories)
+        $sectors = DreamJobSector::where('name', 'LIKE', "%{$query}%")->limit(3)->get();
+        foreach ($sectors as $sector) {
+            $suggestions[] = [
+                'label'         => $sector->name,
+                'type'          => 'Sector',
+                'sector_id'     => $sector->id,
+                'department_id' => null,
+                'position_id'   => null,
+            ];
+        }
+
+        // Search in Positions (Job Titles)
+        $positions = DreamJobPosition::where('name', 'LIKE', "%{$query}%")
+            ->limit(7)
+            ->get();
+
+        foreach ($positions as $position) {
+            // Add the position to suggestions
+            $suggestions[] = [
+                'label'         => $position->name,
+                'type'          => 'Position',
+                'sector_id'     => null, // Sector cannot be determined directly from position
+                'department_id' => $position->dream_job_department_id,
+                'position_id'   => $position->id,
+            ];
+        }
+
+        return response()->json($suggestions);
+    }
+
+    public function informationSubmitForm(){
+        return view('front.informationSubmitForm');
+        }
     public function newsLetterPdf(){
 
 
@@ -228,12 +300,21 @@ public function recruitment(){
          return view('front.terms_condition');
            }
 
-    public function job_details($slug){
-        $jobListAll = DB::table('jobs')
-        ->where('job_title_slug',$slug)
-        ->where('status',1)->latest()->first();
-        return view('front.job_details',compact('jobListAll'));
+    public function job_details($slug)
+    {
+        try {
+            // Find the job by its slug and eager load all necessary relationships for efficiency.
+            $job = Job::where('job_title_slug', $slug)
+                        ->with(['position', 'department', 'jobSector', 'vesselOrWorkPlace'])
+                        ->firstOrFail();
 
+            // Pass the job object to the view.
+            return view('front.job_details', compact('job'));
+
+        } catch (\Exception $e) {
+            // If the job is not found, redirect back with an error message.
+            return redirect()->route('mainSearch')->with('error', 'The requested job vacancy was not found.');
+        }
     }
     public function index(){
 

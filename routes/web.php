@@ -29,6 +29,7 @@ use App\Http\Controllers\Admin\JobtitleController;
 use App\Http\Controllers\Admin\JobcategoryController;
 use App\Http\Controllers\Front\FrontController;
 use App\Http\Controllers\Front\SearchController;
+use App\Http\Controllers\Front\EmployeeApplicationController;
 use App\Http\Controllers\Admin\PartnerWithUsController;
 use App\Http\Controllers\Admin\JobSeekerController;
 
@@ -43,9 +44,16 @@ use App\Http\Controllers\Admin\JobSeekerController;
 |
 */
 
+Route::get('/employeeApplicationPdf/{id}', [EmployeeApplicationController::class, 'employeeApplicationPdf'])->name('employeeApplicationPdf');
 
+Route::post('/employeeApplicationStore', [EmployeeApplicationController::class, 'employeeApplicationStore'])->name('employeeApplicationStore');
+Route::get('/employeeApplicationEdit/{id}', [EmployeeApplicationController::class, 'employeeApplicationEdit'])->name('employeeApplicationEdit');
+Route::put('/employeeApplicationUpdate/{id}', [EmployeeApplicationController::class, 'employeeApplicationUpdate'])->name('employeeApplicationUpdate');
+
+Route::get('/informationSubmitForm', [FrontController::class, 'informationSubmitForm'])->name('informationSubmitForm');
 
 Route::get('/addNewsReceiver', [SearchController::class, 'addNewsReceiver'])->name('addNewsReceiver');
+
 
 Route::get('/mainSearch', [SearchController::class, 'mainSearch'])->name('mainSearch');
 Route::get('/jobPageSearch', [SearchController::class, 'jobPageSearch'])->name('jobPageSearch');
@@ -55,6 +63,10 @@ Route::get('/job_category_wise/{id}', [FrontController::class, 'job_category_wis
 
 Route::get('/job_details/{slug}', [FrontController::class, 'job_details'])->name('job_details');
 Route::get('/', [FrontController::class, 'index'])->name('index');
+
+Route::get('/autosuggest', [FrontController::class, 'getAutoSuggestions'])->name('job.autosuggest');
+Route::get('/get-vessels-by-sector/{sector_id}', [FrontController::class, 'getVesselsBySector'])->name('getVesselsBySector');
+Route::get('/get-positions-by-department/{department_id}', [FrontController::class, 'getPositionsByDepartment'])->name('getPositionsByDepartment');
 //CV Login
 //Route::get('/cv_login_form',[LoginController::class,'cv_login_form'])->name('cv_login_form');
 Route::get('/cv_login_form',[LoginController::class,'cv_login_form'])->name('cv_login_form');

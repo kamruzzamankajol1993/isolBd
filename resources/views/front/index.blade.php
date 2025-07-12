@@ -32,32 +32,160 @@
           rel="stylesheet"> <!-- Google fonts -->
           <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
 
-          <style>
+        <style>
+        .alertify .ajs-body .ajs-content {
+            font-weight: bolder;
+            color:red;
+            font-size: 20px;
+        }
+        .alertify .ajs-header{
+            color:red;
+            font-size: 20px;
+        }
+        .alertify .ajs-footer .ajs-buttons .ajs-button{
+            background-color: #006A4E;
+            color: #fff;
+        }
 
-            .alertify .ajs-body .ajs-content {
-                font-weight: bolder;
-                color:red;
-                font-size: 20px;
-            }
-        
-            .alertify .ajs-header{
-        
-                color:red;
-                font-size: 20px;
-        
-            }
-        
-            .alertify .ajs-footer .ajs-buttons .ajs-button{
-        
-                background-color: #006A4E;
-                color: #fff;
-        
-            }
-        
-        </style>
+        /* Styles for the main search form elements */
+        .navik-menu > ul > li > a {
+          background: rgba(0, 0, 0, 0.4) !important;
+          }
+          .navik-menu ul ul li > a {
+          background: rgba(0, 0, 0, 0.4) !important;
+          }
+        .pro-search-input, .pro-search-button {
+            width: 100%;
+            height: 35px;
+            background: rgba(0, 0, 0, 0.4);
+            border: 2px solid #eb9356;
+            border-radius: 22px;
+            color: white;
+            padding: 7px 20px;
+            font-size: 16px;
+            text-align: center;
+        }
+        .pro-search-input::placeholder {
+            color: rgba(255, 255, 255, 0.8);
+            text-align: center;
+          
+        }
+        .pro-search-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            padding-right: 45px;
+            position: relative;
+            transition: background-color 0.3s;
+        }
+        .pro-search-button:hover {
+            background-color: rgba(255, 140, 0, 0.5);
+        }
+        .pro-search-button i {
+            position: absolute;
+            right: 20px;
+            font-size: 20px;
+        }
+
+        /* --- Select2 Custom Styles --- */
+        .pro-search-col .select2-container--default .select2-selection--single {
+             width: 100%;
+    height: 35px !important;
+    background: rgba(0, 0, 0, 0.4)!important;
+    border: 2px solid #eb9356;
+    border-radius: 21px !important;
+    display: flex !important;
+    align-items: center !important; /* This handles vertical centering */
+        }
+        .pro-search-col .select2-container--default .select2-selection--single .select2-selection__rendered {
+           color: white;
+    text-align: center; /* This handles horizontal centering */
+    padding: 0 20px;
+    flex-grow: 1; /* Add this to make the text area expand */
+    line-height: normal !important; /* Add this to reset any conflicting line-height */
+        }
+        .pro-search-col .select2-container--default .select2-selection--single .select2-selection__placeholder {
+             color: rgba(255, 255, 255, 0.8);
+          
+        }
+        .pro-search-col .select2-container--default .select2-selection--single .select2-selection__arrow {
+            height: 35px;
+            right: 15px;
+          margin-top:-7px !important;
+        }
+        .pro-search-col .select2-container--default .select2-selection--single .select2-selection__arrow b {
+            border-color: #fff transparent transparent transparent;
+            border-width: 6px 6px 0 6px;
+        }
+        .pro-search-col .select2-container--default.select2-container--open .select2-selection--single .select2-selection__arrow b {
+            border-color: transparent transparent #fff transparent;
+            border-width: 0 6px 6px 6px;
+        }
+        .select2-dropdown {
+            background-color: #333;
+            border: 1px solid #eb9356 ;
+            border-radius: 15px;
+            margin-top: 5px;
+        }
+        .select2-search--dropdown .select2-search__field {
+            background-color: #555;
+            border: 1px solid #777;
+            border-radius: 10px;
+            color: white;
+            outline: none;
+        }
+        .select2-results__option {
+            color: white;
+            padding: 10px 15px;
+        }
+        .select2-results__option--highlighted,
+        .select2-results__option[aria-selected=true] {
+            background-color: #eb9356  !important;
+            color: white !important;
+        }
+
+        /* Suggestion Box Styles */
+        .suggestion-box {
+            display: none;
+            position: absolute;
+            background-color: #333;
+            border: 1px solid #eb9356 ;
+            border-radius: 15px;
+            width: 100%;
+            max-height: 250px;
+            overflow-y: auto;
+            z-index: 1050; /* Ensure it's on top */
+        }
+        .suggestion-box ul {
+            list-style: none;
+            padding: 5px;
+            margin: 0;
+        }
+        .suggestion-box li {
+            padding: 10px 15px;
+            cursor: pointer;
+            color: white;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .suggestion-box li .suggestion-type {
+            font-size: 0.8em;
+            color: #ccc;
+        }
+        .suggestion-box li:hover {
+            background-color: #eb9356 !important;
+        }
+    </style>
 </head>
 <body>
+<?php   
 
+$jobDepartmentList = \App\Models\DreamJobDepartment::get();
+$jobCategoryList = \App\Models\DreamJobSector::get();
+
+?>
 <div class="modal" id="myModalnews" style="z-index: 999999">
     <div class="modal-dialog modal-dialog-centered modal-xl" >
         <div class="modal-content" style="background-color:white !important;">
@@ -131,73 +259,60 @@
                         </ul>
                     </div>
 
-
-                    <form class="form-inline" method="get" action="{{ route('mainSearch') }}" role="form" id="filter_form">
-                        <div class="row ">
-                            <div class="col-md-3 form-group mb-2">
-
-                                <select class="js-example-basic-single form-control custom-form" name="job_category_id" id="job_cat">
-                                    <option value="">Select a Category</option>
-                                    @foreach($headline_list1 as $all_headline_list1)
-                                    <option value="{{ $all_headline_list1->name }}">{{ $all_headline_list1->name }}</option>
-                                    @endforeach
-                                    {{-- <option value="">MEGAYACHT</option>
-                                    <option value="">RIVER CRUISE</option>
-                                    <option value="">PRIVATE JETS</option>
-                                    <option value="">HOTEL RESORT</option>
-                                    <option value="">MERCHANT NAVY</option>
-                                    <option value="">OFFSHORE</option>
-                                    <option value="">WORLD BUTLER</option> --}}
-                                </select>
-
-                                <!--                                <input type="text" name="name" class="form-control custom-form" id="name"-->
-<!--                                       placeholder="Job Title" required="">-->
-                            </div>
-
-                            <div class="col-md-3 form-group mb-2">
-
-                                <select class="js-example-basic-single1 form-control custom-form" name="job_department_id"  id="dp_name">
-                                    <option value="">Select a Department</option>
-
-                                </select>
-
-<!--                                <input type="text" name="name" class="form-control custom-form" id="name"-->
-<!--                                       placeholder="Department" required="">-->
-                            </div>
-
-                            <div class="col-md-3 form-group mb-2">
-
-                                <select class="js-example-basic-single2 form-control custom-form" name="job_title_id" id="job_title_name">
-                                    <option value=""> Select Job Title</option>
-
-
-
-                                </select>
-
-
-<!--                                <input type="text" name="name" class="form-control custom-form" id="name"-->
-<!--                                       placeholder="Choose a Category" required="">-->
-                            </div>
-
-
-                            <div class="col-md-3">
-
-                                <button class="custom_btn">
-                                    <span class="text">Job Search <br> <span
-                                                style="bx bx-searchfont-size: 10px; font-weight:normal"> Your Gateway to the world </span> </span>
-                                    <i class="bx bx-search"></i>
+<!-- all search related code start here-->
+                   <!-- all search related code start here-->
+                     <!-- all search related code start here-->
+                    <div class="pro-search-form">
+                        <form method="get" action="{{ route('mainSearch') }}" id="filter_form">
+                            <div class="row g-3 mb-3">
+                                <div class="col-md-8 col-12 position-relative">
+                                    <input type="text" name="job_title_search" class="pro-search-input" placeholder="← Type a Job Category Or Title →" autocomplete="off">
+                                    <div class="suggestion-box" id="suggestion-box"></div>
+                                </div>
+                                <div class="col-md-4 col-12">
+                                    <button type="submit" class="pro-search-button">
+                                        <span>Search For Your Dream Job</span>
+                                        <i class="fas fa-search"></i>
                                     </button>
-
-
+                                </div>
                             </div>
-
-                        </div>
-                    </form>
-
+                            <div class="row g-3">
+                                <div class="col-md-3 col-12 pro-search-col">
+                                    <select name="job_sector_id" id="search_sector">
+                                        <option></option>
+                                        @foreach($jobCategoryList as $sector)
+                                            <option value="{{ $sector->id }}">{{ $sector->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="col-md-3 col-12 pro-search-col">
+                                    <select name="vessel_or_work_place_id" id="search_vessel">
+                                        <option></option>
+                                    </select>
+                                </div>
+                                <div class="col-md-3 col-12 pro-search-col">
+                                    <select name="job_department_id" id="search_department">
+                                        <option></option>
+                                         @foreach($jobDepartmentList as $department)
+                                            <option value="{{ $department->id }}">{{ $department->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="col-md-3 col-12 pro-search-col">
+                                    <select name="job_title_id" id="search_position">
+                                        <option></option>
+                                    </select>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- all search related code end here-->
+                    <!-- all search related code end here-->
+                    <!-- all search related code end here-->
 
                 </div>
             </div>
-            <!-- End Job Search Section -->
+            
 
             <div class="widgets-container">
                 <div class="widget-item">
@@ -1621,6 +1736,131 @@ Have you found any interesting offer? well, then look for our fascinating articl
 <script src="https://cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
 <script>
     $(document).ready(function () {
+
+           // --- Initialize Select2 ---
+        $('#search_sector').select2({ placeholder: '← Sector →', allowClear: true, width: '100%' });
+        $('#search_vessel').select2({ placeholder: ' ← Vessel / Workplace →', allowClear: true, width: '100%' });
+        $('#search_department').select2({ placeholder: '← Department →', allowClear: true, width: '100%' });
+        $('#search_position').select2({ placeholder: '← Position →', allowClear: true, width: '100%' });
+
+        // --- Cascading Dropdown Logic ---
+        function updateSelectOptions(selectElement, data) {
+            let placeholder = selectElement.data('select2').options.options.placeholder;
+            let formattedData = $.map(data, function (obj) {
+                obj.text = obj.name;
+                return obj;
+            });
+            selectElement.empty().select2({
+                 placeholder: placeholder,
+                 allowClear: true,
+                 width: '100%',
+                 data: formattedData
+            });
+            return formattedData; // Return for chaining
+        }
+
+        $('#search_sector').on('change', function() {
+            const sectorId = $(this).val();
+            const vesselSelect = $('#search_vessel');
+            // Clear and update placeholder
+            vesselSelect.empty().select2({ placeholder: '← Vessel / Workplace →', allowClear: true, width: '100%'});
+
+            if (sectorId) {
+                let url = "{{ route('getVesselsBySector', ':id') }}".replace(':id', sectorId);
+                $.get(url, data => {
+                    let formattedData = updateSelectOptions(vesselSelect, data);
+                    let pendingVesselId = $('body').data('pending-vessel-id');
+                    if(pendingVesselId && formattedData.some(v => v.id == pendingVesselId)){
+                        vesselSelect.val(pendingVesselId).trigger('change');
+                        $('body').removeData('pending-vessel-id');
+                    }
+                });
+            }
+        });
+
+        $('#search_department').on('change', function() {
+            const departmentId = $(this).val();
+            const positionSelect = $('#search_position');
+            positionSelect.empty().select2({ placeholder: '← Position →', allowClear: true, width: '100%'});
+
+            if (departmentId) {
+                let url = "{{ route('getPositionsByDepartment', ':id') }}".replace(':id', departmentId);
+                $.get(url, function(data) {
+                    let formattedData = updateSelectOptions(positionSelect, data);
+                    let pendingPositionId = $('body').data('pending-position-id');
+                    if (pendingPositionId && formattedData.some(p => p.id == pendingPositionId)) {
+                        positionSelect.val(pendingPositionId).trigger('change');
+                        $('body').removeData('pending-position-id');
+                    }
+                });
+            }
+        });
+
+        // --- Auto Search Bar Logic ---
+        const searchInput = $('[name="job_title_search"]');
+        const suggestionBox = $('#suggestion-box');
+
+        function debounce(func, delay) {
+            let timeout;
+            return function(...args) {
+                clearTimeout(timeout);
+                timeout = setTimeout(() => func.apply(this, args), delay);
+            };
+        }
+
+        searchInput.on('keyup', debounce(function() {
+            let query = $(this).val();
+            if (query.length > 0) {
+                let url = "{{ route('job.autosuggest') }}";
+                $.get(url, { term: query }, function(data) {
+                    suggestionBox.empty().hide();
+                    if (data.length > 0) {
+                        const ul = $('<ul></ul>');
+                        data.forEach(item => {
+                            const li = $('<li></li>')
+                                .html(`<span>${item.label}</span> <span class="suggestion-type">${item.type}</span>`)
+                                .data('suggestion', item);
+                            ul.append(li);
+                        });
+                        suggestionBox.append(ul).show();
+                    }
+                });
+            } else {
+                suggestionBox.hide();
+            }
+        }, 300));
+
+        suggestionBox.on('click', 'li', function() {
+            const suggestion = $(this).data('suggestion');
+            searchInput.val(suggestion.label);
+            suggestionBox.hide();
+
+            // Reset all filters first
+            $('#search_sector, #search_department, #search_position').val(null).trigger('change');
+            $('#search_vessel').empty().trigger('change');
+
+            // Store position ID to be selected after AJAX calls complete
+            if (suggestion.position_id) {
+                $('body').data('pending-position-id', suggestion.position_id);
+            }
+
+            // Trigger the top-level dropdowns. The change events will handle the rest.
+            if (suggestion.sector_id) {
+                $('#search_sector').val(suggestion.sector_id).trigger('change');
+            }
+            if (suggestion.department_id) {
+                $('#search_department').val(suggestion.department_id).trigger('change');
+            }
+        });
+
+        // Hide suggestion box when clicking outside
+        $(document).on('click', function(e) {
+            if (!$(e.target).closest('.pro-search-input, .suggestion-box').length) {
+                suggestionBox.hide();
+            }
+        });
+        // Other initializations...
+
         $("#myModalnews").modal('show');
     });
 </script>

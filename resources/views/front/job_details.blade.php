@@ -34,31 +34,29 @@
     <section class="page_top_section">
         <div class="container">
             <div class="page-header my-auto">
-                <h2>Mission</h2>
+                <h2>Vacancy Details</h2>
             </div>
         </div>
     </section>
 
-    <!-- ======= About Section ======= -->
-
+    <!-- ======= Details Section ======= -->
     <section class="">
-
         <div class="container pt-4">
             <div class="card">
                 <div class="card-body custom_form_color">
-
+                    @include('flash_message')
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="row details_page_header">
                                 <div class="col-1">
-                                    <img src="https://ojcrew.com/wp-content/themes/oj/img/dot_red_blue.png">
+                                    <img src="https://ojcrew.com/wp-content/themes/oj/img/dot_red_blue.png" alt="icon">
                                 </div>
                                 <div class="col-11">
                                     <h3>INFO ABOUT THE JOB</h3>
                                 </div>
                                 <div class="col-12 mt-3">
-                                    <h2>{{ $jobListAll->job_title_id }}</h2>
-                                    <p>{{ $jobListAll->agency_name }}</p>
+                                    <h2>{{ $job->position->name ?? 'N/A' }}</h2>
+                                    <p>{{ $job->agency_name }}</p>
                                 </div>
                             </div>
 
@@ -67,25 +65,25 @@
                                     <td>
                                         <div>
                                             <p>
-                                                <img src="https://ojcrew.com/wp-content/themes/oj/img/d4_cards.png"
-                                                     alt="">
-                                                € {{ $jobListAll->salary }} </p>
+                                                <img src="https://ojcrew.com/wp-content/themes/oj/img/d4_cards.png" alt="Salary">
+                                                {{ $job->salary }}
+                                            </p>
                                         </div>
                                     </td>
                                     <td>
                                         <div>
                                             <p>
-                                                <img src="https://ojcrew.com/wp-content/themes/oj/img/d4_flag.png"
-                                                     alt="">
-                                                     {{ $jobListAll->job_location }} </p>
+                                                <img src="https://ojcrew.com/wp-content/themes/oj/img/d4_flag.png" alt="Location">
+                                                {{ $job->job_area ?? 'N/A' }}
+                                            </p>
                                         </div>
                                     </td>
                                     <td>
                                         <div>
                                             <p>
-                                                <img src="https://ojcrew.com/wp-content/themes/oj/img/d4_clocl.png"
-                                                     alt="">
-                                                     {{ $jobListAll->job_contract_type }}</p>
+                                                <img src="https://ojcrew.com/wp-content/themes/oj/img/d4_clocl.png" alt="Contract">
+                                                {{ $job->job_type }}
+                                            </p>
                                         </div>
                                     </td>
                                 </tr>
@@ -93,95 +91,81 @@
                             <table class="table table-borderless">
                                 <tr>
                                     <td>
-                                        <p>ID: {{ $jobListAll->job_main_id }}</p>
-
-                                        <p>Posted date: {{ date('F m, Y', strtotime($jobListAll->post_date)) }}</p>
-
-                                        <p>Expiry date: {{ date('F m, Y', strtotime($jobListAll->expire_date)) }}</p>
-
+                                        <p>ID: {{ $job->job_id }}</p>
+                                        <p>Posted date: {{ \Carbon\Carbon::parse($job->post_date)->format('F d, Y') }}</p>
+                                        <p>Expiry date: {{ \Carbon\Carbon::parse($job->expire_date)->format('F d, Y') }}</p>
                                     </td>
                                     <td>
-                                        <p>Minimum experience:  {{ $jobListAll->job_experience }}</p>
-
-                                        <p>Contract type: {{ $jobListAll->job_type }}</p>
-
-                                        <p>Type of vessel: {{ $jobListAll->job_category_id }}</p>
+                                        <p>Minimum experience: {{ $job->job_experience }}</p>
+                                        <p>Contract type: {{ $job->job_type }}</p>
+                                        <p>Type of vessel: {{ $job->vesselOrWorkPlace->name ?? 'N/A' }}</p>
                                     </td>
                                 </tr>
-
                             </table>
 
-
                             <h5>Job Description</h5>
-
-                            {!! $jobListAll->description !!}
-
-                            <p>Please apply online to or send your CV to: <a href="#">oil@ojcrew.com</a></p>
+                            <div>{!! $job->description !!}</div>
+                            <p class="mt-3">Please apply online or send your CV to: <a href="mailto:info@isol.com.bd">info@isol.com.bd</a></p>
                         </div>
                         <div class="col-lg-6">
                             <div class="row details_page_header">
                                 <div class="col-1">
-                                    <img src="https://ojcrew.com/wp-content/themes/oj/img/dot_red_blue.png">
+                                    <img src="https://ojcrew.com/wp-content/themes/oj/img/dot_red_blue.png" alt="icon">
                                 </div>
                                 <div class="col-11">
                                     <h3>APPLY FOR THIS JOB</h3>
                                 </div>
                             </div>
-                            <form action="" class="mt-3">
+                            <form action="#" class="mt-3"> {{-- Add your form submission route here --}}
+                                @csrf
+                                <input type="hidden" name="job_id" value="{{ $job->id }}">
                                 <div class="row">
                                     <div class="col-lg-6 col-sm-12">
                                         <div class="mb-3">
-                                            <input class="form-control" type="text" placeholder="name">
+                                            <input class="form-control" type="text" name="name" placeholder="Name" required>
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-sm-12">
                                         <div class="mb-3">
-                                            <input class="form-control" type="text" placeholder="surname">
+                                            <input class="form-control" type="text" name="surname" placeholder="Surname" required>
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-sm-12">
                                         <div class="mb-3">
-                                            <input class="form-control" type="number" placeholder="Phone Number">
+                                            <input class="form-control" type="tel" name="phone" placeholder="Phone Number" required>
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-sm-12">
                                         <div class="mb-3">
-                                            <input class="form-control" type="email" placeholder="Email">
+                                            <input class="form-control" type="email" name="email" placeholder="Email" required>
                                         </div>
                                     </div>
                                     <div class="col-lg-12 col-sm-12">
                                         <div class="mb-3">
-                                            <textarea name="" class="form-control" id="" cols="30" rows="10"
-                                                      placeholder="Message"></textarea>
+                                            <textarea name="message" class="form-control" id="" cols="30" rows="10" placeholder="Message"></textarea>
                                         </div>
                                     </div>
                                     <div class="col-lg-12 col-sm-12">
                                         <div class="mb-3">
-                                            <label for="" class="form-label">
-                                                Attach CV and Certificates (only .pdf, .doc, .jpg, .pdf file formats are
-                                                supported)
+                                            <label for="cv_upload" class="form-label">
+                                                Attach CV and Certificates (only .pdf, .doc, .jpg file formats are supported)
                                             </label>
-                                            <input class="form-control" type="file" placeholder="Email">
+                                            <input class="form-control" type="file" id="cv_upload" name="attachment" required>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="d-grid gap-2 mt-4">
-                                    <button style="background-color:#ff0000; padding:16px;" class="btn btn-success"
-                                            type="button">Send Application
+                                    <button style="background-color:#ff0000; padding:16px;" class="btn btn-success" type="submit">
+                                        Send Application
                                     </button>
                                 </div>
                             </form>
                         </div>
                     </div>
-
-                    <div class="r-line"></div>
-
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- End Mission Vision Section -->
 </main>
 
 
