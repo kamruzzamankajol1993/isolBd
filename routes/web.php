@@ -67,6 +67,9 @@ Route::get('/', [FrontController::class, 'index'])->name('index');
 Route::get('/autosuggest', [FrontController::class, 'getAutoSuggestions'])->name('job.autosuggest');
 Route::get('/get-vessels-by-sector/{sector_id}', [FrontController::class, 'getVesselsBySector'])->name('getVesselsBySector');
 Route::get('/get-positions-by-department/{department_id}', [FrontController::class, 'getPositionsByDepartment'])->name('getPositionsByDepartment');
+
+Route::get('/get-department-by-vessel/{vessel_id}', [FrontController::class, 'getDepartmentByVessel'])->name('getDepartmentByVessel');
+
 //CV Login
 //Route::get('/cv_login_form',[LoginController::class,'cv_login_form'])->name('cv_login_form');
 Route::get('/cv_login_form',[LoginController::class,'cv_login_form'])->name('cv_login_form');

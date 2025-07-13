@@ -20,17 +20,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 
-    <!--    slick slider-->
     <link rel="stylesheet" type="text/css" href="{{ asset('/') }}public/front/assets/vendor/slick/slick.css">
     <link rel="stylesheet" type="text/css" href="{{ asset('/') }}public/front/assets/vendor/slick/slick-theme.css">
 
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
     <link href="https://fonts.googleapis.com/css?family=Fira+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"
-          rel="stylesheet"> <!-- Google fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"
-          rel="stylesheet"> <!-- Google fonts -->
-          <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+          rel="stylesheet"> <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"
+          rel="stylesheet"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
 
         <style>
         .alertify .ajs-body .ajs-content {
@@ -174,8 +171,11 @@
             font-size: 0.8em;
             color: #ccc;
         }
-        .suggestion-box li:hover {
+        .suggestion-box li:hover, .suggestion-box li.active {
             background-color: #eb9356 !important;
+        }
+        .suggestion-box li:hover span, .suggestion-box li.active span {
+            color: white !important;
         }
     </style>
 </head>
@@ -208,20 +208,16 @@ $jobCategoryList = \App\Models\DreamJobSector::get();
     </div>
 </div>
 
-<!-- Header -->
- @include('front.include.top_header')
+@include('front.include.top_header')
 
 
 <div id="fullview">
 
 
-    <!--video section-->
     <div class="section">
 
-        <!-- Content -->
         <div class="contentss">
 
-            <!-- Hero banner -->
             <div class="hero-banner ">
                 <video loop="true" autoplay="autoplay" muted class="video_section">
                     <source src="{{ asset('/') }}public/front/assets/img/video/Untitled.mp4" type="video/mp4">
@@ -229,17 +225,10 @@ $jobCategoryList = \App\Models\DreamJobSector::get();
             </div>
 
 
-            <!-- ======= Job Search Section ======= -->
             <div class="job_ser">
                 <div class="container">
 
-<!--                    <div class="section-title-job sliding_text">-->
-<!--                        <h2 class="item-1">Turn Your Passion Into Your Profession</h2>-->
-<!--                        <h2 class="item-2">Your Attitude Detiremines Your Direction</h2>-->
-<!--                        <h2 class="item-3">Love Your Career</h2>-->
-<!--                    </div>-->
-
-                    <div id="sliders">
+<div id="sliders">
                         <ul class="ul">
                             <li class="li">
                                 <div class="slider-container">
@@ -259,10 +248,7 @@ $jobCategoryList = \App\Models\DreamJobSector::get();
                         </ul>
                     </div>
 
-<!-- all search related code start here-->
-                   <!-- all search related code start here-->
-                     <!-- all search related code start here-->
-                    <div class="pro-search-form">
+<div class="pro-search-form">
                         <form method="get" action="{{ route('mainSearch') }}" id="filter_form">
                             <div class="row g-3 mb-3">
                                 <div class="col-md-8 col-12 position-relative">
@@ -306,11 +292,7 @@ $jobCategoryList = \App\Models\DreamJobSector::get();
                             </div>
                         </form>
                     </div>
-                    <!-- all search related code end here-->
-                    <!-- all search related code end here-->
-                    <!-- all search related code end here-->
-
-                </div>
+                    </div>
             </div>
             
 
@@ -330,11 +312,7 @@ $jobCategoryList = \App\Models\DreamJobSector::get();
     </div>
 
 
-    <!--    second section-->
-
     <div class="section">
-
-        <!-- ======= Banner Section ======= -->
 
         <div class="container-fluid ">
             <div class="second_first_Section">
@@ -390,9 +368,6 @@ $jobCategoryList = \App\Models\DreamJobSector::get();
                 </div>
             </div>
         </div>
-        <!-- End Banner Section -->
-
-        <!-- ======= Category Section ======= -->
         <div class="container-fluid category_section">
             <div class="d-flex flex-wrap  justify-content-center">
 
@@ -458,15 +433,12 @@ $jobCategoryList = \App\Models\DreamJobSector::get();
                 </div> --}}
             </div>
         </div>
-        <!-- End Category Section -->
-
-        <!--        news slider-->
         <div class="container" style="margin-top: 20px;">
             <div class="row">
                 <div class="col-md-12">
                     <div class="d-flex justify-content-between align-items-center breaking-news" style="margin-left: -50px;">
                         <div class="d-flex flex-row flex-grow-1 flex-fill justify-content-center special py-2 px-1 news">
-                            <span class="d-flex align-items-center" style="font-weight:bold; color: yellow;">&nbsp;IMPORTANT</span></div>
+                            <span class="d-flex align-items-center" style="font-weight:bold; color: yellow;"> IMPORTANT</span></div>
                         <marquee class="news-scroll" behavior="scroll" direction="left" onmouseover="this.stop();"
                                  onmouseout="this.start();">
                             <a href="#" class="me-3 ms-3">[[ Candidates without relevant experience  are requested not to apply ]]</a>
@@ -484,11 +456,7 @@ $jobCategoryList = \App\Models\DreamJobSector::get();
     </div>
 
 
-    <!--    third Section-->
-
     <div class="section">
-        <!-- ======= Why Join Section ======= -->
-
         <div class="showcase">
             <img src="{{ asset('/') }}public/front/assets/img/why.jpg" alt="Picture">
             <div class="overlay section-content ">
@@ -575,19 +543,14 @@ $jobCategoryList = \App\Models\DreamJobSector::get();
             </div>
         </div>
 
-        <!-- End Why Join Section -->
-    </div>
-
-    <!--    forth Section-->
+        </div>
 
     <div class="section">
 
-        <!-- ======= Mission Vision Section ======= -->
         <div class="section-content ">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6 col-md-6 mb-4 forth_section">
-                        <!--<h4>Our Mission</h4>-->
                         <div class="flip-box">
                             <div class="flip-box-inner">
                                 <div class="flip-box-front">
@@ -607,7 +570,6 @@ ensure the highest quality, healthcare, safety and work environment.
                     </div>
 
                     <div class="col-lg-6 col-md-6 mb-4 forth_section">
-                        <!--<h4>Our Vision</h4>-->
                         <div class="flip-box">
                             <div class="flip-box-inner">
                                 <div class="flip-box-front">
@@ -627,7 +589,6 @@ within the Global Marine Industry.
                     </div>
 
                     <div class="col-lg-6 col-md-6 mt-2 forth_section">
-                        <!--<h4>Connect People with the Right Jobs for Them</h4>-->
                         <div class="flip-box">
                             <div class="flip-box-inner">
                                 <div class="flip-box-front">
@@ -661,7 +622,6 @@ priority, service and satisfaction. This is what we do.
                     </div>
 
                     <div class="col-lg-6 col-md-3 mt-2 forth_section">
-                        <!--<h4>Are You Looking To Hire Bangladesh Seafarers?</h4>-->
                         <div class="flip-box">
                             <div class="flip-box-inner">
                                 <div class="flip-box-front">
@@ -681,13 +641,10 @@ priority, service and satisfaction. This is what we do.
 
             </div>
         </div>
-        <!-- End Mission Vision Section -->
-    </div>
+        </div>
 
 
-    <!--    fifth section-->
-<div class="section">
-        <!-- ======= business goal Section ======= -->
+    <div class="section">
         <div class="section-content ">
             <div class="container">
                 <div class="scene scene--card">
@@ -822,10 +779,8 @@ priority, service and satisfaction. This is what we do.
                 </div>
             </div>
         </div>
-        <!-- End business Section -->
-    </div>
+        </div>
 
-    <!--    six section-->
     <div class="section">
         <div class="section-content">
             <div class="container">
@@ -1085,7 +1040,6 @@ priority, service and satisfaction. This is what we do.
         </div>
     </div>
 
-    <!--    seventh section-->
     <div class="section">
         <div class="section-content">
             <div class="container">
@@ -1239,7 +1193,6 @@ Have you found any interesting offer? well, then look for our fascinating articl
 
     ?>
 
-    <!--    eight section-->
     <div class="section">
         <div class="section-content">
             <div class="container">
@@ -1270,7 +1223,6 @@ Have you found any interesting offer? well, then look for our fascinating articl
         </div>
     </div>
 
-    <!--    ninth section-->
     <?php  
 
     $reveiewList = DB::table('employeereviews')->latest()->get();
@@ -1281,7 +1233,6 @@ Have you found any interesting offer? well, then look for our fascinating articl
 
     
      ?>
-      <!--    ninth section-->
       <div class="section">
         <div class="section-content">
             <div class="container">
@@ -1380,7 +1331,6 @@ Have you found any interesting offer? well, then look for our fascinating articl
         </div>
     </div>
 
-    <!--    tenth section-->
     <div class="section ">
         <div class="section-content ">
             <div class="container">
@@ -1407,12 +1357,10 @@ Have you found any interesting offer? well, then look for our fascinating articl
         </div>
     </div>
 
-    <!--    eleventh section-->
     <div class="section" style="background-color:black !important;">
-        <!-- ======= Contact Section ======= -->
         <div id="contact" class="contact " >
             <div class="contact_wave">
-                <div class="p-md-4 p-lg-4 mb-xxl-4">&nbsp;</div>
+                <div class="p-md-4 p-lg-4 mb-xxl-4"> </div>
                 <div class="container ">
 
                     <div class="section-title1">
@@ -1504,12 +1452,10 @@ Have you found any interesting offer? well, then look for our fascinating articl
             </div>
 
         </div>
-        <!-- End Contact Section -->
-    </div>
+        </div>
 
 
-    <!--    Twelveth section-->
-     <div class="section">
+    <div class="section">
         <div class="section-content">
             <div class="container">
                 <div class="section-title">
@@ -1574,7 +1520,7 @@ Have you found any interesting offer? well, then look for our fascinating articl
                                 <p>License: 356375,  C-171113/2021</p>
                         </div>
                         <div class="copyright">
-                            Interworld Shipping Overseas Limited (ISOL) All Rights Reserved &copy; <script>document.write(new Date().getFullYear());</script>
+                            Interworld Shipping Overseas Limited (ISOL) All Rights Reserved © <script>document.write(new Date().getFullYear());</script>
                         </div>
                     </div>
                     <div class="col-lg-6 col-sm-12">
@@ -1635,7 +1581,6 @@ Have you found any interesting offer? well, then look for our fascinating articl
 
 
 
-<!--                    modal section-->
 <div class="modal align-middle " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -1718,7 +1663,7 @@ Have you found any interesting offer? well, then look for our fascinating articl
             </div>
             <div class="modal-body">
                 <p>Do not apply for positions if you have no or little previous experience; and
-                    do not apply for jobs which require qualifications you don&#39;t hold  you will
+                    do not apply for jobs which require qualifications you don't hold  you will
                     be only wasting your time and the recruiters time.</p>
             </div>
         </div>
@@ -1736,43 +1681,96 @@ Have you found any interesting offer? well, then look for our fascinating articl
 <script src="https://cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
 <script>
     $(document).ready(function () {
-
-           // --- Initialize Select2 ---
+        // --- Initialize Select2 ---
         $('#search_sector').select2({ placeholder: '← Sector →', allowClear: true, width: '100%' });
         $('#search_vessel').select2({ placeholder: ' ← Vessel / Workplace →', allowClear: true, width: '100%' });
         $('#search_department').select2({ placeholder: '← Department →', allowClear: true, width: '100%' });
         $('#search_position').select2({ placeholder: '← Position →', allowClear: true, width: '100%' });
 
-        // --- Cascading Dropdown Logic ---
-        function updateSelectOptions(selectElement, data) {
-            let placeholder = selectElement.data('select2').options.options.placeholder;
+        // --- Smart Search & Cascading Dropdown Logic ---
+
+        const searchInput = $('[name="job_title_search"]');
+        const suggestionBox = $('#suggestion-box');
+        let suggestionTimeout;
+
+        /**
+         * A utility function to update Select2 options, or clear them.
+         * @param {jQuery} selectElement The Select2 jQuery element.
+         * @param {Array} data The array of data to populate.
+         * @param {string} placeholderText The placeholder text for the dropdown.
+         */
+        function updateSelectOptions(selectElement, data, placeholderText) {
             let formattedData = $.map(data, function (obj) {
-                obj.text = obj.name;
+                obj.text = obj.name; // Assumes a 'name' property exists
                 return obj;
             });
+
             selectElement.empty().select2({
-                 placeholder: placeholder,
-                 allowClear: true,
-                 width: '100%',
-                 data: formattedData
-            });
-            return formattedData; // Return for chaining
+                placeholder: placeholderText,
+                allowClear: true,
+                width: '100%',
+                data: formattedData
+            }).val(null).trigger('change.select2'); // Reset selection and update UI
         }
+
+        /**
+         * A utility function to select a value in a dropdown. If the value
+         * isn't available yet (e.g., still loading via AJAX), it's stored
+         * as a 'pending-value' to be selected upon data load.
+         * @param {jQuery} selectElement The Select2 jQuery element.
+         * @param {*} value The value to select.
+         * @param {boolean} triggerChange Whether to trigger the 'change' event.
+         */
+        function selectFilterValue(selectElement, value, triggerChange = true) {
+            if (value) {
+                if (selectElement.find("option[value='" + value + "']").length) {
+                    selectElement.val(value);
+                    if (triggerChange) selectElement.trigger('change');
+                } else {
+                    selectElement.data('pending-value', value);
+                }
+            }
+        }
+
+        // --- Event Handlers for Cascading Dropdowns ---
 
         $('#search_sector').on('change', function() {
             const sectorId = $(this).val();
             const vesselSelect = $('#search_vessel');
-            // Clear and update placeholder
-            vesselSelect.empty().select2({ placeholder: '← Vessel / Workplace →', allowClear: true, width: '100%'});
+            
+            // Clear subsequent dropdowns
+            updateSelectOptions(vesselSelect, [], '← Vessel / Workplace →');
+            updateSelectOptions($('#search_department'), [], '← Department →');
+            updateSelectOptions($('#search_position'), [], '← Position →');
 
             if (sectorId) {
                 let url = "{{ route('getVesselsBySector', ':id') }}".replace(':id', sectorId);
                 $.get(url, data => {
-                    let formattedData = updateSelectOptions(vesselSelect, data);
-                    let pendingVesselId = $('body').data('pending-vessel-id');
-                    if(pendingVesselId && formattedData.some(v => v.id == pendingVesselId)){
-                        vesselSelect.val(pendingVesselId).trigger('change');
-                        $('body').removeData('pending-vessel-id');
+                    updateSelectOptions(vesselSelect, data, '← Vessel / Workplace →');
+                    let pendingValue = vesselSelect.data('pending-value');
+                    if(pendingValue) {
+                        selectFilterValue(vesselSelect, pendingValue);
+                        vesselSelect.removeData('pending-value'); // Clean up
+                    }
+                });
+            }
+        });
+
+        $('#search_vessel').on('change', function() {
+            const vesselId = $(this).val();
+            const departmentSelect = $('#search_department');
+
+            updateSelectOptions(departmentSelect, [], '← Department →');
+            updateSelectOptions($('#search_position'), [], '← Position →');
+
+            if (vesselId) {
+                let url = "{{ route('getDepartmentByVessel', ':id') }}".replace(':id', vesselId);
+                $.get(url, data => {
+                    updateSelectOptions(departmentSelect, data, '← Department →');
+                    let pendingValue = departmentSelect.data('pending-value');
+                    if(pendingValue) {
+                        selectFilterValue(departmentSelect, pendingValue);
+                        departmentSelect.removeData('pending-value');
                     }
                 });
             }
@@ -1781,85 +1779,109 @@ Have you found any interesting offer? well, then look for our fascinating articl
         $('#search_department').on('change', function() {
             const departmentId = $(this).val();
             const positionSelect = $('#search_position');
-            positionSelect.empty().select2({ placeholder: '← Position →', allowClear: true, width: '100%'});
+            updateSelectOptions(positionSelect, [], '← Position →');
 
             if (departmentId) {
                 let url = "{{ route('getPositionsByDepartment', ':id') }}".replace(':id', departmentId);
                 $.get(url, function(data) {
-                    let formattedData = updateSelectOptions(positionSelect, data);
-                    let pendingPositionId = $('body').data('pending-position-id');
-                    if (pendingPositionId && formattedData.some(p => p.id == pendingPositionId)) {
-                        positionSelect.val(pendingPositionId).trigger('change');
-                        $('body').removeData('pending-position-id');
+                    updateSelectOptions(positionSelect, data, '← Position →');
+                    let pendingValue = positionSelect.data('pending-value');
+                    if(pendingValue) {
+                        selectFilterValue(positionSelect, pendingValue, false); // Don't trigger change on the last item
+                        positionSelect.removeData('pending-value');
                     }
                 });
             }
         });
 
-        // --- Auto Search Bar Logic ---
-        const searchInput = $('[name="job_title_search"]');
-        const suggestionBox = $('#suggestion-box');
+        // --- Auto-Suggestion and Keyboard Navigation for Main Search Input ---
 
-        function debounce(func, delay) {
-            let timeout;
-            return function(...args) {
-                clearTimeout(timeout);
-                timeout = setTimeout(() => func.apply(this, args), delay);
-            };
-        }
+        searchInput.on('keyup', function(e) {
+            const suggestions = suggestionBox.find('li');
+            let active = suggestionBox.find('li.active');
 
-        searchInput.on('keyup', debounce(function() {
-            let query = $(this).val();
-            if (query.length > 0) {
-                let url = "{{ route('job.autosuggest') }}";
-                $.get(url, { term: query }, function(data) {
-                    suggestionBox.empty().hide();
-                    if (data.length > 0) {
-                        const ul = $('<ul></ul>');
-                        data.forEach(item => {
-                            const li = $('<li></li>')
-                                .html(`<span>${item.label}</span> <span class="suggestion-type">${item.type}</span>`)
-                                .data('suggestion', item);
-                            ul.append(li);
-                        });
-                        suggestionBox.append(ul).show();
-                    }
-                });
-            } else {
+            // Handle keyboard navigation
+            if (e.key === 'ArrowDown') {
+                if (active.length) {
+                    let next = active.next();
+                    if (next.length) active.removeClass('active').next().addClass('active');
+                } else {
+                    suggestions.first().addClass('active');
+                }
+                return;
+            } else if (e.key === 'ArrowUp') {
+                if (active.length) {
+                    let prev = active.prev();
+                    if (prev.length) active.removeClass('active').prev().addClass('active');
+                }
+                return;
+            } else if (e.key === 'Enter') {
+                e.preventDefault();
+                if (active.length) active.click();
+                return;
+            } else if (e.key === 'Escape') {
                 suggestionBox.hide();
+                return;
             }
-        }, 300));
 
+            // Debounce AJAX call to avoid excessive requests
+            clearTimeout(suggestionTimeout);
+            suggestionTimeout = setTimeout(() => {
+                let query = $(this).val();
+                if (query.length > 1) {
+                    let url = "{{ route('job.autosuggest') }}";
+                    $.get(url, { term: query }, function(data) {
+                        suggestionBox.empty().hide();
+                        if (data.length > 0) {
+                            const ul = $('<ul></ul>');
+                            data.forEach(item => {
+                                const li = $('<li></li>')
+                                    .html(`<span>${item.label}</span><span class="suggestion-type">${item.type}</span>`)
+                                    .data('suggestion', item);
+                                ul.append(li);
+                            });
+                            suggestionBox.append(ul).show();
+                        }
+                    });
+                } else {
+                    suggestionBox.hide();
+                }
+            }, 300);
+        });
+
+        // --- Suggestion Click Handler ---
         suggestionBox.on('click', 'li', function() {
             const suggestion = $(this).data('suggestion');
             searchInput.val(suggestion.label);
             suggestionBox.hide();
+            
+            // Reset all dropdowns to a clean state before applying new filters
+            updateSelectOptions($('#search_sector'), @json($jobCategoryList), '← Sector →');
+            updateSelectOptions($('#search_vessel'), [], '← Vessel / Workplace →');
+            updateSelectOptions($('#search_department'), @json($jobDepartmentList), '← Department →');
+            updateSelectOptions($('#search_position'), [], '← Position →');
 
-            // Reset all filters first
-            $('#search_sector, #search_department, #search_position').val(null).trigger('change');
-            $('#search_vessel').empty().trigger('change');
-
-            // Store position ID to be selected after AJAX calls complete
-            if (suggestion.position_id) {
-                $('body').data('pending-position-id', suggestion.position_id);
-            }
-
-            // Trigger the top-level dropdowns. The change events will handle the rest.
+            // Set filters based on the suggestion type using the cascading logic
             if (suggestion.sector_id) {
-                $('#search_sector').val(suggestion.sector_id).trigger('change');
+                 selectFilterValue($('#search_sector'), suggestion.sector_id);
             }
-            if (suggestion.department_id) {
-                $('#search_department').val(suggestion.department_id).trigger('change');
+             if (suggestion.vessel_id) {
+                 selectFilterValue($('#search_vessel'), suggestion.vessel_id);
+            }
+             if (suggestion.department_id) {
+                 selectFilterValue($('#search_department'), suggestion.department_id);
+            }
+            if (suggestion.position_id) {
+                selectFilterValue($('#search_position'), suggestion.position_id);
             }
         });
-
-        // Hide suggestion box when clicking outside
+        
+        // Hide suggestion box when clicking anywhere else on the page
         $(document).on('click', function(e) {
-            if (!$(e.target).closest('.pro-search-input, .suggestion-box').length) {
+            if (!$(e.target).closest('.position-relative').length) {
                 suggestionBox.hide();
             }
         });
-        // Other initializations...
 
         $("#myModalnews").modal('show');
     });

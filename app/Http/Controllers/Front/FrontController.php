@@ -30,6 +30,23 @@ class FrontController extends Controller
         return response()->json($vessels);
     }
 
+    public function getDepartmentByVessel($vessel_id)
+    {
+        // Find department IDs specifically assigned to this vessel
+        $assignedDepartmentIds = DB::table('vessel_deparments')
+                                    ->where('vessel_or_work_place_id', $vessel_id)
+                                    ->pluck('dream_job_department_id');
+
+        if ($assignedDepartmentIds->isNotEmpty()) {
+            // If there are assigned departments, fetch them
+            $departments = DreamJobDepartment::whereIn('id', $assignedDepartmentIds)->get();
+        } else {
+            // Otherwise, fetch all departments
+            $departments = DreamJobDepartment::all();
+        }
+        return response()->json($departments);
+    }
+
     /**
      * Fetches positions/titles based on the selected department.
      *
@@ -44,44 +61,97 @@ class FrontController extends Controller
         return response()->json($positions);
     }
 
-     public function getAutoSuggestions(Request $request)
+    public function getAutoSuggestions(Request $request)
     {
         $query = $request->get('term');
+    
+        // Implemented phonetic search (SOUNDEX) to handle common spelling mistakes like "waitter" -> "Waiter".
         if (strlen($query) < 1) {
             return response()->json([]);
         }
-
-        $suggestions = [];
-
+    
+        $limit = 10; // Set a total limit for suggestions.
+        
+        // Using an associative array with the label as the key to automatically handle duplicates.
+        $results = [];
+    
+        // The database query now checks for two conditions for a broader, more flexible search:
+        // 1. Phonetic match using SOUNDEX (handles misspellings).
+        // 2. Substring match using LIKE (for partial typing).
+        $whereClause = "SOUNDEX(name) = SOUNDEX(?) OR name LIKE ?";
+        $bindings = [$query, "%{$query}%"];
+    
         // Search in Sectors (Job Categories)
-        $sectors = DreamJobSector::where('name', 'LIKE', "%{$query}%")->limit(3)->get();
+        $sectors = DreamJobSector::whereRaw($whereClause, $bindings)->limit(3)->get();
         foreach ($sectors as $sector) {
-            $suggestions[] = [
+            $results[strtolower($sector->name)] = [
                 'label'         => $sector->name,
                 'type'          => 'Sector',
                 'sector_id'     => $sector->id,
+                'vessel_id'     => null,
                 'department_id' => null,
                 'position_id'   => null,
             ];
         }
-
+    
+        // Search in Vessels / Workplaces
+        $vessels = VesselOrWorkPlace::whereRaw($whereClause, $bindings)->limit(3)->get();
+        foreach ($vessels as $vessel) {
+            $results[strtolower($vessel->name)] = [
+                'label'         => $vessel->name,
+                'type'          => 'Vessel',
+                'sector_id'     => $vessel->dream_job_sector_id,
+                'vessel_id'     => $vessel->id,
+                'department_id' => null,
+                'position_id'   => null,
+            ];
+        }
+    
+        // Search in Departments
+        $departments = DreamJobDepartment::whereRaw($whereClause, $bindings)->limit(3)->get();
+        foreach ($departments as $department) {
+            $results[strtolower($department->name)] = [
+                'label'         => $department->name,
+                'type'          => 'Department',
+                'sector_id'     => null,
+                'vessel_id'     => null,
+                'department_id' => $department->id,
+                'position_id'   => null,
+            ];
+        }
+    
         // Search in Positions (Job Titles)
-        $positions = DreamJobPosition::where('name', 'LIKE', "%{$query}%")
-            ->limit(7)
-            ->get();
-
+        $positions = DreamJobPosition::whereRaw($whereClause, $bindings)->limit(5)->get();
         foreach ($positions as $position) {
-            // Add the position to suggestions
-            $suggestions[] = [
+            $results[strtolower($position->name)] = [
                 'label'         => $position->name,
                 'type'          => 'Position',
-                'sector_id'     => null, // Sector cannot be determined directly from position
+                'sector_id'     => null,
+                'vessel_id'     => null,
                 'department_id' => $position->dream_job_department_id,
                 'position_id'   => $position->id,
             ];
         }
-
-        return response()->json($suggestions);
+    
+        // Convert the associative array back to a simple indexed array.
+        $suggestions = array_values($results);
+    
+        // Prioritize exact matches by moving them to the top of the list.
+        $exactMatchIndex = -1;
+        foreach($suggestions as $index => $suggestion) {
+            if (strcasecmp($suggestion['label'], $query) === 0) {
+                $exactMatchIndex = $index;
+                break;
+            }
+        }
+    
+        if ($exactMatchIndex > 0) {
+            $exactMatchItem = array_splice($suggestions, $exactMatchIndex, 1);
+            array_unshift($suggestions, $exactMatchItem[0]);
+        }
+    
+        // Finally, limit the total number of suggestions returned.
+        return response()->json(array_slice($suggestions, 0, $limit));
     }
 
     public function informationSubmitForm(){
