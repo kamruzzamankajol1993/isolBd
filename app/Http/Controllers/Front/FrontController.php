@@ -26,6 +26,7 @@ class FrontController extends Controller
     {
         $vessels = VesselOrWorkPlace::where('dream_job_sector_id', $sector_id)
                                     ->select('id', 'name')
+                                   // ->orderBy('name', 'asc')
                                     ->get();
         return response()->json($vessels);
     }
@@ -39,10 +40,10 @@ class FrontController extends Controller
 
         if ($assignedDepartmentIds->isNotEmpty()) {
             // If there are assigned departments, fetch them
-            $departments = DreamJobDepartment::whereIn('id', $assignedDepartmentIds)->get();
+            $departments = DreamJobDepartment::whereIn('id', $assignedDepartmentIds)->orderBy('name', 'asc')->get();
         } else {
             // Otherwise, fetch all departments
-            $departments = DreamJobDepartment::all();
+            $departments = DreamJobDepartment::orderBy('name', 'asc')->get();
         }
         return response()->json($departments);
     }
@@ -57,6 +58,7 @@ class FrontController extends Controller
     {
         $positions = DreamJobPosition::where('dream_job_department_id', $department_id)
                                      ->select('id', 'name')
+                                        ->orderBy('name', 'asc')
                                      ->get();
         return response()->json($positions);
     }
@@ -64,94 +66,62 @@ class FrontController extends Controller
     public function getAutoSuggestions(Request $request)
     {
         $query = $request->get('term');
-    
-        // Implemented phonetic search (SOUNDEX) to handle common spelling mistakes like "waitter" -> "Waiter".
+        $lowerQuery = strtolower($query);
+
         if (strlen($query) < 1) {
             return response()->json([]);
         }
-    
-        $limit = 10; // Set a total limit for suggestions.
+
+        $limit = 10;
+        $suggestions = [];
         
-        // Using an associative array with the label as the key to automatically handle duplicates.
-        $results = [];
-    
-        // The database query now checks for two conditions for a broader, more flexible search:
-        // 1. Phonetic match using SOUNDEX (handles misspellings).
-        // 2. Substring match using LIKE (for partial typing).
-        $whereClause = "SOUNDEX(name) = SOUNDEX(?) OR name LIKE ?";
-        $bindings = [$query, "%{$query}%"];
-    
-        // Search in Sectors (Job Categories)
-        $sectors = DreamJobSector::whereRaw($whereClause, $bindings)->limit(3)->get();
-        foreach ($sectors as $sector) {
-            $results[strtolower($sector->name)] = [
-                'label'         => $sector->name,
-                'type'          => 'Sector',
-                'sector_id'     => $sector->id,
-                'vessel_id'     => null,
-                'department_id' => null,
-                'position_id'   => null,
-            ];
-        }
-    
-        // Search in Vessels / Workplaces
-        $vessels = VesselOrWorkPlace::whereRaw($whereClause, $bindings)->limit(3)->get();
-        foreach ($vessels as $vessel) {
-            $results[strtolower($vessel->name)] = [
-                'label'         => $vessel->name,
-                'type'          => 'Vessel',
-                'sector_id'     => $vessel->dream_job_sector_id,
-                'vessel_id'     => $vessel->id,
-                'department_id' => null,
-                'position_id'   => null,
-            ];
-        }
-    
-        // Search in Departments
-        $departments = DreamJobDepartment::whereRaw($whereClause, $bindings)->limit(3)->get();
-        foreach ($departments as $department) {
-            $results[strtolower($department->name)] = [
-                'label'         => $department->name,
-                'type'          => 'Department',
-                'sector_id'     => null,
-                'vessel_id'     => null,
-                'department_id' => $department->id,
-                'position_id'   => null,
-            ];
-        }
-    
-        // Search in Positions (Job Titles)
-        $positions = DreamJobPosition::whereRaw($whereClause, $bindings)->limit(5)->get();
-        foreach ($positions as $position) {
-            $results[strtolower($position->name)] = [
-                'label'         => $position->name,
-                'type'          => 'Position',
-                'sector_id'     => null,
-                'vessel_id'     => null,
-                'department_id' => $position->dream_job_department_id,
-                'position_id'   => $position->id,
-            ];
-        }
-    
-        // Convert the associative array back to a simple indexed array.
-        $suggestions = array_values($results);
-    
-        // Prioritize exact matches by moving them to the top of the list.
-        $exactMatchIndex = -1;
-        foreach($suggestions as $index => $suggestion) {
-            if (strcasecmp($suggestion['label'], $query) === 0) {
-                $exactMatchIndex = $index;
-                break;
+        // Define the models to search through
+        $models = [
+            \App\Models\DreamJobSector::class => ['type' => 'Sector', 'callback' => function($item) { return ['sector_id' => $item->id]; }],
+            \App\Models\VesselOrWorkPlace::class => ['type' => 'Vessel', 'callback' => function($item) { return ['sector_id' => $item->dream_job_sector_id, 'vessel_id' => $item->id]; }],
+            \App\Models\DreamJobDepartment::class => ['type' => 'Department', 'callback' => function($item) { return ['department_id' => $item->id]; }],
+            \App\Models\DreamJobPosition::class => ['type' => 'Position', 'callback' => function($item) { return ['department_id' => $item->dream_job_department_id, 'position_id' => $item->id]; }],
+        ];
+
+        // This threshold determines how close a word must be to be considered a match.
+        $threshold = (strlen($query) > 5) ? 2 : 1;
+
+        foreach ($models as $modelClass => $details) {
+            // To optimize, we fetch only records that start with the correct first letter.
+            $potentialMatches = $modelClass::whereRaw('LOWER(name) LIKE ?', [substr($lowerQuery, 0, 1) . '%'])->get();
+
+            foreach ($potentialMatches as $item) {
+                // Split the database entry into individual words.
+                // This regex splits by spaces and common punctuation like dashes.
+                $words_in_name = preg_split('/[\s—-]+/', $item->name);
+
+                foreach ($words_in_name as $word) {
+                    $lowerWord = strtolower($word);
+                    $distance = levenshtein($lowerQuery, $lowerWord);
+
+                    // Check if the distance is within our allowed threshold
+                    if ($distance <= $threshold) {
+                        // If it's a match, add the full original entry to suggestions and stop checking this entry.
+                        if (!isset($suggestions[strtolower($item->name)])) {
+                             $baseData = ['label' => $item->name, 'type' => $details['type']];
+                             $suggestions[strtolower($item->name)] = array_merge($baseData, $details['callback']($item));
+                        }
+                        break; // Move to the next database entry
+                    }
+                }
             }
         }
-    
-        if ($exactMatchIndex > 0) {
-            $exactMatchItem = array_splice($suggestions, $exactMatchIndex, 1);
-            array_unshift($suggestions, $exactMatchItem[0]);
-        }
-    
-        // Finally, limit the total number of suggestions returned.
-        return response()->json(array_slice($suggestions, 0, $limit));
+        
+        $finalSuggestions = array_values($suggestions);
+
+        // Sort to bring exact matches to the top
+        usort($finalSuggestions, function ($a, $b) use ($lowerQuery) {
+            if (strtolower($a['label']) == $lowerQuery) return -1;
+            if (strtolower($b['label']) == $lowerQuery) return 1;
+            return strcmp($a['label'], $b['label']);
+        });
+
+        return response()->json(array_slice($finalSuggestions, 0, $limit));
     }
 
     public function informationSubmitForm(){

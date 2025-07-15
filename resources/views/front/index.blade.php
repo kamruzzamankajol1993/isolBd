@@ -51,7 +51,7 @@
           .navik-menu ul ul li > a {
           background: rgba(0, 0, 0, 0.4) !important;
           }
-        .pro-search-input, .pro-search-button {
+         .pro-search-button {
             width: 100%;
             height: 35px;
             background: rgba(0, 0, 0, 0.4);
@@ -62,6 +62,18 @@
             font-size: 16px;
             text-align: center;
         }
+        .pro-search-input {
+    width: 100%;
+    height: 35px;
+    background: rgba(0, 0, 0, 0.4);
+    border: 2px solid #eb9356;
+    border-radius: 22px;
+    color: white;
+    padding: 7px 20px;
+    font-size: 16px;
+    text-align: center;
+    box-sizing: border-box; /* Add this line */
+}
         .pro-search-input::placeholder {
             color: rgba(255, 255, 255, 0.8);
             text-align: center;
@@ -89,7 +101,7 @@
         .pro-search-col .select2-container--default .select2-selection--single {
              width: 100%;
     height: 35px !important;
-    background: rgba(0, 0, 0, 0.4)!important;
+    /* background: rgba(0, 0, 0, 0.4)!important; */
     border: 2px solid #eb9356;
     border-radius: 21px !important;
     display: flex !important;
@@ -132,6 +144,10 @@
             color: white;
             outline: none;
         }
+        .select2-container--default .select2-results__option--selected {
+            background-color: #eb9356 !important;
+            color: white !important;
+        }
         .select2-results__option {
             color: white;
             padding: 10px 15px;
@@ -143,17 +159,25 @@
         }
 
         /* Suggestion Box Styles */
-        .suggestion-box {
-            display: none;
-            position: absolute;
-            background-color: #333;
-            border: 1px solid #eb9356 ;
-            border-radius: 15px;
-            width: 100%;
-            max-height: 250px;
-            overflow-y: auto;
-            z-index: 1050; /* Ensure it's on top */
-        }
+        /* Ensure input width calculation is standardized */
+
+
+/* Suggestion Box Styles updated to match input width */
+.suggestion-box {
+    display: none;
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    width: 100%; /* This will now match the input's 100% width */
+    margin-bottom: 5px;
+    background-color: #333;
+    border: 1px solid #eb9356;
+    border-radius: 15px;
+    max-height: 250px;
+    overflow-y: auto;
+    z-index: 1050;
+    box-sizing: border-box; /* Add this line */
+}
         .suggestion-box ul {
             list-style: none;
             padding: 5px;
@@ -163,6 +187,7 @@
             padding: 10px 15px;
             cursor: pointer;
             color: white;
+         
             border-radius: 8px;
             display: flex;
             justify-content: space-between;
@@ -182,7 +207,7 @@
 <body>
 <?php   
 
-$jobDepartmentList = \App\Models\DreamJobDepartment::get();
+$jobDepartmentList = \App\Models\DreamJobDepartment::orderBy('name', 'asc')->get();
 $jobCategoryList = \App\Models\DreamJobSector::get();
 
 ?>
